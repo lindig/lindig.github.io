@@ -1,8 +1,4 @@
 
-# Christian Lindig
-
-Software Engineer at Citrix in Cambridge, UK
-
 ## Papers
 
 Please see the
