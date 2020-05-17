@@ -5,6 +5,9 @@ Please see the
 [DBLP](http://dblp.dagstuhl.de/pers/hd/l/Lindig:Christian) database for
 a list of my publications, including their BibTeX records. 
 
+*   Christian Lindig. 2020. "Seat Racing". Unpublished.
+    [seat-racing-2020-draft.pdf](papers/seat-racing-2020-draft.pdf)
+
 *   Christian Lindig.  2007.  "Mining Patterns and Violations using
     Concept Analysis".  Unpublished.  <a
     href="papers/lindig-2007-mining.pdf">lindig-2007-mining.pdf</a>
