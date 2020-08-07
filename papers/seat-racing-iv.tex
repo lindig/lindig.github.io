@@ -272,14 +272,14 @@ $$
    1303.47 \\  
   \end{bmatrix}\\
 $$
-
+%
 or more succinctly as
-
+%
 \begin{equation}
 \label{eq:sx=p}
 S x = P
 \end{equation}
-
+%
 where $S$ is the swap matrix, $x$ the power of each rower, and $P$ the
 observed crew power (for which we used the adjusted power from
 Table~\ref{tab:races_power}).  We are now looking for vector $x$, which
@@ -317,12 +317,17 @@ Equation~\ref{eq:sx=p} are given by
     +1&+1&+1&+1&-1&-1&-1&-1
   \end{bmatrix}^T
 \end{equation}
-
+%
 for an arbitrary constant $c$. The fact that an infinite number of
 solutions exist may surprise you and call into the question the method.
 But it is not as bad as it sounds. First, you could verify that all
 solutions in Table~\ref{tab:solutions} indeed respect
 Equation~\ref{eq:sx=p}, i.e., the observed race times.
+
+Equation~\ref{eq:x=sp} is specific to the swap matrix $S$ used here and
+does \emph{not} hold for arbitrary swap matrices. The inverse $S^+$ is
+specific, too, and in this case $S^+ = (S^T \times 12 -
+\textbf{1} \times 5)/48$.
 
 \begin{table}[ht]
 \centering
