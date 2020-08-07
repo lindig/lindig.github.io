@@ -80,17 +80,17 @@ method to work.
  crew & race & boat & time [s] \\ 
   \midrule
  12AB &   1 & 1 & 211.54 \\ 
- 34CD &   1 & 2 & 211.46 \\ 
+ 34CD &     & 2 & 211.46 \\ [.8ex]
  24AC &   2 & 1 & 199.46 \\ 
- 13BD &   2 & 2 & 204.30 \\ 
+ 13BD &     & 2 & 204.30 \\ [.8ex]
  23BC &   3 & 1 & 200.97 \\ 
- 14AD &   3 & 2 & 206.29 \\ 
+ 14AD &     & 2 & 206.29 \\ [.8ex]
  12CD &   4 & 1 & 202.49 \\ 
- 34AB &   4 & 2 & 199.47 \\ 
+ 34AB &     & 2 & 199.47 \\ [.8ex]
  24BD &   5 & 1 & 205.79 \\ 
- 13AC &   5 & 2 & 205.98 \\ 
+ 13AC &     & 2 & 205.98 \\ [.8ex]
  23AD &   6 & 1 & 205.78 \\ 
- 14BC &   6 & 2 & 205.81 \\ 
+ 14BC &     & 2 & 205.81 \\ 
    \bottomrule
 \end{tabular}
   \caption{\label{tab:races} Crews of 4~rowers race pairwise in 6~races
@@ -289,23 +289,21 @@ assigns power to each rower, such that this matches the observed power.
 
 Solving $Sx=P$ for $x$ is not straight forward: $S$ is not square and
 therefore has no inverse.  The left inverse $S'$ with $S'S=I$ does not
-exist because $\textrm{rank}(S)= 7 < 8$. But $S$ has a generalised
-inverse $S^+$ which we can use to describe all solutions.
+exist because $\textrm{rank}(S)= 7 < 8$. But $S$ has a unique
+generalised inverse $S^+$ which we can use to describe all solutions.
 
 \begin{align}
-  S^+ &= 
+  S^+ &= \frac{1}{48}
   \begin{bmatrix}
-  b&a&a&b&a&a&a&b&b&a&b&b\\
-  b&b&b&b&b&b&a&a&a&a&a&a\\
-  a&a&b&a&a&b&b&b&a&b&b&a\\
-  a&b&a&a&b&a&b&a&b&b&a&b\\
-  b&b&a&a&a&b&a&a&b&b&b&a\\
-  b&a&b&a&b&a&a&b&a&b&a&b\\
-  a&b&b&b&a&a&b&a&a&a&b&b\\
-  a&a&a&b&b&b&b&b&b&a&a&a\\
-\end{bmatrix}\\
- a &= -0.1041667 \\
- b &= +0.1458333
+  +7&-5&-5&+7&-5&-5&-5&+7&+7&-5&+7&+7\\
+  +7&+7&+7&+7&+7&+7&-5&-5&-5&-5&-5&-5\\
+  -5&-5&+7&-5&-5&+7&+7&+7&-5&+7&+7&-5\\
+  -5&+7&-5&-5&+7&-5&+7&-5&+7&+7&-5&+7\\
+  +7&+7&-5&-5&-5&+7&-5&-5&+7&+7&+7&-5\\
+  +7&-5&+7&-5&+7&-5&-5&+7&-5&+7&-5&+7\\
+  -5&+7&+7&+7&-5&-5&+7&-5&-5&-5&+7&+7\\
+  -5&-5&-5&+7&+7&+7&+7&+7&+7&-5&-5&-5
+  \end{bmatrix}
 \end{align}
 
 
@@ -387,7 +385,7 @@ almost identical result with the largest difference being 1.21\,W for
 rower~D and the difference being smaller than 1\,W for most rowers.
 
 \begin{thebibliography}{10}
-\bibitem[2]{purcer:dataset} Mike Purcer.  Seat
+\bibitem[1]{purcer:dataset} Mike Purcer.  Seat
 Racing Analysis. Excel Spreadsheet. Retrieved May 16.  2020.
 \url{https://purcerverance.ca/files}
 \end{thebibliography}
