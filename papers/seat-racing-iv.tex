@@ -34,6 +34,16 @@
 \begin{document}
 \maketitle
 
+\begin{abstract}
+\noindent Seat racing is a procedure to find the strongest rowers in a
+  squad. This paper looks into the underlying math of using 6~races of
+  2~boats with 4~athletes each over a set distance for which finishing
+  times are recorded. Between races rowers swap between boats according
+  to a swapping matrix $S$.  Each rower is either rowing on starboard or
+  port. From the recorded finishing times the power contribution of each
+  rower can be inferred using a generalised inverse. The result provides
+a ranking of athletes per side.  \end{abstract}
+
 \noindent Seat racing is a procedure used by rowing coaches to find the
 strongest athletes from a squad for a crew boat. While the general
 fitness of an athlete can be observed from land training, his or her
@@ -63,11 +73,11 @@ ranking of the athletes (per side) in terms of speed contribution.
 
 \section{Example}
 
-We will discuss the method based on the example in
-Table~\ref{tab:races} from \cite{purcer:dataset}. It is comprised of
-6~races over 1000m. In each race two boats of 4~rowers race against each
-other. Rowers are identified as $1$ to $4$ (rowing on starboard) and
-$A$ to $D$ (rowing on port). Each crew has two rowers on each side.
+We will discuss the method based on an example \cite{purcer:dataset} in
+Table~\ref{tab:races}. It is comprised of 6~races over 1000m. In each
+race two boats of 4~rowers race against each other. Rowers are
+identified as $1$ to $4$ (rowing on starboard) and $A$ to $D$ (rowing on
+port). Each crew has two rowers on each side.
 
 What crews are racing each other is fixed and not random. We will see
 that this \emph{swapping matrix} has important properties for this
@@ -143,7 +153,7 @@ The rest of this paper will look into why the method works at all and
 the answers to the above questions.
 \fi
 
-\section{Problem Definition}
+\section{Problem Statement}
 
 Most descriptions of seat racing in the rowing literature talk about
 one rower being faster than another by a margin of time. While this is
