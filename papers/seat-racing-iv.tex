@@ -1,0 +1,402 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{url}              
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+%\usepackage{ebgaramond}
+
+\hypersetup{
+  colorlinks = true,
+  linkcolor = [rgb]{0.26,0.34,0.48},
+  anchorcolor = [rgb]{0.0,0.0,0.8},
+  citecolor = [rgb]{0.0,0.0,0.8},
+  filecolor = [rgb]{0.0,0.0,0.8},
+  urlcolor = [rgb]{0.0,0.0,0.8},
+  pdftitle= {Seat Racing (\today)},
+  pdfsubject= {Seat Racing in Rowing (\today)},
+  pdfauthor= {Christian Lindig -- lindig@gmail.com}
+ }
+\urlstyle{tt}
+
+
+% ------------------------------------------------------------------
+% macros
+% ------------------------------------------------------------------
+\def\ms{ms^{-1}}
+\let\mc\multicolumn
+\setcounter{MaxMatrixCols}{20}
+
+\title{Seat Racing 4+/4-}
+\author{Christian Lindig}
+\date{\texttt{lindig@gmail.com}\\[2ex] Draft -- \today}
+\begin{document}
+\maketitle
+
+\noindent Seat racing is a procedure used by rowing coaches to find the
+strongest athletes from a squad for a crew boat. While the general
+fitness of an athlete can be observed from land training, his or her
+ability to ``move the boat'' within a crew is more difficult to
+quantify. Seat racing is used to bring objectivity and transparency to
+the selection process of finding the best crew for a boat. This paper
+takes a fresh look at a method that works along the following
+principles:
+
+\begin{enumerate}
+  \item Eight rowers are split repeatedly into two crews of four and
+  race against each other in two boats under controlled conditions for a
+  fixed distance (like 1000m).  
+  
+  \item After each race rowers between boats are swapped according to a
+  fixed plan.  The process continues over a total of 6~races.
+
+  \item Each rower is either rowing always on starboard (right) or port
+  (left). This implies that the eight rowers are comprised of four for
+  each side. The 4+/4- in the title refers to the class of boat being
+  used: 4~rowers in a boat with or without a coxswain.
+
+\item For each race the finishing time for each boat is recorded. \end{enumerate}
+
+The goal of the method is to infer from the recorded finishing times a
+ranking of the athletes (per side) in terms of speed contribution.
+
+\section{Example}
+
+We will discuss the method based on the example in
+Table~\ref{tab:races} from \cite{purcer:dataset}. It is comprised of
+6~races over 1000m. In each race two boats of 4~rowers race against each
+other. Rowers are identified as $1$ to $4$ (rowing on starboard) and
+$A$ to $D$ (rowing on port). Each crew has two rowers on each side.
+
+What crews are racing each other is fixed and not random. We will see
+that this \emph{swapping matrix} has important properties for this
+method to work.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrr}
+  \toprule
+ crew & race & boat & time [s] \\ 
+  \midrule
+ 12AB &   1 & 1 & 211.54 \\ 
+ 34CD &   1 & 2 & 211.46 \\ 
+ 24AC &   2 & 1 & 199.46 \\ 
+ 13BD &   2 & 2 & 204.30 \\ 
+ 23BC &   3 & 1 & 200.97 \\ 
+ 14AD &   3 & 2 & 206.29 \\ 
+ 12CD &   4 & 1 & 202.49 \\ 
+ 34AB &   4 & 2 & 199.47 \\ 
+ 24BD &   5 & 1 & 205.79 \\ 
+ 13AC &   5 & 2 & 205.98 \\ 
+ 23AD &   6 & 1 & 205.78 \\ 
+ 14BC &   6 & 2 & 205.81 \\ 
+   \bottomrule
+\end{tabular}
+  \caption{\label{tab:races} Crews of 4~rowers race pairwise in 6~races
+  over 1000m with the resulting times in seconds. Rowers are identified
+  as $1$ to $4$ and $A$ to $D$.}
+\end{table}
+
+\iffalse
+Before looking into the details, let us cut straight to one result; there
+are actually more but you would not make a mistake by only looking at
+this. Table~\ref{tab:basic} sums up for each rower the time they have
+spent in races.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{l rrrr}
+  \toprule
+Rower starboard & 1 & 2 & 3 & 4 \\
+Total Time [s]  & 1236.41 & 1226.03 & 1227.96 & 1228.28 \\
+  \midrule
+Rower port      & A & B & C & D \\ 
+Total Time [s]  & 1228.52 & 1227.88 & 1226.17 & 1236.11 \\ 
+  \bottomrule
+\end{tabular}
+  \caption{\label{tab:basic} Total time rowers spent in races; the
+  strongest rowers on starboard are 2, 3, 4, 1 and on port C, B, A, D.}
+\end{table}
+
+\begin{enumerate}
+\item The strongest rowers on starboard are 2, 3, 4, 1 in this order
+because they spent an increasing amount of time in races.
+\item The strongest rowers on port are C, B, A, D in that order for the
+same argument.
+\end{enumerate}
+
+Maybe that is all you need to know and you don't wonder:
+
+\begin{itemize}
+\item Who is the strongest rower overall? Is it rower 2 because he or
+she has the shortest time? No.
+\item Times between races varied a lot, maybe because of wind. Does this
+create unfairness?
+\item Do the time differences within a side reflect actual differences
+in contribution to boat speed?
+\item If I only have one boat, could I just time the races one after
+another? No.
+\end{itemize}
+
+The rest of this paper will look into why the method works at all and
+the answers to the above questions.
+\fi
+
+\section{Problem Definition}
+
+Most descriptions of seat racing in the rowing literature talk about
+one rower being faster than another by a margin of time. While this is
+what it looks like, it is more the effect than the cause. The speed 
+of a crew boat is the result of the effort of its crew and time cannot
+be attributed to individual crew members. What is happening is that each
+rower contributes power to the propulsion of the boat.  It is helpful to
+think about individual power and the combined power of the crew. What
+seat racing really aims for is to uncover the power contribution of each
+rower.
+
+When a boat with 4~crew members travels a distance $d$ in time $t$, its
+average speed is $v=d/t$ and the average power $P$ required
+depends on a drag factor $k$:
+
+\begin{equation}
+\label{eq:p=kv3}
+P = k \times v^3
+\end{equation}
+
+Drag factor $k$ depends on the boat's shape, crew weight and other
+details. However, we are mostly interested in the relative power of
+rowers and can live with an approximation of $k = 2.8 \times 4$. This
+gives use for each race the average power of the crew. For example, a
+time of 211.54s corresponds to 
+
+\begin{equation*}
+P=2.8 \times 4 \times (1000/211.54)^3 = 1183.15\,\textrm{watt}.
+\end{equation*}
+
+We make the following assumptions:
+
+\begin{enumerate}
+\item The power of a crew is the total of the power of its
+      members and 
+\item each crew member $m$ produces in each
+      race the same amount of power $x_m$.
+\end{enumerate}
+
+Power $x$ is the number that we are looking for each rower. Power is an
+interesting measure because it is known for each rower from land
+training, too, and so it offers a comparison.  Restating
+Table~\ref{tab:races} in terms of power using Equation~\ref{eq:p=kv3}
+leads to Table~\ref{tab:races_power}.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrrrr}
+  \toprule
+ crew & race & boat & time [s] & power [W] & adj &  adj.~power [W]\\ 
+  \midrule
+  12AB &   1 & 1& 211.54 & 1183.15 & 1.10 & 1303.02 \\ 
+  34CD &     & 2& 211.46 & 1184.50 &      & 1304.49 \\ [.8ex]
+  24AC &   2 & 1& 199.46 & 1411.40 & 0.96 & 1350.62 \\ 
+  13BD &     & 2& 204.30 & 1313.45 &      & 1256.89 \\ [.8ex]
+  23BC &   3 & 1& 200.97 & 1379.83 & 0.98 & 1354.82 \\ 
+  14AD &     & 2& 206.29 & 1275.80 &      & 1252.69 \\ [.8ex]
+  12CD &   4 & 1& 202.49 & 1348.99 & 0.94 & 1274.37 \\ 
+  34AB &     & 2& 199.47 & 1411.19 &      & 1333.14 \\ [.8ex]
+  24BD &   5 & 1& 205.79 & 1285.12 & 1.02 & 1305.56 \\ 
+  13AC &     & 2& 205.98 & 1281.57 &      & 1301.95 \\ [.8ex]
+  23AD &   6 & 1& 205.78 & 1285.31 & 1.01 & 1304.04 \\ 
+  14BC &     & 2& 205.81 & 1284.75 &      & 1303.47 \\ 
+   \bottomrule
+\end{tabular}
+\caption{\label{tab:races_power} Race results restated in terms of
+implied crew power. Column \emph{power} is the power based on equation
+\ref{eq:p=kv3}. This leads to the total power of both crews in a race to
+vary across races. \emph{Adjusted power} corrects this such that the
+total power in each race is equal to the avarage total power.}
+\end{table}
+
+Race~4 is faster than race~1, maybe because of wind or stream
+or the distance was slightly shorter than 1000 meters.  The total power
+of the rowers in race~4 therefore is seemingly higher than the total
+power of the same rowers in race~1 -- which contradicts our assumptions.
+We do not know yet how significant this is, as it affects both crews in a
+race, but we can try to adjust the power in each race by a factor
+\emph{adj} such that the total power in all races is constant and equals
+the average total power.  This results in column \emph{adj.~power} in
+Table~\ref{tab:races_power}.
+
+The problem of inferring the power contribution of each rower from the
+race results can be stated as a system of linear equations in matrix
+form:
+
+$$
+  \begin{bmatrix}
+   1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 \\ 
+   0 & 1 & 0 & 1 & 1 & 0 & 1 & 0 \\ 
+   0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 \\ 
+   1 & 1 & 0 & 0 & 0 & 0 & 1 & 1 \\ 
+   0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 \\ 
+   0 & 1 & 1 & 0 & 1 & 0 & 0 & 1 \\ 
+   0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 \\ 
+   1 & 0 & 1 & 0 & 0 & 1 & 0 & 1 \\ 
+   1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 \\ 
+   0 & 0 & 1 & 1 & 1 & 1 & 0 & 0 \\ 
+   1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 \\ 
+   1 & 0 & 0 & 1 & 0 & 1 & 1 & 0 \\ 
+  \end{bmatrix} 
+  \times
+  \begin{bmatrix}
+  x_1\\
+  x_2\\
+  x_3\\
+  x_4\\
+  x_A\\
+  x_B\\
+  x_C\\
+  x_D\\
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+   1303.02 \\ 
+   1350.62 \\ 
+   1354.82 \\ 
+   1274.37 \\ 
+   1305.56 \\ 
+   1304.04 \\ 
+   1304.49 \\ 
+   1256.89 \\ 
+   1252.69 \\ 
+   1333.14 \\ 
+   1301.95 \\ 
+   1303.47 \\  
+  \end{bmatrix}\\
+$$
+
+or more succinctly as
+
+\begin{equation}
+\label{eq:sx=p}
+S x = P
+\end{equation}
+
+where $S$ is the swap matrix, $x$ the power of each rower, and $P$ the
+observed crew power (for which we used the adjusted power from
+Table~\ref{tab:races_power}).  We are now looking for vector $x$, which
+assigns power to each rower, such that this matches the observed power.
+
+\section{Inferring Power}
+
+Solving $Sx=P$ for $x$ is not straight forward: $S$ is not square and
+therefore has no inverse.  The left inverse $S'$ with $S'S=I$ does not
+exist because $\textrm{rank}(S)= 7 < 8$. But $S$ has a generalised
+inverse $S^+$ which we can use to describe all solutions.
+
+\begin{align}
+  S^+ &= 
+  \begin{bmatrix}
+  b&a&a&b&a&a&a&b&b&a&b&b\\
+  b&b&b&b&b&b&a&a&a&a&a&a\\
+  a&a&b&a&a&b&b&b&a&b&b&a\\
+  a&b&a&a&b&a&b&a&b&b&a&b\\
+  b&b&a&a&a&b&a&a&b&b&b&a\\
+  b&a&b&a&b&a&a&b&a&b&a&b\\
+  a&b&b&b&a&a&b&a&a&a&b&b\\
+  a&a&a&b&b&b&b&b&b&a&a&a\\
+\end{bmatrix}\\
+ a &= -0.1041667 \\
+ b &= +0.1458333
+\end{align}
+
+
+All solutions for rower power $x$ given crew power $P$ in
+Equation~\ref{eq:sx=p} are given by
+
+\begin{equation}
+  \label{eq:x=sp}
+  x = S^+ P + c 
+  \begin{bmatrix}
+    +1&+1&+1&+1&-1&-1&-1&-1
+  \end{bmatrix}^T
+\end{equation}
+
+for an arbitrary constant $c$. The fact that an infinite number of
+solutions exist may surprise you and call into the question the method.
+But it is not as bad as it sounds. First, you could verify that all
+solutions in Table~\ref{tab:solutions} indeed respect
+Equation~\ref{eq:sx=p}, i.e., the observed race times.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrr}
+  \toprule
+        & \mc3c{Power $x$ [W]} \\
+        \cmidrule{2-4}
+  rower & $c=0$ & $c=10$ & $c=30$ \\ 
+  \midrule
+  1 & 293.40 & 303.40 & 323.40 \\ 
+  2 & 343.42 & 353.42 & 373.42 \\ 
+  3 & 334.14 & 344.14 & 364.14 \\ 
+  4 & 332.80 & 342.80 & 362.80 \\ [0.8ex]
+  
+  A & 331.67 & 321.67 & 301.67 \\ 
+  B & 334.53 & 324.53 & 304.53 \\ 
+  C & 342.74 & 332.74 & 312.74 \\ 
+  D & 294.82 & 284.82 & 264.82 \\ 
+   \bottomrule
+\end{tabular}
+\caption{\label{tab:solutions} Power assignments that
+are consistent with race times. Observe that the difference in
+power between rowers of one side (1 to 4 and A to D) is constant across all
+solutions. Solutions differ only by shifting power between sides.}
+\end{table}
+
+\section{Results}
+
+Table~\ref{tab:solutions} provides the answers we are looking for but we
+need to be a little careful with the interpretation:
+
+\begin{enumerate}
+\item The strongest rowers on starboard are 2, 3, 4, 1 in this order.
+\item The strongest rowers on port side are C, B, A, D in this order.
+\item We can't tell who is the strongest rower across sides because power
+      shifts between sides are not detected by the method. Parameter $c$
+      basically models this shift. Across all solutions, the difference
+      in power between rowers of one side remains constant and leads to
+      an order independent of $c$.
+\item With $c=0$ the combined power of rowers of 1 to 4 and A to D is
+      equal. This makes it a somewhat more likely to be the true
+      scenario than a solution with a large parameter $c$.
+\item The swap matrix $S$ and its generalised inverse $S^+$ are fixed
+      and independent of the race results. They can be used to implement
+      the method as a spreadsheet.
+\item The drag factor $k = 2.8 \times 4$ chosen in
+      Equation~\ref{eq:p=kv3} could be adjusted without impacting the
+      order of rowers but in order to match the observed power on the
+      water to power observed in land training.
+\item The swap matrix $S$ used here is not the only possible but it
+      needs to be chosen carefully for Equation~\ref{eq:x=sp} to be
+      valid.
+\end{enumerate}
+
+We have used the adjusted power in Table~\ref{tab:races_power} to
+compensate for the fact that the total observed raw power between races
+varied. This might not be necessary as long as it affects both crews
+equally. Computing the power based on raw power and $c=0$ yields an
+almost identical result with the largest difference being 1.21\,W for
+rower~D and the difference being smaller than 1\,W for most rowers.
+
+\begin{thebibliography}{10}
+\bibitem[2]{purcer:dataset} Mike Purcer.  Seat
+Racing Analysis. Excel Spreadsheet. Retrieved May 16.  2020.
+\url{https://purcerverance.ca/files}
+\end{thebibliography}
+
+
+\end{document}
+
+
+
+
+
+

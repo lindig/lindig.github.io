@@ -5,6 +5,13 @@ Please see the
 [DBLP](http://dblp.dagstuhl.de/pers/hd/l/Lindig:Christian) database for
 a list of my publications, including their BibTeX records. 
 
+*   Christian Lindig. 2020. "Seat Racing 4+/4-". Unpublished. Using an
+    algebraic approach, this infers the power contribution of each rower 
+    in a seat race. It has evolved from the previous paper below which
+    treated this as an optimisation problem. The main contribution is
+    the precise characterisation of the set of solutions.
+    [seat-racing-iv-2020-draft.pdf](papers/seat-racing-iv-2020-draft.pdf)
+
 *   Christian Lindig. 2020. "Seat Racing". Unpublished.
     [seat-racing-2020-draft.pdf](papers/seat-racing-2020-draft.pdf)
 
