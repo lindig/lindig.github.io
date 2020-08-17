@@ -12,7 +12,14 @@ a list of my publications, including their BibTeX records.
     the precise characterisation of the set of solutions.
     [seat-racing-iv-2020-draft.pdf](papers/seat-racing-iv-2020-draft.pdf)
 
-*   Christian Lindig. 2020. "Seat Racing". Unpublished.
+*   Christian Lindig. 2020. "Seat Racing". Unpublished. This is
+    superseded by the paper "Seat Racing 4+/4-" above. This paper looks
+    at seat racing using coxed and uncoxed fours in rowing by trying to
+    infer the power contributed of each rower after a series of 6 races.
+    The power assignment is found using an numercical optimisation
+    method. As it later turned out, such an assignment is not unique and
+    can be found with simpler methods that precisly characterise how all
+    consistent power assignments are related.
     [seat-racing-2020-draft.pdf](papers/seat-racing-2020-draft.pdf)
 
 *   Christian Lindig.  2007.  "Mining Patterns and Violations using
