@@ -393,12 +393,11 @@
   table th,
   table td {
   padding: 6px 13px;
-  border: 1px solid #ddd;
   }
 
   table tr {
   background-color: #fff;
-  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
   }
 
   table tr:nth-child(2n) {
@@ -624,37 +623,311 @@
 
   table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
     content: " \25B4\25BE" 
+  }
+
+  .stat-table-vert {
+  border-collapse: collapse;
+  }
+
+  .bar {
+  background: #93b69d;
+  }
+
+  .stat-table-vert tr:first-of-type td {
+  border-left: 0px solid #090;
+  border-right: 0px solid #090;
+  padding: 1px;
+  margin: 1px;
+  width: 10px;
+  vertical-align: bottom;
+  }
+
+  .stat-table-vert tr:nth-of-type(2) td {
+  padding: 5px;
+  }
+
+  .stat-table-vert td {
+  padding: 1px 2px;
+  font-size: 70%;
+  } 
 
   </style>
-  <title>Outing Saturday 2020-10-17</title>
+  <title></title>
 </head>
 <body>
   <script src=
   "https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
-  <h1>Outing Report for Saturday 2020-10-17</h1>
+  <h1>Outing Report for Tuesday
+  2020-12-15</h1>
   <ul>
-    <li>Outing on Saturday 2020-10-17
-    from 06:23:39 to 08:22:35</li>
-    <li>Duration 01:58:56 hours</li>
-    <li>Total distance 17.3 km</li>
-    <li><a href="https://www.google.com/maps/@52.211416,0.140311,17z">Location</a></li>
-    <li>Based on input file <em>xpress-4x-2020-10-17.fit</em></li>
-    <li>Energy total 241 kWs.</li>
+    <li>Outing on Tuesday 2020-12-15
+    from 06:09:36 to 07:32:09</li>
+    <li>Duration 01:22:33 hours</li>
+    <li>Total distance 15.4 km</li>
+    <li>Temperature -- ºC</li>
+    <li><a href="https://www.google.com/maps/@52.211384,0.130120,17z">Location</a></li>
+    <li>Based on input file <em>example.fit</em></li>
+    <li>Energy total 225 kWs.</li>
   </ul>
   <p>Energy is proportional to the energy required to move the boat
   at the observed speeds. However, the energy in Watt depends on
   the weight off the boat and hence, the boat class. It is
   therefore most useful as an indicator of work done in the outing,
   relative to other outings of the same crew.</p><a name=
-  "Speed-over-Various-Distances" id=
-  "Speed-over-Various-Distances"></a>
-  <h2>Speed over Various Distances</h2>
+  "Speed-Zones" id="Speed-Zones"></a>
+  <h2>Speed Zones</h2>
+  <p>Time spent in speed zones over the outing. Duration in
+  mm:ss.</p>
+  <table class="sortable">
+    <thead>
+      <tr>
+        <th style="text-align:right;">min/500</th>
+        <th style="text-align:right;">Duration</th>
+        <th style="text-align:left;">Bar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align:right;">3:20</td>
+        <td style="text-align:right;">2:54</td>
+        <td style="text-align:left;">
+          <div style='background-color:#93b69d; width:20px'>
+            |
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">3:07</td>
+        <td style="text-align:right;">2:46</td>
+        <td style="text-align:left;">
+          <div style='background-color:#93b69d; width:20px'>
+            |
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">2:55</td>
+        <td style="text-align:right;">3:34</td>
+        <td style="text-align:left;">
+          <div style='background-color:#93b69d; width:25px'>
+            |
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">2:45</td>
+        <td style="text-align:right;">5:27</td>
+        <td style="text-align:left;">
+          <div style='background-color:#93b69d; width:40px'>
+            |
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">2:36</td>
+        <td style="text-align:right;">6:27</td>
+        <td style="text-align:left;">
+          <div style='background-color:#93b69d; width:45px'>
+            |
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">2:28</td>
+        <td style="text-align:right;">7:53</td>
+        <td style="text-align:left;">
+          <div style='background-color:#93b69d; width:55px'>
+            |
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">2:21</td>
+        <td style="text-align:right;">8:19</td>
+        <td style="text-align:left;">
+          <div style='background-color:#93b69d; width:60px'>
+            |
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">2:14</td>
+        <td style="text-align:right;">5:50</td>
+        <td style="text-align:left;">
+          <div style='background-color:#93b69d; width:40px'>
+            |
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">2:08</td>
+        <td style="text-align:right;">4:31</td>
+        <td style="text-align:left;">
+          <div style='background-color:#93b69d; width:30px'>
+            |
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">2:03</td>
+        <td style="text-align:right;">3:55</td>
+        <td style="text-align:left;">
+          <div style='background-color:#93b69d; width:25px'>
+            |
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">1:58</td>
+        <td style="text-align:right;">4:35</td>
+        <td style="text-align:left;">
+          <div style='background-color:#93b69d; width:30px'>
+            |
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">1:53</td>
+        <td style="text-align:right;">4:00</td>
+        <td style="text-align:left;">
+          <div style='background-color:#93b69d; width:30px'>
+            |
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">1:49</td>
+        <td style="text-align:right;">2:14</td>
+        <td style="text-align:left;">
+          <div style='background-color:#93b69d; width:15px'>
+            |
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">1:45</td>
+        <td style="text-align:right;">0:40</td>
+        <td style="text-align:left;">
+          <div style='background-color:#93b69d; width:5px'>
+            |
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">1:41</td>
+        <td style="text-align:right;">0:27</td>
+        <td style="text-align:left;">
+          <div style='background-color:#93b69d; width:0px'>
+            |
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">1:38</td>
+        <td style="text-align:right;">0:24</td>
+        <td style="text-align:left;">
+          <div style='background-color:#93b69d; width:0px'>
+            |
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">1:34</td>
+        <td style="text-align:right;">0:29</td>
+        <td style="text-align:left;">
+          <div style='background-color:#93b69d; width:0px'>
+            |
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">1:31</td>
+        <td style="text-align:right;">0:46</td>
+        <td style="text-align:left;">
+          <div style='background-color:#93b69d; width:5px'>
+            |
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">1:28</td>
+        <td style="text-align:right;">0:19</td>
+        <td style="text-align:left;">
+          <div style='background-color:#93b69d; width:0px'>
+            |
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">1:26</td>
+        <td style="text-align:right;">0:22</td>
+        <td style="text-align:left;">
+          <div style='background-color:#93b69d; width:0px'>
+            |
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <a name="Top-Speed" id="Top-Speed"></a>
+  <h2>Top Speed</h2>
   <p>This identifies the <em>fastest</em> segments of various
   lenghts found in the outing. Segments may overlap: the fastest
-  700m may include the fastest 500m.</p>
-  <p><em>Up</em> or <em>Down</em> identifies a segment going up- or
-  downstream, respectively. All columns can be sorted.</p>
-  
+  700m may include the fastest 500m. <em>Up</em> or <em>Down</em>
+  identifies a segment going up- or downstream, respectively. All
+  columns can be sorted.</p>         
+            
+
+
+
+
+
+
+
+
+  <table class="unsorted">
+    <thead>
+      <tr>
+        <th>Distance</th>
+        <th style="text-align:right;">100</th>
+        <th style="text-align:right;">200</th>
+        <th style="text-align:right;">300</th>
+        <th style="text-align:right;">400</th>
+        <th style="text-align:right;">500</th>
+        <th style="text-align:right;">700</th>
+        <th style="text-align:right;">1000</th>
+        <th style="text-align:right;">1500</th>
+        <th style="text-align:right;">2000</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Up</td>
+        <td style="text-align:right;">1:48</td>
+        <td style="text-align:right;">1:48</td>
+        <td style="text-align:right;">1:49</td>
+        <td style="text-align:right;">1:50</td>
+        <td style="text-align:right;">1:50</td>
+        <td style="text-align:right;">1:52</td>
+        <td style="text-align:right;">1:56</td>
+        <td style="text-align:right;">2:07</td>
+        <td style="text-align:right;">2:13</td>
+      </tr>
+      <tr>
+        <td>Down</td>
+        <td style="text-align:right;">1:25</td>
+        <td style="text-align:right;">1:29</td>
+        <td style="text-align:right;">1:31</td>
+        <td style="text-align:right;">1:31</td>
+        <td style="text-align:right;">1:31</td>
+        <td style="text-align:right;">1:32</td>
+        <td style="text-align:right;">1:36</td>
+        <td style="text-align:right;">1:53</td>
+        <td style="text-align:right;">1:55</td>
+      </tr>
+    </tbody>
+  </table><a name="Top-Speed-Details" id="Top-Speed-Details"></a>
+  <h3>Top Speed Details</h3>
   <table class="sortable">
     <thead>
       <tr>
@@ -663,162 +936,197 @@
         <th style="text-align:right;">Stream</th>
         <th style="text-align:right;">Outing</th>
         <th style="text-align:right;">1/min</th>
+        <th style="text-align:right;">HR</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td style="text-align:right;">100</td>
-        <td style="text-align:right;">1:43</td>
+        <td style="text-align:right;">1:48</td>
         <td style="text-align:right;">up</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.243636,0.184201,17z">12062</a>…<a href="https://www.google.com/maps/@52.242816,0.183701,17z">12162</a> m</td>
-        <td style="text-align:right;">27.1</td>
+        "https://www.google.com/maps/@52.221746,0.164228,17z">6855</a>…<a href=
+        "https://www.google.com/maps/@52.221400,0.162993,17z">6955</a> m</td>
+        <td style="text-align:right;">30</td>
+        <td style="text-align:right;">162</td>
       </tr>
       <tr>
         <td style="text-align:right;">200</td>
-        <td style="text-align:right;">1:45</td>
+        <td style="text-align:right;">1:48</td>
         <td style="text-align:right;">up</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.243970,0.184331,17z">12007</a>…<a href="https://www.google.com/maps/@52.242531,0.183426,17z">12207</a> m</td>
-        <td style="text-align:right;">28.1</td>
+        "https://www.google.com/maps/@52.221815,0.164471,17z">6840</a>…<a href=
+        "https://www.google.com/maps/@52.221080,0.161818,17z">7040</a> m</td>
+        <td style="text-align:right;">31</td>
+        <td style="text-align:right;">166</td>
       </tr>
       <tr>
         <td style="text-align:right;">300</td>
-        <td style="text-align:right;">1:45</td>
-        <td style="text-align:right;">up</td>
-        <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.243970,0.184331,17z">12007</a>…<a href="https://www.google.com/maps/@52.241841,0.182651,17z">12307</a> m</td>
-        <td style="text-align:right;">26.6</td>
-      </tr>
-      <tr>
-        <td style="text-align:right;">400</td>
         <td style="text-align:right;">1:49</td>
         <td style="text-align:right;">up</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.244435,0.184460,17z">11962</a>…<a href="https://www.google.com/maps/@52.241490,0.182070,17z">12362</a> m</td>
-        <td style="text-align:right;">25.9</td>
+        "https://www.google.com/maps/@52.221981,0.164994,17z">6800</a>…<a href=
+        "https://www.google.com/maps/@52.220897,0.161019,17z">7100</a> m</td>
+        <td style="text-align:right;">30</td>
+        <td style="text-align:right;">165</td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">400</td>
+        <td style="text-align:right;">1:50</td>
+        <td style="text-align:right;">up</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.221780,0.164349,17z">6845</a>…<a href=
+        "https://www.google.com/maps/@52.220513,0.159014,17z">7245</a> m</td>
+        <td style="text-align:right;">31</td>
+        <td style="text-align:right;">174</td>
       </tr>
       <tr>
         <td style="text-align:right;">500</td>
         <td style="text-align:right;">1:50</td>
         <td style="text-align:right;">up</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.252311,0.188501,17z">11012</a>…<a href="https://www.google.com/maps/@52.248598,0.184933,17z">11512</a> m</td>
-        <td style="text-align:right;">27.1</td>
+        "https://www.google.com/maps/@52.221943,0.164878,17z">6805</a>…<a href=
+        "https://www.google.com/maps/@52.220381,0.158140,17z">7305</a> m</td>
+        <td style="text-align:right;">31</td>
+        <td style="text-align:right;">171</td>
       </tr>
       <tr>
         <td style="text-align:right;">700</td>
-        <td style="text-align:right;">2:00</td>
+        <td style="text-align:right;">1:52</td>
         <td style="text-align:right;">up</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.255461,0.194828,17z">10442</a>…<a href="https://www.google.com/maps/@52.251536,0.187435,17z">11142</a> m</td>
-        <td style="text-align:right;">26.4</td>
+        "https://www.google.com/maps/@52.221833,0.164532,17z">6835</a>…<a href=
+        "https://www.google.com/maps/@52.219900,0.154930,17z">7535</a> m</td>
+        <td style="text-align:right;">31</td>
+        <td style="text-align:right;">175</td>
       </tr>
       <tr>
         <td style="text-align:right;">1000</td>
-        <td style="text-align:right;">1:58</td>
+        <td style="text-align:right;">1:56</td>
         <td style="text-align:right;">up</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.255133,0.193618,17z">10517</a>…<a href="https://www.google.com/maps/@52.248598,0.184933,17z">11517</a> m</td>
-        <td style="text-align:right;">27</td>
+        "https://www.google.com/maps/@52.222367,0.166315,17z">6700</a>…<a href=
+        "https://www.google.com/maps/@52.219085,0.152867,17z">7700</a> m</td>
+        <td style="text-align:right;">29</td>
+        <td style="text-align:right;">169</td>
       </tr>
       <tr>
         <td style="text-align:right;">1500</td>
         <td style="text-align:right;">2:07</td>
         <td style="text-align:right;">up</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.256196,0.196950,17z">10247</a>…<a href="https://www.google.com/maps/@52.246410,0.185111,17z">11747</a> m</td>
-        <td style="text-align:right;">26.9</td>
+        "https://www.google.com/maps/@52.226665,0.166695,17z">6185</a>…<a href=
+        "https://www.google.com/maps/@52.219150,0.153044,17z">7685</a> m</td>
+        <td style="text-align:right;">25</td>
+        <td style="text-align:right;">158</td>
       </tr>
       <tr>
         <td style="text-align:right;">2000</td>
-        <td style="text-align:right;">2:14</td>
+        <td style="text-align:right;">2:13</td>
         <td style="text-align:right;">up</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.226336,0.166501,17z">14507</a>…<a href="https://www.google.com/maps/@52.217408,0.145840,17z">16507</a> m</td>
-        <td style="text-align:right;">27.1</td>
+        "https://www.google.com/maps/@52.230015,0.170338,17z">5700</a>…<a href=
+        "https://www.google.com/maps/@52.219085,0.152867,17z">7700</a> m</td>
+        <td style="text-align:right;">23</td>
+        <td style="text-align:right;">152</td>
       </tr>
       <tr>
         <td style="text-align:right;">100</td>
-        <td style="text-align:right;">1:55</td>
+        <td style="text-align:right;">1:25</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.261930,0.203346,17z">7852</a>…<a href="https://www.google.com/maps/@52.262265,0.204495,17z">7952</a> m</td>
-        <td style="text-align:right;">27.9</td>
+        "https://www.google.com/maps/@52.220213,0.156880,17z">8350</a>…<a href=
+        "https://www.google.com/maps/@52.220319,0.158249,17z">8450</a> m</td>
+        <td style="text-align:right;">32</td>
+        <td style="text-align:right;">178</td>
       </tr>
       <tr>
         <td style="text-align:right;">200</td>
-        <td style="text-align:right;">1:56</td>
+        <td style="text-align:right;">1:29</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.261930,0.203346,17z">7847</a>…<a href="https://www.google.com/maps/@52.262591,0.205643,17z">8047</a> m</td>
-        <td style="text-align:right;">28.1</td>
+        "https://www.google.com/maps/@52.220213,0.156880,17z">8350</a>…<a href=
+        "https://www.google.com/maps/@52.220498,0.159731,17z">8550</a> m</td>
+        <td style="text-align:right;">32</td>
+        <td style="text-align:right;">180</td>
       </tr>
       <tr>
         <td style="text-align:right;">300</td>
-        <td style="text-align:right;">1:57</td>
+        <td style="text-align:right;">1:31</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.261483,0.202053,17z">7747</a>…<a href="https://www.google.com/maps/@52.262591,0.205643,17z">8047</a> m</td>
-        <td style="text-align:right;">27.4</td>
+        "https://www.google.com/maps/@52.220213,0.156880,17z">8350</a>…<a href=
+        "https://www.google.com/maps/@52.220794,0.161103,17z">8650</a> m</td>
+        <td style="text-align:right;">32</td>
+        <td style="text-align:right;">180</td>
       </tr>
       <tr>
         <td style="text-align:right;">400</td>
-        <td style="text-align:right;">1:57</td>
+        <td style="text-align:right;">1:31</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.261391,0.201865,17z">7737</a>…<a href="https://www.google.com/maps/@52.263210,0.206723,17z">8137</a> m</td>
-        <td style="text-align:right;">26</td>
+        "https://www.google.com/maps/@52.219367,0.153626,17z">8100</a>…<a href=
+        "https://www.google.com/maps/@52.220390,0.158975,17z">8500</a> m</td>
+        <td style="text-align:right;">31</td>
+        <td style="text-align:right;">167</td>
       </tr>
       <tr>
         <td style="text-align:right;">500</td>
-        <td style="text-align:right;">1:58</td>
+        <td style="text-align:right;">1:31</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.261483,0.202053,17z">7747</a>…<a href="https://www.google.com/maps/@52.264018,0.207375,17z">8247</a> m</td>
-        <td style="text-align:right;">26.4</td>
+        "https://www.google.com/maps/@52.219121,0.153028,17z">8055</a>…<a href=
+        "https://www.google.com/maps/@52.220508,0.159805,17z">8555</a> m</td>
+        <td style="text-align:right;">31</td>
+        <td style="text-align:right;">165</td>
       </tr>
       <tr>
         <td style="text-align:right;">700</td>
-        <td style="text-align:right;">1:59</td>
+        <td style="text-align:right;">1:32</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.261868,0.203128,17z">7842</a>…<a href="https://www.google.com/maps/@52.266663,0.208141,17z">8542</a> m</td>
-        <td style="text-align:right;">27.1</td>
+        "https://www.google.com/maps/@52.219121,0.153028,17z">8055</a>…<a href=
+        "https://www.google.com/maps/@52.221170,0.162463,17z">8755</a> m</td>
+        <td style="text-align:right;">31</td>
+        <td style="text-align:right;">169</td>
       </tr>
       <tr>
         <td style="text-align:right;">1000</td>
-        <td style="text-align:right;">1:59</td>
+        <td style="text-align:right;">1:36</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.260126,0.200730,17z">7572</a>…<a href="https://www.google.com/maps/@52.266961,0.208190,17z">8572</a> m</td>
-        <td style="text-align:right;">27</td>
+        "https://www.google.com/maps/@52.218902,0.152015,17z">7980</a>…<a href=
+        "https://www.google.com/maps/@52.222073,0.165482,17z">8980</a> m</td>
+        <td style="text-align:right;">30</td>
+        <td style="text-align:right;">167</td>
       </tr>
       <tr>
         <td style="text-align:right;">1500</td>
-        <td style="text-align:right;">2:00</td>
+        <td style="text-align:right;">1:53</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.256601,0.197448,17z">7102</a>…<a href="https://www.google.com/maps/@52.267115,0.208220,17z">8602</a> m</td>
-        <td style="text-align:right;">27.1</td>
+        "https://www.google.com/maps/@52.218902,0.152015,17z">7980</a>…<a href=
+        "https://www.google.com/maps/@52.225821,0.166490,17z">9480</a> m</td>
+        <td style="text-align:right;">21</td>
+        <td style="text-align:right;">155</td>
       </tr>
       <tr>
         <td style="text-align:right;">2000</td>
-        <td style="text-align:right;">2:00</td>
+        <td style="text-align:right;">1:55</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.254040,0.191091,17z">6587</a>…<a href="https://www.google.com/maps/@52.266961,0.208190,17z">8587</a> m</td>
-        <td style="text-align:right;">27.5</td>
+        "https://www.google.com/maps/@52.220224,0.156776,17z">2370</a>…<a href=
+        "https://www.google.com/maps/@52.232456,0.171257,17z">4370</a> m</td>
+        <td style="text-align:right;">18</td>
+        <td style="text-align:right;">143</td>
       </tr>
     </tbody>
-  </table> 
-  <a name="Six-Fastest-500m-Segments" id=
-  "Six-Fastest-500m-Segments"></a>
-  <h2>Six Fastest 500m Segments</h2>
+  </table>
+  <a name="L500m-Sprints" id="L500m-Sprints"></a>
+  <h2>500m Sprints</h2>
   <p>The six <em>fastest non-overlapping</em> 500m segments in the
   outing. This can be used to identify 500m sprints in particular.
   All columns can be sorted.</p>
-
   <table class="sortable">
     <thead>
       <tr>
@@ -827,64 +1135,289 @@
         <th style="text-align:right;">Stream</th>
         <th style="text-align:right;">Outing</th>
         <th style="text-align:right;">1/min</th>
+        <th>HR</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td style="text-align:right;">500</td>
+        <td style="text-align:right;">1:31</td>
+        <td style="text-align:right;">down</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.219121,0.153028,17z">8055</a>…<a href=
+        "https://www.google.com/maps/@52.220508,0.159805,17z">8555</a> m</td>
+        <td style="text-align:right;">31</td>
+        <td>165</td>
+      </tr> 
+      <tr>
+        <td style="text-align:right;">500</td>
+        <td style="text-align:right;">1:47</td>
+        <td style="text-align:right;">down</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.220522,0.159874,17z">8555</a>…<a href=
+        "https://www.google.com/maps/@52.222347,0.166479,17z">9055</a> m</td>
+        <td style="text-align:right;">29</td>
+        <td>180</td>
+      </tr> 
+      <tr>
+        <td style="text-align:right;">500</td>
+        <td style="text-align:right;">1:49</td>
+        <td style="text-align:right;">down</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.220246,0.157190,17z">2400</a>…<a href=
+        "https://www.google.com/maps/@52.221658,0.164039,17z">2900</a> m</td>
+        <td style="text-align:right;">18</td>
+        <td>147</td>
+      </tr> 
+      <tr>
+        <td style="text-align:right;">500</td>
         <td style="text-align:right;">1:50</td>
         <td style="text-align:right;">up</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.252311,0.188501,17z">11012</a>…<a href="https://www.google.com/maps/@52.248598,0.184933,17z">11512</a> m</td>
-        <td style="text-align:right;">27.1</td>
-      </tr>
+        "https://www.google.com/maps/@52.221943,0.164878,17z">6805</a>…<a href=
+        "https://www.google.com/maps/@52.220381,0.158140,17z">7305</a> m</td>
+        <td style="text-align:right;">31</td>
+        <td>171</td>
+      </tr> 
       <tr>
         <td style="text-align:right;">500</td>
-        <td style="text-align:right;">1:51</td>
+        <td style="text-align:right;">1:54</td>
+        <td style="text-align:right;">down</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.227360,0.168417,17z">3740</a>…<a href=
+        "https://www.google.com/maps/@52.231314,0.170861,17z">4240</a> m</td>
+        <td style="text-align:right;">17</td>
+        <td>142</td>
+      </tr> 
+      <tr>
+        <td style="text-align:right;">500</td>
+        <td style="text-align:right;">1:55</td>
+        <td style="text-align:right;">down</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.232031,0.171140,17z">4320</a>…<a href=
+        "https://www.google.com/maps/@52.236031,0.173646,17z">4820</a> m</td>
+        <td style="text-align:right;">18</td>
+        <td>141</td>
+      </tr> 
+    </tbody>
+  </table>
+  <a name="L200m-Bursts" id="L200m-Bursts"></a>
+  <h2>200m Bursts</h2>
+  <p>As before but the six <em>fastest non-overlapping</em> 200m
+  segments in the outing.</p>
+  <table class="sortable">
+    <thead>
+      <tr>
+        <th style="text-align:right;">Distance</th>
+        <th style="text-align:right;">min/500</th>
+        <th style="text-align:right;">Stream</th>
+        <th style="text-align:right;">Outing</th>
+        <th style="text-align:right;">1/min</th>
+        <th>HR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align:right;">200</td>
+        <td style="text-align:right;">1:29</td>
+        <td style="text-align:right;">down</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.220213,0.156880,17z">8350</a>…<a href=
+        "https://www.google.com/maps/@52.220498,0.159731,17z">8550</a> m</td>
+        <td style="text-align:right;">32</td>
+        <td>180</td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">200</td>
+        <td style="text-align:right;">1:29</td>
+        <td style="text-align:right;">down</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.219342,0.153556,17z">8095</a>…<a href=
+        "https://www.google.com/maps/@52.220159,0.156015,17z">8295</a> m</td>
+        <td style="text-align:right;">30</td>
+        <td>155</td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">200</td>
+        <td style="text-align:right;">1:33</td>
+        <td style="text-align:right;">down</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.220957,0.161747,17z">8690</a>…<a href=
+        "https://www.google.com/maps/@52.221713,0.164299,17z">8890</a> m</td>
+        <td style="text-align:right;">32</td>
+        <td>182</td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">200</td>
+        <td style="text-align:right;">1:44</td>
+        <td style="text-align:right;">down</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.221035,0.161853,17z">2730</a>…<a href=
+        "https://www.google.com/maps/@52.221760,0.164414,17z">2930</a> m</td>
+        <td style="text-align:right;">22</td>
+        <td>153</td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">200</td>
+        <td style="text-align:right;">1:48</td>
         <td style="text-align:right;">up</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.255760,0.196053,17z">10337</a>…<a href="https://www.google.com/maps/@52.253565,0.190385,17z">10837</a> m</td>
-        <td style="text-align:right;">27.2</td>
+        "https://www.google.com/maps/@52.221815,0.164471,17z">6840</a>…<a href=
+        "https://www.google.com/maps/@52.221080,0.161818,17z">7040</a> m</td>
+        <td style="text-align:right;">31</td>
+        <td>166</td>
       </tr>
       <tr>
-        <td style="text-align:right;">500</td>
-        <td style="text-align:right;">1:58</td>
+        <td style="text-align:right;">200</td>
+        <td style="text-align:right;">1:50</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.261483,0.202053,17z">7747</a>…<a href="https://www.google.com/maps/@52.264018,0.207375,17z">8247</a> m</td>
-        <td style="text-align:right;">26.4</td>
-      </tr>
-      <tr>
-        <td style="text-align:right;">500</td>
-        <td style="text-align:right;">2:00</td>
-        <td style="text-align:right;">down</td>
-        <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.254825,0.192491,17z">6702</a>…<a href="https://www.google.com/maps/@52.257171,0.198215,17z">7202</a> m</td>
-        <td style="text-align:right;">28.4</td>
-      </tr>
-      <tr>
-        <td style="text-align:right;">500</td>
-        <td style="text-align:right;">2:01</td>
-        <td style="text-align:right;">down</td>
-        <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.257281,0.198378,17z">7202</a>…<a href="https://www.google.com/maps/@52.261063,0.201371,17z">7702</a> m</td>
-        <td style="text-align:right;">27.2</td>
-      </tr>
-      <tr>
-        <td style="text-align:right;">500</td>
-        <td style="text-align:right;">2:03</td>
-        <td style="text-align:right;">down</td>
-        <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.250370,0.185968,17z">6037</a>…<a href="https://www.google.com/maps/@52.253593,0.190473,17z">6537</a> m</td>
-        <td style="text-align:right;">26.8</td>
+        "https://www.google.com/maps/@52.220224,0.156776,17z">2370</a>…<a href=
+        "https://www.google.com/maps/@52.220485,0.159608,17z">2570</a> m</td>
+        <td style="text-align:right;">17</td>
+        <td>142</td>
       </tr>
     </tbody>
-  </table> 
-
-  <a name="Colophon" id="Colophon"></a>
+  </table>
+  <a name="Stroke-Rate-versus-Speed" id="Stroke-Rate-versus-Speed"></a>
+  <h2>Stroke Rate versus Speed</h2>
+  <p>This identifies the top speed (in min/500m) observed for a
+  given stroke rate.</p>                                         
+                      
+  <table class="stat-table-vert">
+    <tr>
+      <td></td>
+      <td>
+        <div class="bar vert-bar" style="height: 170px;">
+        </div>
+      </td>
+      <td>
+        <div class="bar vert-bar" style="height: 163px;">
+        </div>
+      </td>
+      <td>
+        <div class="bar vert-bar" style="height: 195px;">
+        </div>
+      </td>
+      <td>
+        <div class="bar vert-bar" style="height: 192px;">
+        </div>
+      </td>
+      <td>
+        <div class="bar vert-bar" style="height: 165px;">
+        </div>
+      </td>
+      <td>
+        <div class="bar vert-bar" style="height: 179px;">
+        </div>
+      </td>
+      <td>
+        <div class="bar vert-bar" style="height: 196px;">
+        </div>
+      </td>
+      <td>
+        <div class="bar vert-bar" style="height: 217px;">
+        </div>
+      </td>
+      <td>
+        <div class="bar vert-bar" style="height: -61px;">
+        </div>
+      </td>
+      <td>
+        <div class="bar vert-bar" style="height: 197px;">
+        </div>
+      </td>
+      <td>
+        <div class="bar vert-bar" style="height: 225px;">
+        </div>
+      </td>
+      <td>
+        <div class="bar vert-bar" style="height: 233px;">
+        </div>
+      </td>
+      <td>
+        <div class="bar vert-bar" style="height: 241px;">
+        </div>
+      </td>
+      <td>
+        <div class="bar vert-bar" style="height: 208px;">
+        </div>
+      </td>
+      <td>
+        <div class="bar vert-bar" style="height: -61px;">
+        </div>
+      </td>
+      <td>
+        <div class="bar vert-bar" style="height: -61px;">
+        </div>
+      </td>
+      <td>
+        <div class="bar vert-bar" style="height: -61px;">
+        </div>
+      </td>
+      <td>
+        <div class="bar vert-bar" style="height: -61px;">
+        </div>
+      </td>
+      <td>
+        <div class="bar vert-bar" style="height: 169px;">
+        </div>
+      </td>
+      <td>
+        <div class="bar vert-bar" style="height: 0px;">
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:right;">min</td>
+      <td>1:48</td>
+      <td>1:51</td>
+      <td>1:37</td>
+      <td>1:39</td>
+      <td>1:51</td>
+      <td>1:44</td>
+      <td>1:37</td>
+      <td>1:30</td>
+      <td>0:00</td>
+      <td>1:37</td>
+      <td>1:27</td>
+      <td>1:25</td>
+      <td>1:23</td>
+      <td>1:33</td>
+      <td>0:00</td>
+      <td>0:00</td>
+      <td>0:00</td>
+      <td>0:00</td>
+      <td>1:49</td>
+      <td>6:47</td>
+    </tr>
+    <tr>
+      <td style="text-align:right;">1/min</td>
+      <td>20</td>
+      <td>21</td>
+      <td>22</td>
+      <td>23</td>
+      <td>24</td>
+      <td>25</td>
+      <td>26</td>
+      <td>27</td>
+      <td>28</td>
+      <td>29</td>
+      <td>30</td>
+      <td>31</td>
+      <td>32</td>
+      <td>33</td>
+      <td>34</td>
+      <td>35</td>
+      <td>36</td>
+      <td>37</td>
+      <td>38</td>
+      <td>39</td>
+    </tr>
+  </table><a name="Colophon" id="Colophon"></a>
   <h2>Colophon</h2>
-  <p>This report was created by speedcoach revision
-  <em>83f09c5</em> from Thu 10 Dec 2020 19:14:09 GMT by <a href=
+  <p>This report was created by <strong>eightplus</strong> revision
+  <em>2d46e28</em> from Thu 17 Dec 2020 21:09:22 GMT by <a href=
   "mailto:lindig@gmail.com">Christian Lindig</a>.</p>
 </body>
 </html>
