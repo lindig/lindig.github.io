@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="pico.min.css">
   <title>Rowing Weather</title>
   <style>
-  img#speed, img#direction {
+  img#speed, img#direction, img#temperature {
   max-width: 500px;
   width: 100%;
   }
@@ -18,7 +18,7 @@
     <h2>Cambridge Rowing Weather</h2>
     <article>
       <header>
-        Wind Speed in Knots
+        Wind Speed in Knots (10 knots = 5.14 m/s)
       </header>
       <center>
         <img id="speed" src=
@@ -36,6 +36,17 @@
         alt="wind direction">
       </center>
     </article>
+    <article>
+      <header>
+        Temperature in ºC
+      </header>
+      <center>
+        <img id="temperature" src=
+        "https://www.cl.cam.ac.uk/research/dtg/weather/data/daily-graphs/2021_11_30-temp.png"
+        alt="temperature">
+      </center>
+    </article>
+
   </main>
  <script>
         function today() {
@@ -57,9 +68,12 @@
         var d = today();
         var speed = base + d + "-windspd.png";
         var direction = base + d + "-winddir.png";
+        var temperature = base + d + "-temp.png";
 
-        document.getElementById("speed").setAttribute("src",speed);
-        document.getElementById("direction").setAttribute("src",direction);
+        // document.getElementById("speed").setAttribute("src",speed);
+        // document.getElementById("direction").setAttribute("src",direction);
+        //
+        // document.getElementById("temperature").setAttribute("src",temperature);
       })();
   </script>
 </body>
