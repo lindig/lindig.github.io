@@ -23,6 +23,7 @@
   max-width: 790px;
   margin: 0 auto;
   padding: 30px;
+  background-color: #EFEFEF;
   }
 
   a {
@@ -234,6 +235,10 @@
   outline: none;
   }
 
+  h2 time {
+  color: #ddd
+  }
+
   h1,
   h2,
   h3,
@@ -399,11 +404,10 @@
   }
 
   table tr {
-  background-color: #fff;
   border-bottom: 1px solid #ccc;
   }
 
-  table tr:nth-child(2n) {
+  table tr:nth-child(3n) {
   background-color: #f8f8f8;
   }
 
@@ -656,6 +660,21 @@
   font-weight: bold;
   } 
 
+  @media screen {
+    table.fixed_header tbody{
+    display:block;
+    overflow-y:auto;
+    table-layout: fixed;
+    height:400px;
+    width:100%;
+    }
+    table.fixed_header tr{
+    display:table;
+    table-layout: fixed;
+    width:100%;
+    }
+  }
+
   </style>
   <title>Outing Tuesday 2020-12-15</title>
 </head>
@@ -673,15 +692,16 @@
     <li><a href="https://www.cl.cam.ac.uk/research/dtg/weather/daily-graph.cgi?2020-12-15">Cambridge Weather</a></li>
     <li><a href="https://www.google.com/maps/@52.211384,0.130120,17z">Location</a></li>
     <li>Based on input file <em>city-8-2020-12-15.fit</em></li>
-    <li>Energy total 225 kWs.</li>
+    <li>Energy per rower: D * 225 kWs.</li>
   </ul>
-  <p>Energy is proportional to the energy required to move the boat
-  at the observed speeds. However, the energy in Watt depends on
-  the weight off the boat and hence, the boat class. It is
-  therefore most useful as an indicator of work done in the outing,
-  relative to other outings of the same crew.</p><a name=
-  "Speed-Zones" id="Speed-Zones"></a>
-  <h2>Speed Zones</h2>
+  <p>Energy is the energy required per rower to move the boat at the
+  observed speeds. The energy (in kWs or kJ) depends on the boat class
+  that implies a drag factor D. D is about 3.1 for a single, 2.8 for a
+  quad, and 2.1 for an eight. The energy is most useful as an indicator
+  of work done in the outing, relative to other outings of the same
+  crew.</p>
+  <a name= "Speed-Zones" id="Speed-Zones"></a>
+  <h2>Speed Zones <time>2020-12-15</time></h2>
   <p>Time spent in speed zones over the outing. Duration in
   mm:ss.</p>
 
@@ -797,9 +817,9 @@
    </tr>
   </table>
 
-  <h2>Landmarks</h2>
+  <h2>Landmarks <time>2020-12-15</time></h2>
 
-  <table>
+  <table class="fixed_header">
     <thead>
       <tr>
         <th style="text-align:left;">Landmark</th>
@@ -808,6 +828,21 @@
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td style="text-align:left;"><a href="https://www.google.com/maps/@52.210770,0.131257,17z">Jesus College BH </a></td>
+        <td style="text-align:left;">2020-12-15 06:10:37</td>
+        <td style="text-align:right;">106</td>
+      </tr>
+      <tr>
+        <td style="text-align:left;"><a href="https://www.google.com/maps/@52.210491,0.135299,17z">Downing College BH</a></td>
+        <td style="text-align:left;">2020-12-15 06:11:50</td>
+        <td style="text-align:right;">389</td>
+      </tr>
+      <tr>
+        <td style="text-align:left;"><a href="https://www.google.com/maps/@52.213013,0.142647,17z">Museum of Technology</a></td>
+        <td style="text-align:left;">2020-12-15 06:14:31</td>
+        <td style="text-align:right;">1008</td>
+      </tr>
       <tr>
         <td style="text-align:left;"><a href="https://www.google.com/maps/@52.217733,0.146848,17z">Top Finish</a></td>
         <td style="text-align:left;">2020-12-15 06:17:16</td>
@@ -1163,12 +1198,27 @@
         <td style="text-align:left;">2020-12-15 07:23:36</td>
         <td style="text-align:right;">13812</td>
       </tr>
+      <tr>
+        <td style="text-align:left;"><a href="https://www.google.com/maps/@52.213013,0.142647,17z">Museum of Technology</a></td>
+        <td style="text-align:left;">2020-12-15 07:27:11</td>
+        <td style="text-align:right;">14445</td>
+      </tr>
+      <tr>
+        <td style="text-align:left;"><a href="https://www.google.com/maps/@52.210491,0.135299,17z">Downing College BH</a></td>
+        <td style="text-align:left;">2020-12-15 07:30:28</td>
+        <td style="text-align:right;">15068</td>
+      </tr>
+      <tr>
+        <td style="text-align:left;"><a href="https://www.google.com/maps/@52.210770,0.131257,17z">Jesus College BH </a></td>
+        <td style="text-align:left;">2020-12-15 07:31:49</td>
+        <td style="text-align:right;">15351</td>
+      </tr>
     </tbody>
   </table>
   
-  <h2>Segments</h2>
+  <h2>Segments <time>2020-12-15</time></h2>
 
-  <table>
+  <table class="fixed_header">
     <thead>
     <tr>
     <th style="text-align:left;">Start</th>
@@ -1236,30 +1286,12 @@
     <td style="text-align:right;">139</td>
     </tr>
     <tr>
-    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.220199,0.156464,17z">Railway Bridge</a></td>
-    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.232222,0.171198,17z">A14 Bridge</a></td>
-    <td style="text-align:right;">7:40.3</td>
-    <td style="text-align:right;">1997</td>
-    <td style="text-align:right;">1:55</td>
-    <td style="text-align:right;">18</td>
-    <td style="text-align:right;">143</td>
-    </tr>
-    <tr>
-    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.220221,0.156473,17z">Railway Bridge</a></td>
-    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.232207,0.171232,17z">A14 Bridge</a></td>
-    <td style="text-align:right;">8:48.6</td>
-    <td style="text-align:right;">1998</td>
-    <td style="text-align:right;">2:12</td>
-    <td style="text-align:right;">14</td>
-    <td style="text-align:right;">134</td>
-    </tr>
-    <tr>
     <td style="text-align:left;"><a href="https://www.google.com/maps/@52.232238,0.171072,17z">A14 Bridge</a></td>
     <td style="text-align:left;"><a href="https://www.google.com/maps/@52.217747,0.146869,17z">Top Finish</a></td>
     <td style="text-align:right;">14:51.7</td>
     <td style="text-align:right;">2719</td>
     <td style="text-align:right;">2:44</td>
-    <td style="text-align:right;">17</td>
+    <td style="text-align:right;">18</td>
     <td style="text-align:right;">130</td>
     </tr>
     <tr>
@@ -1300,24 +1332,6 @@
     </tr>
     <tr>
     <td style="text-align:left;"><a href="https://www.google.com/maps/@52.231984,0.171006,17z">A14 Outflow</a></td>
-    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.220314,0.157708,17z">Red Post</a></td>
-    <td style="text-align:right;">8:43.4</td>
-    <td style="text-align:right;">1860</td>
-    <td style="text-align:right;">2:21</td>
-    <td style="text-align:right;">21</td>
-    <td style="text-align:right;">144</td>
-    </tr>
-    <tr>
-    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.231976,0.171078,17z">A14 Outflow</a></td>
-    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.220320,0.157668,17z">Red Post</a></td>
-    <td style="text-align:right;">9:03.9</td>
-    <td style="text-align:right;">1864</td>
-    <td style="text-align:right;">2:26</td>
-    <td style="text-align:right;">18</td>
-    <td style="text-align:right;">137</td>
-    </tr>
-    <tr>
-    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.231984,0.171006,17z">A14 Outflow</a></td>
     <td style="text-align:left;"><a href="https://www.google.com/maps/@52.227906,0.169495,17z">500m to A14</a></td>
     <td style="text-align:right;">2:34.9</td>
     <td style="text-align:right;">473</td>
@@ -1333,6 +1347,78 @@
     <td style="text-align:right;">2:24</td>
     <td style="text-align:right;">18</td>
     <td style="text-align:right;">139</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.231984,0.171006,17z">A14 Outflow</a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.224444,0.167102,17z">1000m to A14</a></td>
+    <td style="text-align:right;">4:58.4</td>
+    <td style="text-align:right;">971</td>
+    <td style="text-align:right;">2:34</td>
+    <td style="text-align:right;">18</td>
+    <td style="text-align:right;">134</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.231976,0.171078,17z">A14 Outflow</a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.224449,0.167132,17z">1000m to A14</a></td>
+    <td style="text-align:right;">4:43.4</td>
+    <td style="text-align:right;">969</td>
+    <td style="text-align:right;">2:26</td>
+    <td style="text-align:right;">18</td>
+    <td style="text-align:right;">139</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.231984,0.171006,17z">A14 Outflow</a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.222751,0.166936,17z">Ditton Corner</a></td>
+    <td style="text-align:right;">5:56.9</td>
+    <td style="text-align:right;">1164</td>
+    <td style="text-align:right;">2:33</td>
+    <td style="text-align:right;">18</td>
+    <td style="text-align:right;">137</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.231976,0.171078,17z">A14 Outflow</a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.222725,0.166992,17z">Ditton Corner</a></td>
+    <td style="text-align:right;">5:42.7</td>
+    <td style="text-align:right;">1164</td>
+    <td style="text-align:right;">2:27</td>
+    <td style="text-align:right;">18</td>
+    <td style="text-align:right;">138</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.231984,0.171006,17z">A14 Outflow</a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.221728,0.164167,17z">Spinning Zone West</a></td>
+    <td style="text-align:right;">6:59.2</td>
+    <td style="text-align:right;">1389</td>
+    <td style="text-align:right;">2:31</td>
+    <td style="text-align:right;">19</td>
+    <td style="text-align:right;">136</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.231976,0.171078,17z">A14 Outflow</a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.221672,0.164185,17z">Spinning Zone West</a></td>
+    <td style="text-align:right;">6:47.8</td>
+    <td style="text-align:right;">1392</td>
+    <td style="text-align:right;">2:27</td>
+    <td style="text-align:right;">18</td>
+    <td style="text-align:right;">136</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.231984,0.171006,17z">A14 Outflow</a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.220314,0.157708,17z">Red Post</a></td>
+    <td style="text-align:right;">8:43.4</td>
+    <td style="text-align:right;">1860</td>
+    <td style="text-align:right;">2:21</td>
+    <td style="text-align:right;">21</td>
+    <td style="text-align:right;">144</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.231976,0.171078,17z">A14 Outflow</a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.220320,0.157668,17z">Red Post</a></td>
+    <td style="text-align:right;">9:03.9</td>
+    <td style="text-align:right;">1864</td>
+    <td style="text-align:right;">2:26</td>
+    <td style="text-align:right;">18</td>
+    <td style="text-align:right;">137</td>
     </tr>
     <tr>
     <td style="text-align:left;"><a href="https://www.google.com/maps/@52.227880,0.169463,17z">500m to A14</a></td>
@@ -1405,6 +1491,24 @@
     <td style="text-align:right;">2:24</td>
     <td style="text-align:right;">18</td>
     <td style="text-align:right;">139</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.221709,0.164105,17z">Spinning Zone West</a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.219479,0.153832,17z">Morley&apos;s Holt</a></td>
+    <td style="text-align:right;">2:49.1</td>
+    <td style="text-align:right;">756</td>
+    <td style="text-align:right;">1:52</td>
+    <td style="text-align:right;">31</td>
+    <td style="text-align:right;">177</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.221655,0.164130,17z">Spinning Zone West</a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.219462,0.153844,17z">Morley&apos;s Holt</a></td>
+    <td style="text-align:right;">3:39.5</td>
+    <td style="text-align:right;">759</td>
+    <td style="text-align:right;">2:25</td>
+    <td style="text-align:right;">18</td>
+    <td style="text-align:right;">138</td>
     </tr>
     <tr>
     <td style="text-align:left;"><a href="https://www.google.com/maps/@52.220306,0.157644,17z">Red Post</a></td>
@@ -1515,6 +1619,24 @@
     <td style="text-align:right;">133</td>
     </tr>
     <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.225552,0.166639,17z">Grassy Corner South</a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.221728,0.164167,17z">Spinning Zone West</a></td>
+    <td style="text-align:right;">2:37.3</td>
+    <td style="text-align:right;">552</td>
+    <td style="text-align:right;">2:23</td>
+    <td style="text-align:right;">20</td>
+    <td style="text-align:right;">141</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.225564,0.166643,17z">Grassy Corner South</a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.221672,0.164185,17z">Spinning Zone West</a></td>
+    <td style="text-align:right;">2:42.5</td>
+    <td style="text-align:right;">556</td>
+    <td style="text-align:right;">2:26</td>
+    <td style="text-align:right;">18</td>
+    <td style="text-align:right;">131</td>
+    </tr>
+    <tr>
     <td style="text-align:left;"><a href="https://www.google.com/maps/@52.222727,0.166910,17z">Ditton Corner</a></td>
     <td style="text-align:left;"><a href="https://www.google.com/maps/@52.220196,0.156464,17z">Railway Bridge</a></td>
     <td style="text-align:right;">3:06.8</td>
@@ -1531,6 +1653,87 @@
     <td style="text-align:right;">2:26</td>
     <td style="text-align:right;">18</td>
     <td style="text-align:right;">136</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.210738,0.131283,17z">Jesus College BH </a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.217698,0.146827,17z">Top Finish</a></td>
+    <td style="text-align:right;">6:39.4</td>
+    <td style="text-align:right;">1525</td>
+    <td style="text-align:right;">2:11</td>
+    <td style="text-align:right;">16</td>
+    <td style="text-align:right;">119</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.210738,0.131283,17z">Jesus College BH </a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.220198,0.156416,17z">Railway Bridge</a></td>
+    <td style="text-align:right;">10:37.9</td>
+    <td style="text-align:right;">2241</td>
+    <td style="text-align:right;">2:22</td>
+    <td style="text-align:right;">17</td>
+    <td style="text-align:right;">118</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.210738,0.131283,17z">Jesus College BH </a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.232222,0.171198,17z">A14 Bridge</a></td>
+    <td style="text-align:right;">18:18.3</td>
+    <td style="text-align:right;">4238</td>
+    <td style="text-align:right;">2:10</td>
+    <td style="text-align:right;">17</td>
+    <td style="text-align:right;">128</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.210738,0.131283,17z">Jesus College BH </a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.210511,0.135244,17z">Downing College BH</a></td>
+    <td style="text-align:right;">1:13.6</td>
+    <td style="text-align:right;">283</td>
+    <td style="text-align:right;">2:10</td>
+    <td style="text-align:right;">16</td>
+    <td style="text-align:right;">118</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.210738,0.131283,17z">Jesus College BH </a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.213009,0.142614,17z">Museum of Technology</a></td>
+    <td style="text-align:right;">3:54.1</td>
+    <td style="text-align:right;">902</td>
+    <td style="text-align:right;">2:10</td>
+    <td style="text-align:right;">16</td>
+    <td style="text-align:right;">114</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.213041,0.142633,17z">Museum of Technology</a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.217698,0.146827,17z">Top Finish</a></td>
+    <td style="text-align:right;">2:45.3</td>
+    <td style="text-align:right;">623</td>
+    <td style="text-align:right;">2:13</td>
+    <td style="text-align:right;">16</td>
+    <td style="text-align:right;">127</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.217709,0.146883,17z">Top Finish</a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.219035,0.152813,17z">Bottom Finish</a></td>
+    <td style="text-align:right;">2:53.7</td>
+    <td style="text-align:right;">437</td>
+    <td style="text-align:right;">3:19</td>
+    <td style="text-align:right;">17</td>
+    <td style="text-align:right;">110</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.219053,0.152870,17z">Bottom Finish</a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.220278,0.157613,17z">Red Post</a></td>
+    <td style="text-align:right;">1:24.6</td>
+    <td style="text-align:right;">366</td>
+    <td style="text-align:right;">1:56</td>
+    <td style="text-align:right;">17</td>
+    <td style="text-align:right;">132</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.219060,0.152834,17z">Bottom Finish</a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.220249,0.157660,17z">Red Post</a></td>
+    <td style="text-align:right;">1:07.4</td>
+    <td style="text-align:right;">366</td>
+    <td style="text-align:right;">1:32</td>
+    <td style="text-align:right;">30</td>
+    <td style="text-align:right;">156</td>
     </tr>
     <tr>
     <td style="text-align:left;"><a href="https://www.google.com/maps/@52.220285,0.157678,17z">Red Post</a></td>
@@ -1550,11 +1753,119 @@
     <td style="text-align:right;">32</td>
     <td style="text-align:right;">181</td>
     </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.221691,0.164169,17z">Spinning Zone West</a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.222681,0.167063,17z">Ditton Corner</a></td>
+    <td style="text-align:right;">0:54.4</td>
+    <td style="text-align:right;">231</td>
+    <td style="text-align:right;">1:58</td>
+    <td style="text-align:right;">20</td>
+    <td style="text-align:right;">149</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.221694,0.164234,17z">Spinning Zone West</a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.222647,0.167069,17z">Ditton Corner</a></td>
+    <td style="text-align:right;">1:00.4</td>
+    <td style="text-align:right;">229</td>
+    <td style="text-align:right;">2:12</td>
+    <td style="text-align:right;">24</td>
+    <td style="text-align:right;">173</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.222714,0.167097,17z">Ditton Corner</a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.224387,0.167064,17z">1000m to A14</a></td>
+    <td style="text-align:right;">0:46.0</td>
+    <td style="text-align:right;">197</td>
+    <td style="text-align:right;">1:57</td>
+    <td style="text-align:right;">18</td>
+    <td style="text-align:right;">137</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.222673,0.167110,17z">Ditton Corner</a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.224402,0.167060,17z">1000m to A14</a></td>
+    <td style="text-align:right;">0:56.7</td>
+    <td style="text-align:right;">207</td>
+    <td style="text-align:right;">2:17</td>
+    <td style="text-align:right;">18</td>
+    <td style="text-align:right;">140</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.224426,0.167048,17z">1000m to A14</a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.227858,0.169557,17z">500m to A14</a></td>
+    <td style="text-align:right;">2:00.9</td>
+    <td style="text-align:right;">506</td>
+    <td style="text-align:right;">1:59</td>
+    <td style="text-align:right;">17</td>
+    <td style="text-align:right;">141</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.224430,0.167047,17z">1000m to A14</a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.227840,0.169582,17z">500m to A14</a></td>
+    <td style="text-align:right;">2:43.2</td>
+    <td style="text-align:right;">497</td>
+    <td style="text-align:right;">2:44</td>
+    <td style="text-align:right;">17</td>
+    <td style="text-align:right;">117</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.227889,0.169598,17z">500m to A14</a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.232222,0.171198,17z">A14 Bridge</a></td>
+    <td style="text-align:right;">1:55.3</td>
+    <td style="text-align:right;">504</td>
+    <td style="text-align:right;">1:54</td>
+    <td style="text-align:right;">17</td>
+    <td style="text-align:right;">141</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.227864,0.169609,17z">500m to A14</a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.232207,0.171232,17z">A14 Bridge</a></td>
+    <td style="text-align:right;">2:23.3</td>
+    <td style="text-align:right;">504</td>
+    <td style="text-align:right;">2:22</td>
+    <td style="text-align:right;">17</td>
+    <td style="text-align:right;">100</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.220199,0.156464,17z">Railway Bridge</a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.232222,0.171198,17z">A14 Bridge</a></td>
+    <td style="text-align:right;">7:40.3</td>
+    <td style="text-align:right;">1997</td>
+    <td style="text-align:right;">1:55</td>
+    <td style="text-align:right;">18</td>
+    <td style="text-align:right;">143</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.220221,0.156473,17z">Railway Bridge</a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.232207,0.171232,17z">A14 Bridge</a></td>
+    <td style="text-align:right;">8:48.6</td>
+    <td style="text-align:right;">1998</td>
+    <td style="text-align:right;">2:12</td>
+    <td style="text-align:right;">23</td>
+    <td style="text-align:right;">134</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.218643,0.150714,17z">Peter&apos;s Posts</a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.232222,0.171198,17z">A14 Bridge</a></td>
+    <td style="text-align:right;">10:22.7</td>
+    <td style="text-align:right;">2429</td>
+    <td style="text-align:right;">2:08</td>
+    <td style="text-align:right;">18</td>
+    <td style="text-align:right;">134</td>
+    </tr>
+    <tr>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.218720,0.150722,17z">Peter&apos;s Posts</a></td>
+    <td style="text-align:left;"><a href="https://www.google.com/maps/@52.232207,0.171232,17z">A14 Bridge</a></td>
+    <td style="text-align:right;">13:32.6</td>
+    <td style="text-align:right;">2466</td>
+    <td style="text-align:right;">2:45</td>
+    <td style="text-align:right;">24</td>
+    <td style="text-align:right;">125</td>
+    </tr>
     </tbody>
-    </table>
+  </table>
 
   <a name="Top-Speed" id="Top-Speed"></a>
-  <h2>Top Speed</h2>
+  <h2>Top Speed <time>2020-12-15</time></h2>
   <p>This identifies the <em>fastest</em> segments of various
   lenghts found in the outing. Segments may overlap: the fastest
   700m may include the fastest 500m. <em>Up</em> or <em>Down</em>
@@ -1633,7 +1944,7 @@
         <td style="text-align:right;">1:48</td>
         <td style="text-align:right;">up</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.221746,0.164228,17z">6855</a>…<a href=
+        "https://www.google.com/maps/@52.221746,0.164228,17z">6855</a>&hellip;<a href=
         "https://www.google.com/maps/@52.221400,0.162993,17z">6955</a> m</td>
         <td style="text-align:right;">30</td>
         <td style="text-align:right;">162</td>
@@ -1643,7 +1954,7 @@
         <td style="text-align:right;">1:48</td>
         <td style="text-align:right;">up</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.221815,0.164471,17z">6840</a>…<a href=
+        "https://www.google.com/maps/@52.221815,0.164471,17z">6840</a>&hellip;<a href=
         "https://www.google.com/maps/@52.221080,0.161818,17z">7040</a> m</td>
         <td style="text-align:right;">31</td>
         <td style="text-align:right;">166</td>
@@ -1653,7 +1964,7 @@
         <td style="text-align:right;">1:49</td>
         <td style="text-align:right;">up</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.221981,0.164994,17z">6800</a>…<a href=
+        "https://www.google.com/maps/@52.221981,0.164994,17z">6800</a>&hellip;<a href=
         "https://www.google.com/maps/@52.220897,0.161019,17z">7100</a> m</td>
         <td style="text-align:right;">30</td>
         <td style="text-align:right;">165</td>
@@ -1663,7 +1974,7 @@
         <td style="text-align:right;">1:50</td>
         <td style="text-align:right;">up</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.221780,0.164349,17z">6845</a>…<a href=
+        "https://www.google.com/maps/@52.221780,0.164349,17z">6845</a>&hellip;<a href=
         "https://www.google.com/maps/@52.220513,0.159014,17z">7245</a> m</td>
         <td style="text-align:right;">31</td>
         <td style="text-align:right;">174</td>
@@ -1673,7 +1984,7 @@
         <td style="text-align:right;">1:50</td>
         <td style="text-align:right;">up</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.221943,0.164878,17z">6805</a>…<a href=
+        "https://www.google.com/maps/@52.221943,0.164878,17z">6805</a>&hellip;<a href=
         "https://www.google.com/maps/@52.220381,0.158140,17z">7305</a> m</td>
         <td style="text-align:right;">31</td>
         <td style="text-align:right;">171</td>
@@ -1683,7 +1994,7 @@
         <td style="text-align:right;">1:52</td>
         <td style="text-align:right;">up</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.221833,0.164532,17z">6835</a>…<a href=
+        "https://www.google.com/maps/@52.221833,0.164532,17z">6835</a>&hellip;<a href=
         "https://www.google.com/maps/@52.219900,0.154930,17z">7535</a> m</td>
         <td style="text-align:right;">31</td>
         <td style="text-align:right;">175</td>
@@ -1693,7 +2004,7 @@
         <td style="text-align:right;">1:52</td>
         <td style="text-align:right;">up</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.221943,0.164878,17z">6805</a>…<a href=
+        "https://www.google.com/maps/@52.221943,0.164878,17z">6805</a>&hellip;<a href=
         "https://www.google.com/maps/@52.219566,0.154047,17z">7605</a> m</td>
         <td style="text-align:right;">31</td>
         <td style="text-align:right;">174</td>
@@ -1703,7 +2014,7 @@
         <td style="text-align:right;">1:56</td>
         <td style="text-align:right;">up</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.222367,0.166315,17z">6700</a>…<a href=
+        "https://www.google.com/maps/@52.222367,0.166315,17z">6700</a>&hellip;<a href=
         "https://www.google.com/maps/@52.219085,0.152867,17z">7700</a> m</td>
         <td style="text-align:right;">29</td>
         <td style="text-align:right;">169</td>
@@ -1713,7 +2024,7 @@
         <td style="text-align:right;">2:07</td>
         <td style="text-align:right;">up</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.226665,0.166695,17z">6185</a>…<a href=
+        "https://www.google.com/maps/@52.226665,0.166695,17z">6185</a>&hellip;<a href=
         "https://www.google.com/maps/@52.219150,0.153044,17z">7685</a> m</td>
         <td style="text-align:right;">25</td>
         <td style="text-align:right;">158</td>
@@ -1723,7 +2034,7 @@
         <td style="text-align:right;">2:13</td>
         <td style="text-align:right;">up</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.230015,0.170338,17z">5700</a>…<a href=
+        "https://www.google.com/maps/@52.230015,0.170338,17z">5700</a>&hellip;<a href=
         "https://www.google.com/maps/@52.219085,0.152867,17z">7700</a> m</td>
         <td style="text-align:right;">23</td>
         <td style="text-align:right;">152</td>
@@ -1733,7 +2044,7 @@
         <td style="text-align:right;">1:25</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.220213,0.156880,17z">8350</a>…<a href=
+        "https://www.google.com/maps/@52.220213,0.156880,17z">8350</a>&hellip;<a href=
         "https://www.google.com/maps/@52.220319,0.158249,17z">8450</a> m</td>
         <td style="text-align:right;">32</td>
         <td style="text-align:right;">178</td>
@@ -1743,7 +2054,7 @@
         <td style="text-align:right;">1:29</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.220213,0.156880,17z">8350</a>…<a href=
+        "https://www.google.com/maps/@52.220213,0.156880,17z">8350</a>&hellip;<a href=
         "https://www.google.com/maps/@52.220498,0.159731,17z">8550</a> m</td>
         <td style="text-align:right;">32</td>
         <td style="text-align:right;">180</td>
@@ -1753,7 +2064,7 @@
         <td style="text-align:right;">1:31</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.220213,0.156880,17z">8350</a>…<a href=
+        "https://www.google.com/maps/@52.220213,0.156880,17z">8350</a>&hellip;<a href=
         "https://www.google.com/maps/@52.220794,0.161103,17z">8650</a> m</td>
         <td style="text-align:right;">32</td>
         <td style="text-align:right;">180</td>
@@ -1763,7 +2074,7 @@
         <td style="text-align:right;">1:31</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.219367,0.153626,17z">8100</a>…<a href=
+        "https://www.google.com/maps/@52.219367,0.153626,17z">8100</a>&hellip;<a href=
         "https://www.google.com/maps/@52.220390,0.158975,17z">8500</a> m</td>
         <td style="text-align:right;">31</td>
         <td style="text-align:right;">167</td>
@@ -1773,7 +2084,7 @@
         <td style="text-align:right;">1:31</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.219121,0.153028,17z">8055</a>…<a href=
+        "https://www.google.com/maps/@52.219121,0.153028,17z">8055</a>&hellip;<a href=
         "https://www.google.com/maps/@52.220508,0.159805,17z">8555</a> m</td>
         <td style="text-align:right;">31</td>
         <td style="text-align:right;">165</td>
@@ -1783,7 +2094,7 @@
         <td style="text-align:right;">1:32</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.219121,0.153028,17z">8055</a>…<a href=
+        "https://www.google.com/maps/@52.219121,0.153028,17z">8055</a>&hellip;<a href=
         "https://www.google.com/maps/@52.221170,0.162463,17z">8755</a> m</td>
         <td style="text-align:right;">31</td>
         <td style="text-align:right;">169</td>
@@ -1793,7 +2104,7 @@
         <td style="text-align:right;">1:32</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.219199,0.153228,17z">8070</a>…<a href=
+        "https://www.google.com/maps/@52.219199,0.153228,17z">8070</a>&hellip;<a href=
         "https://www.google.com/maps/@52.221629,0.164022,17z">8870</a> m</td>
         <td style="text-align:right;">31</td>
         <td style="text-align:right;">172</td>
@@ -1803,9 +2114,9 @@
         <td style="text-align:right;">1:36</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.218902,0.152015,17z">7980</a>…<a href=
+        "https://www.google.com/maps/@52.218902,0.152015,17z">7980</a>&hellip;<a href=
         "https://www.google.com/maps/@52.222073,0.165482,17z">8980</a> m</td>
-        <td style="text-align:right;">30</td>
+        <td style="text-align:right;">31</td>
         <td style="text-align:right;">167</td>
       </tr>
       <tr>
@@ -1813,9 +2124,9 @@
         <td style="text-align:right;">1:53</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.218902,0.152015,17z">7980</a>…<a href=
+        "https://www.google.com/maps/@52.218902,0.152015,17z">7980</a>&hellip;<a href=
         "https://www.google.com/maps/@52.225821,0.166490,17z">9480</a> m</td>
-        <td style="text-align:right;">21</td>
+        <td style="text-align:right;">28</td>
         <td style="text-align:right;">155</td>
       </tr>
       <tr>
@@ -1823,15 +2134,157 @@
         <td style="text-align:right;">1:55</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.220224,0.156776,17z">2370</a>…<a href=
+        "https://www.google.com/maps/@52.220224,0.156776,17z">2370</a>&hellip;<a href=
         "https://www.google.com/maps/@52.232456,0.171257,17z">4370</a> m</td>
         <td style="text-align:right;">18</td>
         <td style="text-align:right;">143</td>
       </tr>
     </tbody>
   </table>
+
+  <a name="L1000m-Sprints" id="L1000m-Sprints"></a>
+  <h2>1000m Sprints <time>2020-12-15</time></h2>
+  <p>The <em>fastest non-overlapping</em> 1000m segments in the
+  outing.</p>
+  <table class="sortable">
+    <thead>
+      <tr>
+        <th style="text-align:right;">Distance</th>
+        <th style="text-align:right;">500m</th>
+        <th style="text-align:right;">Duration</th>
+        <th style="text-align:right;">Stream</th>
+        <th style="text-align:right;">Outing Meters</th>
+        <th style="text-align:right;">SPM</th>
+        <th>HR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align:right;">1000</td>
+        <td style="text-align:right;">1:36</td>
+        <td style="text-align:right;">3:11.7</td>
+        <td style="text-align:right;">down</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.218902,0.152015,17z">7980</a>&hellip;<a href=
+        "https://www.google.com/maps/@52.222073,0.165482,17z">8980</a> m</td>
+        <td style="text-align:right;">31</td>
+        <td>167</td>
+      </tr> 
+      <tr>
+        <td style="text-align:right;">1000</td>
+        <td style="text-align:right;">1:53</td>
+        <td style="text-align:right;">3:45.7</td>
+        <td style="text-align:right;">down</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.218907,0.152349,17z">2030</a>&hellip;<a href=
+        "https://www.google.com/maps/@52.222132,0.165795,17z">3030</a> m</td>
+        <td style="text-align:right;">18</td>
+        <td>141</td>
+      </tr> 
+      <tr>
+        <td style="text-align:right;">1000</td>
+        <td style="text-align:right;">1:54</td>
+        <td style="text-align:right;">3:48.8</td>
+        <td style="text-align:right;">down</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.227553,0.168981,17z">3785</a>&hellip;<a href=
+        "https://www.google.com/maps/@52.235802,0.173299,17z">4785</a> m</td>
+        <td style="text-align:right;">18</td>
+        <td>141</td>
+      </tr> 
+      <tr>
+        <td style="text-align:right;">1000</td>
+        <td style="text-align:right;">1:56</td>
+        <td style="text-align:right;">3:51.5</td>
+        <td style="text-align:right;">up</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.222367,0.166315,17z">6700</a>&hellip;<a href=
+        "https://www.google.com/maps/@52.219085,0.152867,17z">7700</a> m</td>
+        <td style="text-align:right;">29</td>
+        <td>169</td>
+      </tr> 
+      <tr>
+        <td style="text-align:right;">1000</td>
+        <td style="text-align:right;">2:09</td>
+        <td style="text-align:right;">4:17.8</td>
+        <td style="text-align:right;">down</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.210435,0.133358,17z">255</a>&hellip;<a href=
+        "https://www.google.com/maps/@52.214875,0.144468,17z">1255</a> m</td>
+        <td style="text-align:right;">17</td>
+        <td>116</td>
+      </tr> 
+      <tr>
+        <td style="text-align:right;">1000</td>
+        <td style="text-align:right;">2:23</td>
+        <td style="text-align:right;">4:46.6</td>
+        <td style="text-align:right;">up</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.222301,0.166213,17z">12355</a>&hellip;<a href=
+        "https://www.google.com/maps/@52.219055,0.152793,17z">13355</a> m</td>
+        <td style="text-align:right;">18</td>
+        <td>135</td>
+      </tr> 
+      <tr>
+        <td style="text-align:right;">1000</td>
+        <td style="text-align:right;">2:24</td>
+        <td style="text-align:right;">4:47.2</td>
+        <td style="text-align:right;">up</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.235312,0.172436,17z">10730</a>&hellip;<a href=
+        "https://www.google.com/maps/@52.227177,0.167962,17z">11730</a> m</td>
+        <td style="text-align:right;">18</td>
+        <td>137</td>
+      </tr> 
+      <tr>
+        <td style="text-align:right;">1000</td>
+        <td style="text-align:right;">2:29</td>
+        <td style="text-align:right;">4:58.7</td>
+        <td style="text-align:right;">up</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.230015,0.170338,17z">5700</a>&hellip;<a href=
+        "https://www.google.com/maps/@52.222383,0.166359,17z">6700</a> m</td>
+        <td style="text-align:right;">19</td>
+        <td>139</td>
+      </tr> 
+      <tr>
+        <td style="text-align:right;">1000</td>
+        <td style="text-align:right;">2:32</td>
+        <td style="text-align:right;">5:04.6</td>
+        <td style="text-align:right;">down</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.224646,0.166976,17z">9340</a>&hellip;<a href=
+        "https://www.google.com/maps/@52.232420,0.171286,17z">10340</a> m</td>
+        <td style="text-align:right;">17</td>
+        <td>109</td>
+      </tr> 
+      <tr>
+        <td style="text-align:right;">1000</td>
+        <td style="text-align:right;">2:32</td>
+        <td style="text-align:right;">5:04.9</td>
+        <td style="text-align:right;">up</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.213230,0.142714,17z">14420</a>&hellip;<a href=
+        "https://www.google.com/maps/@52.211109,0.130461,17z">15420</a> m</td>
+        <td style="text-align:right;">19</td>
+        <td>119</td>
+      </tr> 
+      <tr>
+        <td style="text-align:right;">1000</td>
+        <td style="text-align:right;">3:30</td>
+        <td style="text-align:right;">6:59.8</td>
+        <td style="text-align:right;">up</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.219011,0.152610,17z">13365</a>&hellip;<a href=
+        "https://www.google.com/maps/@52.213685,0.143049,17z">14365</a> m</td>
+        <td style="text-align:right;">18</td>
+        <td>115</td>
+      </tr> 
+    </tbody>
+  </table>
+
   <a name="L500m-Sprints" id="L500m-Sprints"></a>
-  <h2>500m Sprints</h2>
+  <h2>500m Sprints <time>2020-12-15</time></h2>
   <p>The <em>fastest non-overlapping</em> 500m segments in the
   outing. This can be used to identify 500m sprints in particular.
   All columns can be sorted.</p>
@@ -1840,6 +2293,7 @@
       <tr>
         <th style="text-align:right;">Distance</th>
         <th style="text-align:right;">500m</th>
+        <th style="text-align:right;">Duration</th>
         <th style="text-align:right;">Stream</th>
         <th style="text-align:right;">Outing Meters</th>
         <th style="text-align:right;">SPM</th>
@@ -1850,9 +2304,10 @@
       <tr>
         <td style="text-align:right;">500</td>
         <td style="text-align:right;">1:31</td>
+        <td style="text-align:right;">1:31.3</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.219121,0.153028,17z">8055</a>…<a href=
+        "https://www.google.com/maps/@52.219121,0.153028,17z">8055</a>&hellip;<a href=
         "https://www.google.com/maps/@52.220508,0.159805,17z">8555</a> m</td>
         <td style="text-align:right;">31</td>
         <td>165</td>
@@ -1860,9 +2315,10 @@
       <tr>
         <td style="text-align:right;">500</td>
         <td style="text-align:right;">1:47</td>
+        <td style="text-align:right;">1:47.0</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.220522,0.159874,17z">8555</a>…<a href=
+        "https://www.google.com/maps/@52.220522,0.159874,17z">8555</a>&hellip;<a href=
         "https://www.google.com/maps/@52.222347,0.166479,17z">9055</a> m</td>
         <td style="text-align:right;">29</td>
         <td>180</td>
@@ -1870,9 +2326,10 @@
       <tr>
         <td style="text-align:right;">500</td>
         <td style="text-align:right;">1:49</td>
+        <td style="text-align:right;">1:49.5</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.220246,0.157190,17z">2400</a>…<a href=
+        "https://www.google.com/maps/@52.220246,0.157190,17z">2400</a>&hellip;<a href=
         "https://www.google.com/maps/@52.221658,0.164039,17z">2900</a> m</td>
         <td style="text-align:right;">18</td>
         <td>147</td>
@@ -1880,9 +2337,10 @@
       <tr>
         <td style="text-align:right;">500</td>
         <td style="text-align:right;">1:50</td>
+        <td style="text-align:right;">1:50.4</td>
         <td style="text-align:right;">up</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.221943,0.164878,17z">6805</a>…<a href=
+        "https://www.google.com/maps/@52.221943,0.164878,17z">6805</a>&hellip;<a href=
         "https://www.google.com/maps/@52.220381,0.158140,17z">7305</a> m</td>
         <td style="text-align:right;">31</td>
         <td>171</td>
@@ -1890,9 +2348,10 @@
       <tr>
         <td style="text-align:right;">500</td>
         <td style="text-align:right;">1:54</td>
+        <td style="text-align:right;">1:54.1</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.227360,0.168417,17z">3740</a>…<a href=
+        "https://www.google.com/maps/@52.227360,0.168417,17z">3740</a>&hellip;<a href=
         "https://www.google.com/maps/@52.231314,0.170861,17z">4240</a> m</td>
         <td style="text-align:right;">17</td>
         <td>142</td>
@@ -1900,9 +2359,10 @@
       <tr>
         <td style="text-align:right;">500</td>
         <td style="text-align:right;">1:55</td>
+        <td style="text-align:right;">1:54.6</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.232031,0.171140,17z">4320</a>…<a href=
+        "https://www.google.com/maps/@52.232031,0.171140,17z">4320</a>&hellip;<a href=
         "https://www.google.com/maps/@52.236031,0.173646,17z">4820</a> m</td>
         <td style="text-align:right;">18</td>
         <td>141</td>
@@ -1910,9 +2370,10 @@
       <tr>
         <td style="text-align:right;">500</td>
         <td style="text-align:right;">1:57</td>
+        <td style="text-align:right;">1:57.5</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.221677,0.164107,17z">2900</a>…<a href=
+        "https://www.google.com/maps/@52.221677,0.164107,17z">2900</a>&hellip;<a href=
         "https://www.google.com/maps/@52.224941,0.166864,17z">3400</a> m</td>
         <td style="text-align:right;">19</td>
         <td>143</td>
@@ -1920,25 +2381,50 @@
       <tr>
         <td style="text-align:right;">500</td>
         <td style="text-align:right;">2:08</td>
+        <td style="text-align:right;">2:08.2</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.211479,0.140727,17z">785</a>…<a href=
+        "https://www.google.com/maps/@52.211479,0.140727,17z">785</a>&hellip;<a href=
         "https://www.google.com/maps/@52.215076,0.144776,17z">1285</a> m</td>
-        <td style="text-align:right;">11</td>
+        <td style="text-align:right;">17</td>
         <td>110</td>
+      </tr> 
+      <tr>
+        <td style="text-align:right;">500</td>
+        <td style="text-align:right;">2:09</td>
+        <td style="text-align:right;">2:09.4</td>
+        <td style="text-align:right;">down</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.210453,0.133085,17z">235</a>&hellip;<a href=
+        "https://www.google.com/maps/@52.211271,0.139976,17z">735</a> m</td>
+        <td style="text-align:right;">16</td>
+        <td>123</td>
+      </tr> 
+      <tr>
+        <td style="text-align:right;">500</td>
+        <td style="text-align:right;">2:10</td>
+        <td style="text-align:right;">2:09.9</td>
+        <td style="text-align:right;">down</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.215925,0.145375,17z">1385</a>&hellip;<a href=
+        "https://www.google.com/maps/@52.218550,0.150291,17z">1885</a> m</td>
+        <td style="text-align:right;">16</td>
+        <td>128</td>
       </tr> 
     </tbody>
   </table>
+
   <a name="L400m-Sprints" id="L400m-Sprints"></a>
-  <h2>400m Sprints</h2>
+  <h2>400m Sprints <time>2020-12-15</time></h2>
   <p>The <em>fastest non-overlapping</em> 400m segments in the
-  outing. This can be used to identify 400m sprints in particular.
+  outing. 
   </p>
   <table class="sortable">
     <thead>
       <tr>
         <th style="text-align:right;">Distance</th>
         <th style="text-align:right;">500m</th>
+        <th style="text-align:right;">Duration</th>
         <th style="text-align:right;">Stream</th>
         <th style="text-align:right;">Outing Meters</th>
         <th style="text-align:right;">SPM</th>
@@ -1949,9 +2435,10 @@
       <tr>
         <td style="text-align:right;">400</td>
         <td style="text-align:right;">1:31</td>
+        <td style="text-align:right;">1:12.6</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.219367,0.153626,17z">8100</a>…<a href=
+        "https://www.google.com/maps/@52.219367,0.153626,17z">8100</a>&hellip;<a href=
         "https://www.google.com/maps/@52.220390,0.158975,17z">8500</a> m</td>
         <td style="text-align:right;">31</td>
         <td>167</td>
@@ -1959,9 +2446,10 @@
       <tr>
         <td style="text-align:right;">400</td>
         <td style="text-align:right;">1:34</td>
+        <td style="text-align:right;">1:15.2</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.220427,0.159287,17z">8515</a>…<a href=
+        "https://www.google.com/maps/@52.220427,0.159287,17z">8515</a>&hellip;<a href=
         "https://www.google.com/maps/@52.221803,0.164573,17z">8915</a> m</td>
         <td style="text-align:right;">32</td>
         <td>182</td>
@@ -1969,9 +2457,10 @@
       <tr>
         <td style="text-align:right;">400</td>
         <td style="text-align:right;">1:49</td>
+        <td style="text-align:right;">1:27.5</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.220404,0.159110,17z">2530</a>…<a href=
+        "https://www.google.com/maps/@52.220404,0.159110,17z">2530</a>&hellip;<a href=
         "https://www.google.com/maps/@52.221760,0.164414,17z">2930</a> m</td>
         <td style="text-align:right;">19</td>
         <td>149</td>
@@ -1979,9 +2468,10 @@
       <tr>
         <td style="text-align:right;">400</td>
         <td style="text-align:right;">1:50</td>
+        <td style="text-align:right;">1:27.8</td>
         <td style="text-align:right;">up</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.221780,0.164349,17z">6845</a>…<a href=
+        "https://www.google.com/maps/@52.221780,0.164349,17z">6845</a>&hellip;<a href=
         "https://www.google.com/maps/@52.220513,0.159014,17z">7245</a> m</td>
         <td style="text-align:right;">31</td>
         <td>174</td>
@@ -1989,9 +2479,10 @@
       <tr>
         <td style="text-align:right;">400</td>
         <td style="text-align:right;">1:54</td>
+        <td style="text-align:right;">1:30.9</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.232661,0.171313,17z">4390</a>…<a href=
+        "https://www.google.com/maps/@52.232661,0.171313,17z">4390</a>&hellip;<a href=
         "https://www.google.com/maps/@52.235830,0.173343,17z">4790</a> m</td>
         <td style="text-align:right;">18</td>
         <td>142</td>
@@ -1999,9 +2490,10 @@
       <tr>
         <td style="text-align:right;">400</td>
         <td style="text-align:right;">1:54</td>
+        <td style="text-align:right;">1:31.0</td>
         <td style="text-align:right;">up</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.220503,0.158950,17z">7245</a>…<a href=
+        "https://www.google.com/maps/@52.220503,0.158950,17z">7245</a>&hellip;<a href=
         "https://www.google.com/maps/@52.219373,0.153563,17z">7645</a> m</td>
         <td style="text-align:right;">31</td>
         <td>179</td>
@@ -2009,9 +2501,10 @@
       <tr>
         <td style="text-align:right;">400</td>
         <td style="text-align:right;">1:54</td>
+        <td style="text-align:right;">1:31.1</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.227979,0.169707,17z">3855</a>…<a href=
+        "https://www.google.com/maps/@52.227979,0.169707,17z">3855</a>&hellip;<a href=
         "https://www.google.com/maps/@52.231428,0.170905,17z">4255</a> m</td>
         <td style="text-align:right;">18</td>
         <td>142</td>
@@ -2019,17 +2512,40 @@
       <tr>
         <td style="text-align:right;">400</td>
         <td style="text-align:right;">1:55</td>
+        <td style="text-align:right;">1:32.0</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.219161,0.153204,17z">2095</a>…<a href=
+        "https://www.google.com/maps/@52.219161,0.153204,17z">2095</a>&hellip;<a href=
         "https://www.google.com/maps/@52.220348,0.158530,17z">2495</a> m</td>
         <td style="text-align:right;">17</td>
         <td>134</td>
       </tr> 
+      <tr>
+        <td style="text-align:right;">400</td>
+        <td style="text-align:right;">1:57</td>
+        <td style="text-align:right;">1:33.9</td>
+        <td style="text-align:right;">down</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.222714,0.167097,17z">3140</a>&hellip;<a href=
+        "https://www.google.com/maps/@52.226164,0.166365,17z">3540</a> m</td>
+        <td style="text-align:right;">18</td>
+        <td>140</td>
+      </tr> 
+      <tr>
+        <td style="text-align:right;">400</td>
+        <td style="text-align:right;">2:07</td>
+        <td style="text-align:right;">1:41.5</td>
+        <td style="text-align:right;">down</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.211869,0.141531,17z">855</a>&hellip;<a href=
+        "https://www.google.com/maps/@52.214875,0.144468,17z">1255</a> m</td>
+        <td style="text-align:right;">17</td>
+        <td>111</td>
+      </tr> 
     </tbody>
   </table>
 <a name="L200m-Bursts" id="L200m-Bursts"></a>
-  <h2>200m Bursts</h2>
+  <h2>200m Bursts <time>2020-12-15</time></h2>
   <p>As before but the <em>fastest non-overlapping</em> 200m
   segments in the outing.</p>
   <table class="sortable">
@@ -2037,6 +2553,7 @@
       <tr>
         <th style="text-align:right;">Distance</th>
         <th style="text-align:right;">500m</th>
+        <th style="text-align:right;">Duration</th>
         <th style="text-align:right;">Stream</th>
         <th style="text-align:right;">Outing Meters</th>
         <th style="text-align:right;">SPM</th>
@@ -2047,9 +2564,10 @@
       <tr>
         <td style="text-align:right;">200</td>
         <td style="text-align:right;">1:29</td>
+        <td style="text-align:right;">0:35.4</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.220213,0.156880,17z">8350</a>…<a href=
+        "https://www.google.com/maps/@52.220213,0.156880,17z">8350</a>&hellip;<a href=
         "https://www.google.com/maps/@52.220498,0.159731,17z">8550</a> m</td>
         <td style="text-align:right;">32</td>
         <td>180</td>
@@ -2057,9 +2575,10 @@
       <tr>
         <td style="text-align:right;">200</td>
         <td style="text-align:right;">1:29</td>
+        <td style="text-align:right;">0:35.5</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.219342,0.153556,17z">8095</a>…<a href=
+        "https://www.google.com/maps/@52.219342,0.153556,17z">8095</a>&hellip;<a href=
         "https://www.google.com/maps/@52.220159,0.156015,17z">8295</a> m</td>
         <td style="text-align:right;">30</td>
         <td>155</td>
@@ -2067,9 +2586,10 @@
       <tr>
         <td style="text-align:right;">200</td>
         <td style="text-align:right;">1:33</td>
+        <td style="text-align:right;">0:37.2</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.220957,0.161747,17z">8690</a>…<a href=
+        "https://www.google.com/maps/@52.220957,0.161747,17z">8690</a>&hellip;<a href=
         "https://www.google.com/maps/@52.221713,0.164299,17z">8890</a> m</td>
         <td style="text-align:right;">32</td>
         <td>182</td>
@@ -2077,9 +2597,10 @@
       <tr>
         <td style="text-align:right;">200</td>
         <td style="text-align:right;">1:44</td>
+        <td style="text-align:right;">0:41.7</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.221035,0.161853,17z">2730</a>…<a href=
+        "https://www.google.com/maps/@52.221035,0.161853,17z">2730</a>&hellip;<a href=
         "https://www.google.com/maps/@52.221760,0.164414,17z">2930</a> m</td>
         <td style="text-align:right;">22</td>
         <td>153</td>
@@ -2087,9 +2608,10 @@
       <tr>
         <td style="text-align:right;">200</td>
         <td style="text-align:right;">1:48</td>
+        <td style="text-align:right;">0:43.2</td>
         <td style="text-align:right;">up</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.221815,0.164471,17z">6840</a>…<a href=
+        "https://www.google.com/maps/@52.221815,0.164471,17z">6840</a>&hellip;<a href=
         "https://www.google.com/maps/@52.221080,0.161818,17z">7040</a> m</td>
         <td style="text-align:right;">31</td>
         <td>166</td>
@@ -2097,9 +2619,10 @@
       <tr>
         <td style="text-align:right;">200</td>
         <td style="text-align:right;">1:50</td>
+        <td style="text-align:right;">0:43.9</td>
         <td style="text-align:right;">down</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.220224,0.156776,17z">2370</a>…<a href=
+        "https://www.google.com/maps/@52.220224,0.156776,17z">2370</a>&hellip;<a href=
         "https://www.google.com/maps/@52.220485,0.159608,17z">2570</a> m</td>
         <td style="text-align:right;">17</td>
         <td>142</td>
@@ -2107,9 +2630,10 @@
       <tr>
         <td style="text-align:right;">200</td>
         <td style="text-align:right;">1:51</td>
+        <td style="text-align:right;">0:44.4</td>
         <td style="text-align:right;">up</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.220179,0.156055,17z">7445</a>…<a href=
+        "https://www.google.com/maps/@52.220179,0.156055,17z">7445</a>&hellip;<a href=
         "https://www.google.com/maps/@52.219373,0.153563,17z">7645</a> m</td>
         <td style="text-align:right;">31</td>
         <td>180</td>
@@ -2117,17 +2641,149 @@
       <tr>
         <td style="text-align:right;">200</td>
         <td style="text-align:right;">1:51</td>
+        <td style="text-align:right;">0:44.5</td>
         <td style="text-align:right;">up</td>
         <td style="text-align:right;"><a href=
-        "https://www.google.com/maps/@52.221034,0.161639,17z">7050</a>…<a href=
+        "https://www.google.com/maps/@52.221034,0.161639,17z">7050</a>&hellip;<a href=
         "https://www.google.com/maps/@52.220503,0.158950,17z">7250</a> m</td>
         <td style="text-align:right;">31</td>
         <td>179</td>
       </tr>
+      <tr>
+        <td style="text-align:right;">200</td>
+        <td style="text-align:right;">1:53</td>
+        <td style="text-align:right;">0:45.2</td>
+        <td style="text-align:right;">down</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.234307,0.171556,17z">4575</a>&hellip;<a href=
+        "https://www.google.com/maps/@52.235716,0.173165,17z">4775</a> m</td>
+        <td style="text-align:right;">18</td>
+        <td>146</td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">200</td>
+        <td style="text-align:right;">1:53</td>
+        <td style="text-align:right;">0:45.4</td>
+        <td style="text-align:right;">down</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.228323,0.170008,17z">3900</a>&hellip;<a href=
+        "https://www.google.com/maps/@52.230084,0.170417,17z">4100</a> m</td>
+        <td style="text-align:right;">17</td>
+        <td>144</td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">200</td>
+        <td style="text-align:right;">1:54</td>
+        <td style="text-align:right;">0:45.6</td>
+        <td style="text-align:right;">down</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.230231,0.170461,17z">4115</a>&hellip;<a href=
+        "https://www.google.com/maps/@52.231960,0.171110,17z">4315</a> m</td>
+        <td style="text-align:right;">18</td>
+        <td>138</td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">200</td>
+        <td style="text-align:right;">1:54</td>
+        <td style="text-align:right;">0:45.6</td>
+        <td style="text-align:right;">down</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.219161,0.153204,17z">2095</a>&hellip;<a href=
+        "https://www.google.com/maps/@52.220068,0.155676,17z">2295</a> m</td>
+        <td style="text-align:right;">17</td>
+        <td>129</td>
+      </tr>
     </tbody>
   </table>
+  <a name="L100m-Bursts" id="L100m-Bursts"></a>
+  <h2>100m Bursts <time>2020-12-15</time></h2>
+  <p>As before but the <em>fastest non-overlapping</em> 100m
+  segments in the outing.</p>
+  <table class="sortable">
+    <thead>
+      <tr>
+        <th style="text-align:right;">Distance</th>
+        <th style="text-align:right;">500m</th>
+        <th style="text-align:right;">Duration</th>
+        <th style="text-align:right;">Stream</th>
+        <th style="text-align:right;">Outing Meters</th>
+        <th style="text-align:right;">SPM</th>
+        <th>HR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align:right;">100</td>
+        <td style="text-align:right;">1:25</td>
+        <td style="text-align:right;">0:17.0</td>
+        <td style="text-align:right;">down</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.220213,0.156880,17z">8350</a>&hellip;<a href=
+        "https://www.google.com/maps/@52.220319,0.158249,17z">8450</a> m</td>
+        <td style="text-align:right;">32</td>
+        <td>178</td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">100</td>
+        <td style="text-align:right;">1:27</td>
+        <td style="text-align:right;">0:17.4</td>
+        <td style="text-align:right;">down</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.219254,0.153359,17z">8080</a>&hellip;<a href=
+        "https://www.google.com/maps/@52.219729,0.154563,17z">8180</a> m</td>
+        <td style="text-align:right;">29</td>
+        <td>138</td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">100</td>
+        <td style="text-align:right;">1:30</td>
+        <td style="text-align:right;">0:18.0</td>
+        <td style="text-align:right;">down</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.219803,0.154767,17z">8195</a>&hellip;<a href=
+        "https://www.google.com/maps/@52.220159,0.156015,17z">8295</a> m</td>
+        <td style="text-align:right;">31</td>
+        <td>166</td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">100</td>
+        <td style="text-align:right;">1:32</td>
+        <td style="text-align:right;">0:18.5</td>
+        <td style="text-align:right;">down</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.220327,0.158333,17z">8450</a>&hellip;<a href=
+        "https://www.google.com/maps/@52.220498,0.159731,17z">8550</a> m</td>
+        <td style="text-align:right;">32</td>
+        <td>181</td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">100</td>
+        <td style="text-align:right;">1:32</td>
+        <td style="text-align:right;">0:18.5</td>
+        <td style="text-align:right;">down</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.221444,0.163361,17z">8815</a>&hellip;<a href=
+        "https://www.google.com/maps/@52.221803,0.164573,17z">8915</a> m</td>
+        <td style="text-align:right;">32</td>
+        <td>184</td>
+      </tr>
+      <tr>
+        <td style="text-align:right;">100</td>
+        <td style="text-align:right;">1:33</td>
+        <td style="text-align:right;">0:18.6</td>
+        <td style="text-align:right;">down</td>
+        <td style="text-align:right;"><a href=
+        "https://www.google.com/maps/@52.220957,0.161747,17z">8690</a>&hellip;<a href=
+        "https://www.google.com/maps/@52.221318,0.162951,17z">8790</a> m</td>
+        <td style="text-align:right;">32</td>
+        <td>182</td>
+      </tr>
+    </tbody>
+  </table>
+
+
   <a name="Stroke-Rate-versus-Speed" id="Stroke-Rate-versus-Speed"></a>
-  <h2>Stroke Rate versus Speed</h2>
+  <h2>Stroke Rate versus Speed <time>2020-12-15</time></h2>
   <p>This identifies the top speed (in min/500m) observed for a
   given stroke rate.</p>                                         
                       
@@ -2225,16 +2881,16 @@
       <td>1:44</td>
       <td>1:37</td>
       <td>1:30</td>
-      <td>0:00</td>
+      <td>0:-1</td>
       <td>1:37</td>
       <td>1:27</td>
       <td>1:25</td>
       <td>1:23</td>
       <td>1:33</td>
-      <td>0:00</td>
-      <td>0:00</td>
-      <td>0:00</td>
-      <td>0:00</td>
+      <td>0:-1</td>
+      <td>0:-1</td>
+      <td>0:-1</td>
+      <td>0:-1</td>
       <td>1:49</td>
       <td>6:47</td>
     </tr>
@@ -2263,7 +2919,7 @@
     </tr>
   </table>
   <p><small>This report was created by <strong>eightplus</strong> revision
-  <em>3302f14</em> from Sun 29 Aug 2021 09:13:41 BST by <a href=
+  <em>27d21b2</em> from Tue 20 Sep 2022 21:00:37 BST by <a href=
   "mailto:lindig@gmail.com">Christian Lindig</a>.</small></p>
 </body>
 </html>
