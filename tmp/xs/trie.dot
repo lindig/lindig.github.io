@@ -1,0 +1,35 @@
+//
+// dot -Tpng trie.dot > trie.png
+//
+
+digraph trie {
+  size="4,6"
+
+  root [label="", shape=circle]
+
+  n_0 [label="", shape=circle]
+  n15 [label="15", shape=circle]
+  n11 [label="11", shape=circle]
+
+  n_1 [label="", shape=circle]
+  n7  [label="7", shape=circle]
+  n5  [label="5", shape=circle]
+  n3  [label="3", shape=circle]
+  n4  [label="4", shape=circle]
+  n10 [label="10", shape=circle]
+  n9  [label="9", shape=circle]
+
+  root -> n_0 [label="t"]
+  root -> n15 [label="A"]
+  root -> n11 [label="i"]
+
+  n_0 -> n_1 [label="e"]
+  n_0 -> n7 [label="o"]
+
+  n_1 -> n4 [label="x"]
+  n_1 -> n3 [label="a"]
+  n_1 -> n10 [label="n"]
+
+  n11 -> n5 [label="n"]
+  n5 -> n9 [label="k"]
+}
