@@ -1,0 +1,768 @@
+<!doctype html public "-//W3C//DTD HTML 4.0 Transitional //EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset-us-ascii">
+  <style>
+
+body {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  color: #333;
+  /* overflow: hidden; */
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+  min-width: 200px;
+  max-width: 790px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+ a {
+  background-color: transparent;
+}
+
+ a:active,
+ a:hover {
+  outline: 0;
+}
+
+ strong {
+  font-weight: bold;
+}
+
+ h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+ img {
+  border: 0;
+}
+
+ hr {
+  box-sizing: content-box;
+  height: 0;
+}
+
+ pre {
+  overflow: auto;
+}
+
+ code,
+ kbd,
+ pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+ input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+ html input[disabled] {
+  cursor: default;
+}
+
+ input {
+  line-height: normal;
+}
+
+ input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+ table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+ td,
+ th {
+  padding: 0;
+}
+
+ * {
+  box-sizing: border-box;
+}
+
+ input {
+  font: 13px/1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+ a {
+  color: #4078c0;
+  text-decoration: none;
+}
+
+ a:hover,
+ a:active {
+  text-decoration: underline;
+}
+
+ hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+ hr:before {
+  display: table;
+  content: "";
+}
+
+ hr:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+ h1,
+ h2,
+ h3,
+ h4,
+ h5,
+ h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+ h1 {
+  font-size: 30px;
+}
+
+ h2 {
+  font-size: 21px;
+}
+
+ h3 {
+  font-size: 16px;
+}
+
+ h4 {
+  font-size: 14px;
+}
+
+ h5 {
+  font-size: 12px;
+}
+
+ h6 {
+  font-size: 11px;
+}
+
+ blockquote {
+  margin: 0;
+}
+
+ ul,
+ ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ ol ol,
+ ul ol {
+  list-style-type: lower-roman;
+}
+
+ ul ul ol,
+ ul ol ol,
+ ol ul ol,
+ ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+ dd {
+  margin-left: 0;
+}
+
+ code {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+ pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+ .select::-ms-expand {
+  opacity: 0;
+}
+
+>*:first-child {
+  margin-top: 0 !important;
+}
+
+>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+ a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+ .anchor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+ .anchor:focus {
+  outline: none;
+}
+
+ h1,
+ h2,
+ h3,
+ h4,
+ h5,
+ h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+ h1:hover .anchor,
+ h2:hover .anchor,
+ h3:hover .anchor,
+ h4:hover .anchor,
+ h5:hover .anchor,
+ h6:hover .anchor {
+  padding-left: 8px;
+  margin-left: -30px;
+  text-decoration: none;
+}
+
+ h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+ h1 .anchor {
+  line-height: 1;
+}
+
+ h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+ h2 .anchor {
+  line-height: 1;
+}
+
+ h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+ h3 .anchor {
+  line-height: 1.2;
+}
+
+ h4 {
+  font-size: 1.25em;
+}
+
+ h4 .anchor {
+  line-height: 1.2;
+}
+
+ h5 {
+  font-size: 1em;
+}
+
+ h5 .anchor {
+  line-height: 1.1;
+}
+
+ h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+ h6 .anchor {
+  line-height: 1.1;
+}
+
+ p,
+ blockquote,
+ ul,
+ ol,
+ dl,
+ table,
+ pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+ hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+ ul,
+ ol {
+  padding-left: 2em;
+}
+
+ ul ul,
+ ul ol,
+ ol ol,
+ ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ li>p {
+  margin-top: 16px;
+}
+
+ dl {
+  padding: 0;
+}
+
+ dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+ dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+ blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+ blockquote>:first-child {
+  margin-top: 0;
+}
+
+ blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+ table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+ table th {
+  font-weight: bold;
+}
+
+ table th,
+ table td {
+  padding: 6px 13px;
+}
+
+ table tr {
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+}
+
+ table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+ img {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+ code {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+ code:before,
+ code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+ pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+ .highlight {
+  margin-bottom: 16px;
+}
+
+ .highlight pre,
+ pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+ .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+ pre {
+  word-wrap: normal;
+}
+
+ pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+ pre code:before,
+ pre code:after {
+  content: normal;
+}
+
+ kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb;
+}
+
+ .pl-c {
+  color: #969896;
+}
+
+ .pl-c1,
+ .pl-s .pl-v {
+  color: #0086b3;
+}
+
+ .pl-e,
+ .pl-en {
+  color: #795da3;
+}
+
+ .pl-s .pl-s1,
+ .pl-smi {
+  color: #333;
+}
+
+ .pl-ent {
+  color: #63a35c;
+}
+
+ .pl-k {
+  color: #a71d5d;
+}
+
+ .pl-pds,
+ .pl-s,
+ .pl-s .pl-pse .pl-s1,
+ .pl-sr,
+ .pl-sr .pl-cce,
+ .pl-sr .pl-sra,
+ .pl-sr .pl-sre {
+  color: #183691;
+}
+
+ .pl-v {
+  color: #ed6a43;
+}
+
+ .pl-id {
+  color: #b52a1d;
+}
+
+ .pl-ii {
+  background-color: #b52a1d;
+  color: #f8f8f8;
+}
+
+ .pl-sr .pl-cce {
+  color: #63a35c;
+  font-weight: bold;
+}
+
+ .pl-ml {
+  color: #693a17;
+}
+
+ .pl-mh,
+ .pl-mh .pl-en,
+ .pl-ms {
+  color: #1d3e81;
+  font-weight: bold;
+}
+
+ .pl-mq {
+  color: #008080;
+}
+
+ .pl-mi {
+  color: #333;
+  font-style: italic;
+}
+
+ .pl-mb {
+  color: #333;
+  font-weight: bold;
+}
+
+ .pl-md {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+ .pl-mi1 {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+ .pl-mdr {
+  color: #795da3;
+  font-weight: bold;
+}
+
+ .pl-mo {
+  color: #1d3e81;
+}
+
+ kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb;
+}
+
+ .task-list-item {
+  list-style-type: none;
+}
+
+ .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+ .task-list-item input {
+  margin: 0 0.35em 0.25em -1.6em;
+  vertical-align: middle;
+}
+
+ :checked+.radio-label {
+  z-index: 1;
+  position: relative;
+  border-color: #4078c0;
+}
+
+table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+    content: " \25B4\25BE" 
+}
+
+.stat-table-vert {
+  border-collapse: collapse;
+}
+
+.bar {
+  background: #93b69d;
+}
+
+.stat-table-vert tr:first-of-type td {
+  border-left: 0px solid #090;
+  border-right: 0px solid #090;
+  padding: 1px;
+  margin: 1px;
+  width: 10px;
+  vertical-align: bottom;
+}
+
+.stat-table-vert tr:nth-of-type(2) td {
+  padding: 5px;
+}
+
+.stat-table-vert td {
+  padding: 1px 2px;
+  font-size: 70%;
+} 
+
+  </style>
+</head>
+<body>
+    <a name="CHU-M1-at-Bedford"></a>
+<h1>CHU M1 at Bedford</h1>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rqLk96gs98Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+<a name="Results"></a>
+<h2>Results</h2>
+
+<ul>
+<li><a href="https://rowstats.com/regatta.php?id=23095&amp;b=1">Bedford Regatta</a></li>
+</ul>
+
+
+<table>
+<thead>
+<tr>
+<th>No </th>
+<th>Time and Category </th>
+<th>   </th>
+<th> Crew                              </th>
+<th>   </th>
+<th>  Crew                                      </th>
+<th>Time</th>
+<th>Result               </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>34 </td>
+<td>09:52  COL.B.8+   </td>
+<td>GTM</td>
+<td> (54) Green Templeton BC (Arroway) </td>
+<td>CHU</td>
+<td> (55) Churchill College                     </td>
+<td>3:42</td>
+<td> easily              </td>
+</tr>
+<tr>
+<td>87 </td>
+<td>12:15  COL.B.8+   </td>
+<td>CHU</td>
+<td> (55) Churchill College            </td>
+<td>SEH</td>
+<td> (56) St Edmund Hall                        </td>
+<td>3:32</td>
+<td> &frac14; length CHU lost </td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="Connection"></a>
+<h2>Connection</h2>
+
+<p>Some observations from the video above - I invite your comments. The
+goal of the catch is to pick up the boat before it slows down too much.
+The best moment is when the shins are vertical and the knees at the
+highest point: the seat turn around, blades connect and pick up the
+boat.</p>
+
+<p><img src="IMG_0606.JPG" alt="IMG_0606.JPG" />
+<img src="IMG_0607.JPG" alt="IMG_0607.JPG" /></p>
+
+<p>We can see that the blades touch the water at the right moment. Some
+seats are over-compressing a bit. We can only drive the boat once the
+blades are fully submerged. The second frame above shows that moment. We
+can see from the positions of the knees that many seats are at half
+slide at this moment. Hence, the early part of the stroke happened
+without being connected.</p>
+
+<p>This suggests that blade entry is a bit slow and requires more
+relaxation but more importantly, the drive needs poise: patience for
+the connection, for the blade to fill with water. Look at the crew below
+and how they can move the boat because they utilize the full leg drive.
+To get to that, think: place, gather, push. The quickness we are looking
+for is not in the initiation of the drive but the absence of any
+hesitation to enter the blade.</p>
+
+<p><img src="aus-m4.jpg" alt="Australian M4-" /></p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Wff25wXWE9o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+<p>Another element of getting a good catch is not looking for too much
+length using over compression but being ready when the shins are vertical.
+To be ready early we need the hand to lead to recovery and start sliding
+only once arms are straight and the body rocked over - this way the
+hand arrives together with the seat rather than the seat early (we stall
+with the seat) while the hand is still moving.</p>
+
+<p><img src="IMG_0608.JPG" alt="IMG_0608.JPG" />
+<img src="IMG_0609.JPG" alt="IMG_0609.JPG" />
+<img src="IMG_0610.JPG" alt="IMG_0610.JPG" /></p>
+
+<p>For a good catch angle it is more effective to use rotation rather than
+linear length and compression. This goes hand in hand with the drive
+where we &ldquo;keep the handle out&rdquo;: not pulling on the handle but pushing
+the boat, hanging from the handle.</p>
+
+<a name="Rock-Over"></a>
+<h1>Rock Over</h1>
+
+<p>Below I am looking at the rock over. It has to come from the hips and
+pelvis and not just the upper body. It&rsquo;s easy to see with the kit how
+the hip is angled. When the pelvis is angled backwards, everything is
+just more complicated.</p>
+
+<p><img src="IMG_0611.JPG" alt="IMG_0611.JPG" />
+<img src="IMG_0612.JPG" alt="IMG_0612.JPG" />
+<img src="IMG_0613.JPG" alt="IMG_0613.JPG" />
+<img src="IMG_0614.JPG" alt="IMG_0614.JPG" /></p>
+
+</body>
+</html>
