@@ -27,7 +27,16 @@ f (h:t) = 1 + f t
 
 Write a function `val explode: string -> char list` that takes a string
 and returns the string's characters as a list of characters (in the
-order of the string).
+order of the string). Potentially useful functions from the OCaml
+language and standard library:
+
+* In OCaml, characters in a string can be accessed like in `"hello".[0]`. 
+  The value of this expression is character `'h'`.
+* `String.fold_left : ('a -> char -> 'a) -> 'a -> string -> 'a`. 
+  `fold_left f x s` computes `f (... (f (f x s.[0]) s.[1]) ...) s.[n-1]`, 
+  where `n` is the length of the string `s`.
+* `List.init : int -> (int -> 'a) -> 'a list` 
+  `init len f` is `[f 0; f 1; ...; f (len-1)]`
 
 ## Function `scan`
 
