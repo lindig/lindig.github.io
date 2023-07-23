@@ -1,5 +1,5 @@
 
-# Adjusting Oar Lock Pitch
+# Adjusting Oarlock Pitch
 
 ![Oar Lock](oar-lock.png)
 
@@ -20,7 +20,7 @@ with numbers that are opposite each other: 4/4, 5/3, or 6/2.
 
 * To increase the pitch to 6 degrees, one would use bushings that are
   labeled 6/2 and insert them such that the 6 on the top is adjacent to
-  the gate and the bottom the other way round. This tilts the
+  the gate and at the bottom the other way round. This tilts the
   entire oarlock mechanism such that pitch is now 6 degrees.
 
 * Conversely, to reduce pitch to 2 degrees, the same bushings would be
