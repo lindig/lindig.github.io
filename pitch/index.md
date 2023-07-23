@@ -23,12 +23,12 @@ with numbers that are opposite each other: 4/4, 5/3, or 6/2.
   the gate and the bottom the other way round. This tilts the
   entire oarlock mechanism such that pitch is now 6 degrees.
 
-* Conversely, to reduce pitch to 2 degrees. The same bushings would be
+* Conversely, to reduce pitch to 2 degrees, the same bushings would be
   used but inserted 180 degrees rotated. Now 2 is adjacent to the gate.
   Again, the oarlock is tilted such that the resulting pitch is 2
   degrees.
 
 * Smaller changes are possible. The 4/4 bushings in the picture above can be
-  also used to create 5 and 1 degree pitch.
+  also used to create 5 and 3 degree pitch.
 
 [Concept2]: https://www.concept2.com/service/oars/pitch/adjusting-pitch-with-bushings
