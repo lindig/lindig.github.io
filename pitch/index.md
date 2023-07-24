@@ -1,7 +1,7 @@
 
 # Adjusting Oarlock Pitch
 
-![Oar Lock](oar-lock.png)
+![Oar Lock](oar-lock.svg)
 
 A [Concept2] oarlock has a built-in pitch: the face against which the
 sleeve of the oat shaft is resting during the drive is pitched by 4
@@ -13,17 +13,16 @@ This pitch can be adjusted using the blue bushings that connect the oarlock
 with the metal pin. Bushings come in variants and are labeled
 with numbers that are opposite each other: 4/4, 5/3, or 6/2.
 
-![Oar Lock Pitch](./pitch-adjust.png)
+![Oarlock Pitch](./pitch-adjust.svg)
 
-* By default, 4/4 is used and it results in the standard 4 degree pitch:
-  the oar lock on the left in the picture above.
+* A: By default, 4/4 is used and it results in the standard 4 degree pitch.
 
-* To increase the pitch to 6 degrees, one would use bushings that are
+* B: To increase the pitch to 6 degrees, one would use bushings that are
   labeled 6/2 and insert them such that the 6 on the top is adjacent to
   the gate and at the bottom the other way round. This tilts the
   entire oarlock mechanism such that pitch is now 6 degrees.
 
-* Conversely, to reduce pitch to 2 degrees, the same bushings would be
+* C: Conversely, to reduce pitch to 2 degrees, the same bushings would be
   used but inserted 180 degrees rotated. Now 2 is adjacent to the gate.
   Again, the oarlock is tilted such that the resulting pitch is 2
   degrees.
