@@ -30,4 +30,10 @@ with numbers that are opposite each other: 4/4, 5/3, or 6/2.
 * Smaller changes are possible. The 4/4 bushings in the picture above can be
   also used to create 5 and 3 degree pitch.
 
+## Resources
+
+* [Discussion on Reddit](https://www.reddit.com/r/Rowing/comments/157o7k9/comment/jtam68u/?context=3)
+
+* [Concept2] Page
+
 [Concept2]: https://www.concept2.com/service/oars/pitch/adjusting-pitch-with-bushings
