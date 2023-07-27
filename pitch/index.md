@@ -4,7 +4,7 @@
 ![Oar Lock](oar-lock.svg)
 
 A [Concept2] oarlock has a built-in pitch: the face against which the
-sleeve of the oat shaft is resting during the drive is pitched by 4
+sleeve of the oar shaft is resting during the drive is pitched by 4
 degrees. This assumes the oarlock pin is vertical.
 
 ![Concept2 Bushings](bushings.jpg)
