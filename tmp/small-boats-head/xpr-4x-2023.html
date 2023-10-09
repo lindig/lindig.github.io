@@ -1,0 +1,754 @@
+<!doctype html public "-//W3C//DTD HTML 4.0 Transitional //EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset-us-ascii">
+  <style>
+
+body {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  color: #333;
+  /* overflow: hidden; */
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+  min-width: 200px;
+  max-width: 790px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+ a {
+  background-color: transparent;
+}
+
+ a:active,
+ a:hover {
+  outline: 0;
+}
+
+ strong {
+  font-weight: bold;
+}
+
+ h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+ img {
+  border: 0;
+}
+
+ hr {
+  box-sizing: content-box;
+  height: 0;
+}
+
+ pre {
+  overflow: auto;
+}
+
+ code,
+ kbd,
+ pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+ input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+ html input[disabled] {
+  cursor: default;
+}
+
+ input {
+  line-height: normal;
+}
+
+ input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+ table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+ td,
+ th {
+  padding: 0;
+}
+
+ * {
+  box-sizing: border-box;
+}
+
+ input {
+  font: 13px/1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+ a {
+  color: #4078c0;
+  text-decoration: none;
+}
+
+ a:hover,
+ a:active {
+  text-decoration: underline;
+}
+
+ hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+ hr:before {
+  display: table;
+  content: "";
+}
+
+ hr:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+ h1,
+ h2,
+ h3,
+ h4,
+ h5,
+ h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+ h1 {
+  font-size: 30px;
+}
+
+ h2 {
+  font-size: 21px;
+}
+
+ h3 {
+  font-size: 16px;
+}
+
+ h4 {
+  font-size: 14px;
+}
+
+ h5 {
+  font-size: 12px;
+}
+
+ h6 {
+  font-size: 11px;
+}
+
+ blockquote {
+  margin: 0;
+}
+
+ ul,
+ ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ ol ol,
+ ul ol {
+  list-style-type: lower-roman;
+}
+
+ ul ul ol,
+ ul ol ol,
+ ol ul ol,
+ ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+ dd {
+  margin-left: 0;
+}
+
+ code {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+ pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+ .select::-ms-expand {
+  opacity: 0;
+}
+
+>*:first-child {
+  margin-top: 0 !important;
+}
+
+>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+ a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+ .anchor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+ .anchor:focus {
+  outline: none;
+}
+
+ h1,
+ h2,
+ h3,
+ h4,
+ h5,
+ h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+ h1:hover .anchor,
+ h2:hover .anchor,
+ h3:hover .anchor,
+ h4:hover .anchor,
+ h5:hover .anchor,
+ h6:hover .anchor {
+  padding-left: 8px;
+  margin-left: -30px;
+  text-decoration: none;
+}
+
+ h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+ h1 .anchor {
+  line-height: 1;
+}
+
+ h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+ h2 .anchor {
+  line-height: 1;
+}
+
+ h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+ h3 .anchor {
+  line-height: 1.2;
+}
+
+ h4 {
+  font-size: 1.25em;
+}
+
+ h4 .anchor {
+  line-height: 1.2;
+}
+
+ h5 {
+  font-size: 1em;
+}
+
+ h5 .anchor {
+  line-height: 1.1;
+}
+
+ h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+ h6 .anchor {
+  line-height: 1.1;
+}
+
+ p,
+ blockquote,
+ ul,
+ ol,
+ dl,
+ table,
+ pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+ hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+ ul,
+ ol {
+  padding-left: 2em;
+}
+
+ ul ul,
+ ul ol,
+ ol ol,
+ ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ li>p {
+  margin-top: 16px;
+}
+
+ dl {
+  padding: 0;
+}
+
+ dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+ dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+ blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+ blockquote>:first-child {
+  margin-top: 0;
+}
+
+ blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+ table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+ table th {
+  font-weight: bold;
+}
+
+ table th,
+ table td {
+  padding: 6px 13px;
+}
+
+ table tr {
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+}
+
+ table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+ img {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+ code {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+ code:before,
+ code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+ pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+ .highlight {
+  margin-bottom: 16px;
+}
+
+ .highlight pre,
+ pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+ .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+ pre {
+  word-wrap: normal;
+}
+
+ pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+ pre code:before,
+ pre code:after {
+  content: normal;
+}
+
+ kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb;
+}
+
+ .pl-c {
+  color: #969896;
+}
+
+ .pl-c1,
+ .pl-s .pl-v {
+  color: #0086b3;
+}
+
+ .pl-e,
+ .pl-en {
+  color: #795da3;
+}
+
+ .pl-s .pl-s1,
+ .pl-smi {
+  color: #333;
+}
+
+ .pl-ent {
+  color: #63a35c;
+}
+
+ .pl-k {
+  color: #a71d5d;
+}
+
+ .pl-pds,
+ .pl-s,
+ .pl-s .pl-pse .pl-s1,
+ .pl-sr,
+ .pl-sr .pl-cce,
+ .pl-sr .pl-sra,
+ .pl-sr .pl-sre {
+  color: #183691;
+}
+
+ .pl-v {
+  color: #ed6a43;
+}
+
+ .pl-id {
+  color: #b52a1d;
+}
+
+ .pl-ii {
+  background-color: #b52a1d;
+  color: #f8f8f8;
+}
+
+ .pl-sr .pl-cce {
+  color: #63a35c;
+  font-weight: bold;
+}
+
+ .pl-ml {
+  color: #693a17;
+}
+
+ .pl-mh,
+ .pl-mh .pl-en,
+ .pl-ms {
+  color: #1d3e81;
+  font-weight: bold;
+}
+
+ .pl-mq {
+  color: #008080;
+}
+
+ .pl-mi {
+  color: #333;
+  font-style: italic;
+}
+
+ .pl-mb {
+  color: #333;
+  font-weight: bold;
+}
+
+ .pl-md {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+ .pl-mi1 {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+ .pl-mdr {
+  color: #795da3;
+  font-weight: bold;
+}
+
+ .pl-mo {
+  color: #1d3e81;
+}
+
+ kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb;
+}
+
+ .task-list-item {
+  list-style-type: none;
+}
+
+ .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+ .task-list-item input {
+  margin: 0 0.35em 0.25em -1.6em;
+  vertical-align: middle;
+}
+
+ :checked+.radio-label {
+  z-index: 1;
+  position: relative;
+  border-color: #4078c0;
+}
+
+table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+    content: " \25B4\25BE" 
+}
+
+.stat-table-vert {
+  border-collapse: collapse;
+}
+
+.bar {
+  background: #93b69d;
+}
+
+.stat-table-vert tr:first-of-type td {
+  border-left: 0px solid #090;
+  border-right: 0px solid #090;
+  padding: 1px;
+  margin: 1px;
+  width: 10px;
+  vertical-align: bottom;
+}
+
+.stat-table-vert tr:nth-of-type(2) td {
+  padding: 5px;
+}
+
+.stat-table-vert td {
+  padding: 1px 2px;
+  font-size: 70%;
+} 
+
+  </style>
+</head>
+<body>
+    <a name="XPR-Masters-4x-and-Cambridge-Small-Boat-Head-2023-2d-10-2d-07"></a>
+<h1>XPR Masters 4x and Cambridge Small Boat Head 2023-10-07</h1>
+
+<p>Some observation from a small piece of video that I took.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rUnkEIXMDSI?si=spJY8-GkqbH__fwf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+<a name="Results"></a>
+<h2>Results</h2>
+
+<ul>
+<li>https://www.webscorer.com/race?pid=1&amp;raceid=331290</li>
+<li>213, XPR-Quattro di copia, Div 2,  O.MasC-G.4x-, 10:23.4 (adjusted)</li>
+<li>10:39.4 finish time unadjusted</li>
+<li>Head Wind: https://www.cl.cam.ac.uk/weather/daily-graph?2023-10-07</li>
+</ul>
+
+
+<a name="Shoulders"></a>
+<h2>Shoulders</h2>
+
+<p>Compare the shoulders of Ben and Fernando during the drive and the
+finish:</p>
+
+<p><img src="shoulders-1.jpg" alt="shoulders-1.jpg" />
+<img src="shoulders-2.jpg" alt="shoulders-2.jpg" /></p>
+
+<ul>
+<li>Ben&rsquo;s sholders look the same in both positions</li>
+<li>Fernando&rsquo;s shoulders come up in the drive</li>
+</ul>
+
+
+<p>It it slightly present in Andreas&rsquo;s shoulders, too:</p>
+
+<p><img src="shoulders-3.jpg" alt="shoulders-3.jpg" />
+<img src="shoulders-4.jpg" alt="shoulders-4.jpg" /></p>
+
+<p>Compare against the Dutch 4x (maybe the best 4x in the world right now):</p>
+
+<p><img src="dutch-4x-shoulders.jpg" alt="dutch-4x-shoulders.jpg" /></p>
+
+<p>Why do we want shoulders to stay low? The muscle in the back that
+connects the hip with the arms is</p>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Latissimus_dorsi_muscle">Latissimus dorsi</a></li>
+</ul>
+
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Latissimus_dorsi.PNG" alt="Latissimus dorsi" /></p>
+
+<p>and it works best when it stays flat. This is compromised when the
+shoulders come up. To avoid that happening it is important to engage it
+early - an engaged muscle prevent the shouldes from coming up. Think
+about keeping the elbows heavy or pulling the elbows slightly forward to
+make that happen.</p>
+
+<a name="Arms"></a>
+<h2>Arms</h2>
+
+<p>Engaging the lats interacts slighly with the arms in the drive. We want
+to keep arms relaxed to avoid pulling with the arms using small arm
+muscles. The interaction is the reason many good rowers have a slighly
+bent arm - which is fine, as long as the situation is static and the
+small muscles are not used.</p>
+
+<p><img src="drive.jpg" alt="drive.jpg" />
+<img src="dutch-4x-2.jpg" alt="dutch-4x-2.jpg" /></p>
+
+<p>I suspect that Henrique is slighly pulling with the arms - which is
+tiring. We rather want to keep handles out and try to become lighter on
+the seat without conracting the arms. Compare with Andrea and Ben.</p>
+
+<a name="Postion-at-the-Catch"></a>
+<h2>Postion at the Catch</h2>
+
+<p>We want to sit tall at the catch such that we can lift from the seat
+when we are connected. Likewise, we don&rsquo;t want any weight on the
+handles: if we lean onto the handles for stability, chances are the
+blade entry is slow and the body will open when the load comes on, to
+regain stability. Hence, we can only bring the body weight forward where
+we are still stable on the seat. I believe Henrique has a tendency to do
+that - but his so tall and has so much wing span that he doesn&rsquo;t need to
+- length is gained from opening the arms. Compare body positions at the
+  catch with the Dutch crew.</p>
+
+<p><img src="catch.jpg" alt="catch.jpg" />
+<img src="dutch-4x.jpg" alt="dutch-4x.jpg" /></p>
+
+<a name="Finish"></a>
+<h2>Finish</h2>
+
+<p>Observe the position of elbows (same height as hands) and hands (fairly flat)
+of the Dutch crew.</p>
+
+<p><img src="dutch-4x-finish.jpg" alt="dutch-4x-finish.jpg" /></p>
+
+</body>
+</html>
