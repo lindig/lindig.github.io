@@ -20,9 +20,9 @@ where the body is stable.
 
 ## Posture at the Finish
 
-Charles could look for more upright stability; part of getting behidn
+Charles could look for more upright stability; part of getting behind
 the handle is coming from the feathering motion of the outside hand. We
-want to rotate the outside hand in the horizontal plance: knuckles stay
+want to rotate the outside hand in the horizontal plane: knuckles stay
 perpendicular to the boat and not rotating around the axis of the shaft.
 
 ![IMG_0744.JPG](IMG_0744.JPG)
@@ -31,11 +31,11 @@ perpendicular to the boat and not rotating around the axis of the shaft.
 ![IMG_0753.JPG](IMG_0753.JPG)
 
 We want the outside elbow to not drop below the outside hand. This
-means, the elbow is away from the body (not necessariy high).
+means, the elbow is away from the body (not necessary high).
 
 ![IMG_0750.JPG](IMG_0750.JPG)
 
-## Drive Sequnce
+## Drive Sequence
 
 Johnny keeps the body angle until half slide. This is by "keeping the
 handle out" not pulling on it but by pushing the boat instead.
