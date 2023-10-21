@@ -30,6 +30,7 @@
         <img id="speed" src=
         "https://www.cl.cam.ac.uk/research/dtg/weather/data/daily-graphs/2021_11_30-windspd.png"
         alt="wind speed in knots">
+        <p>Red = maximum, Green = mean</p>
       </center>
     </article>
     <article>
@@ -54,6 +55,17 @@
     </article>
     <article>
       <header>
+        Rainfall mm/h
+      </header>
+      <center>
+        <img id="rainfall" src=
+        "https://www.cl.cam.ac.uk/research/dtg/weather/data/daily-graphs/2021_11_30-rainfall.png"
+        alt="rainfall">
+        <p>mm/h</p>
+      </center>
+    </article>
+    <article>
+      <header>
         Forecast
       </header>
       <center>
@@ -62,8 +74,15 @@
         alt="forecast">
       </center>
     </article>
-
-
+    <article>
+      <header>
+        Rivel Level
+      </header>
+      <ul>
+      <li><a href="https://riverlevels.uk/river-cam-cambridge-cambridge-jesus-lock">Jesus Lock</a></li>
+      <li><a href="https://riverlevels.uk/river-cam-fen-ditton-cambridge-baits-bite">Baits Bite Lock</a></li>
+      </ul>
+    </article>
   </main>
  <script>
         function today() {
@@ -86,10 +105,12 @@
         var speed = base + d + "-windspd.png";
         var direction = base + d + "-winddir.png";
         var temperature = base + d + "-temp.png";
+        var rainfall = base + d + "-rainfall.png";
 
         document.getElementById("speed").setAttribute("src",speed);
         document.getElementById("direction").setAttribute("src",direction);
         document.getElementById("temperature").setAttribute("src",temperature);
+        document.getElementById("rainfall").setAttribute("src",rainfall);
       })();
   </script>
 </body>
