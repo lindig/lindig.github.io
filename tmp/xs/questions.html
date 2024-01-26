@@ -390,11 +390,12 @@ body {
  table th,
  table td {
   padding: 6px 13px;
+  border: 1px solid #ddd;
 }
 
  table tr {
   background-color: #fff;
-  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
 }
 
  table tr:nth-child(2n) {
@@ -617,41 +618,23 @@ body {
   position: relative;
   border-color: #4078c0;
 }
-
-table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
-    content: " \25B4\25BE" 
-}
-
-.stat-table-vert {
-  border-collapse: collapse;
-}
-
-.bar {
-  background: #93b69d;
-}
-
-.stat-table-vert tr:first-of-type td {
-  border-left: 0px solid #090;
-  border-right: 0px solid #090;
-  padding: 1px;
-  margin: 1px;
-  width: 10px;
-  vertical-align: bottom;
-}
-
-.stat-table-vert tr:nth-of-type(2) td {
-  padding: 5px;
-}
-
-.stat-table-vert td {
-  padding: 1px 2px;
-  font-size: 70%;
-} 
-
   </style>
 </head>
 <body>
-    <a name="Functional-Programming"></a>
+    <a name="General-Questions"></a>
+<h1>General Questions</h1>
+
+<ol>
+<li><p>Given a large collection of N integers, find the largest two.</p></li>
+<li><p>Now find the largest five</p></li>
+<li><p>How can this be tested?</p></li>
+<li><p>What is the computational complexity?</p></li>
+<li><p>What is the best approach given the complexity?</p></li>
+<li><p>What about maintainability of the code?</p></li>
+</ol>
+
+
+<a name="Functional-Programming"></a>
 <h1>Functional Programming</h1>
 
 <p>Below are some programming exercises that we ask you to complete in a
@@ -683,7 +666,7 @@ f (h:t) = 1 + f t
 
 <p>Write a function <code>val explode: string -&gt; char list</code> that takes a string
 and returns the string&rsquo;s characters as a list of characters (in the
-order of the string). Potentially useful functions from the OCaml
+order of the string).  Potentially useful functions from the OCaml
 language and standard library:</p>
 
 <ul>

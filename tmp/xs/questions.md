@@ -1,4 +1,18 @@
 
+# General Questions
+
+1. Given a large collection of N integers, find the largest two.
+
+2. Now find the largest five
+
+3. How can this be tested?
+
+4. What is the computational complexity?
+
+5. What is the best approach given the complexity?
+
+6. What about maintainability of the code?
+
 # Functional Programming
 
 Below are some programming exercises that we ask you to complete in a
@@ -27,7 +41,7 @@ f (h:t) = 1 + f t
 
 Write a function `val explode: string -> char list` that takes a string
 and returns the string's characters as a list of characters (in the
-order of the string). Potentially useful functions from the OCaml
+order of the string).  Potentially useful functions from the OCaml
 language and standard library:
 
 * In OCaml, characters in a string can be accessed like in `"hello".[0]`. 
