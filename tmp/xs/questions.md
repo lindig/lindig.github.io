@@ -3,7 +3,7 @@
 
 1. Given a large collection of N integers, find the largest two.
 
-2. Now find the largest five
+2. Now find the largest five?
 
 3. How can this be tested?
 
@@ -34,7 +34,7 @@ f (h:t) = 1 + f t
 ```
 
 1. What does `f` do?
-2. What is the type of `f`
+2. What is the type of `f`?
 3. Is `f` polymorphic? Why or why not and what does that mean?
 
 ## Function `explode`
@@ -44,12 +44,12 @@ and returns the string's characters as a list of characters (in the
 order of the string).  Potentially useful functions from the OCaml
 language and standard library:
 
-* In OCaml, characters in a string can be accessed like in `"hello".[0]`. 
+* In OCaml, characters in a string can be accessed like in `"hello".[0]`.
   The value of this expression is character `'h'`.
-* `String.fold_left : ('a -> char -> 'a) -> 'a -> string -> 'a`. 
-  `fold_left f x s` computes `f (... (f (f x s.[0]) s.[1]) ...) s.[n-1]`, 
+* `String.fold_left : ('a -> char -> 'a) -> 'a -> string -> 'a`.
+  `fold_left f x s` computes `f (... (f (f x s.[0]) s.[1]) ...) s.[n-1]`,
   where `n` is the length of the string `s`.
-* `List.init : int -> (int -> 'a) -> 'a list` 
+* `List.init : int -> (int -> 'a) -> 'a list`
   `init len f` is `[f 0; f 1; ...; f (len-1)]`
 
 ## Function `scan`
