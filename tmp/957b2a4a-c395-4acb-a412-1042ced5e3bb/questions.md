@@ -1,7 +1,8 @@
 
 # General Questions
 
-1. Given a large collection of N integers, find the largest two.
+1. Given a large collection of N integers, find the largest two. Such a
+   function could be called `max2`. What is its type?
 
 2. Now find the largest five?
 
@@ -56,8 +57,11 @@ language and standard library:
 
 Given a string, compute all sub strings starting with `a` and
 ending with `b` and with no other `a` or `b` between `a` and `b`. The
-following examples are legal such sub strings: `ab`, `accb` but this
-would not be a such a sub string: `acabb`.
+following examples are such sub strings:
+
+* `ab`,
+* `accb`
+* but this would not be a such a sub string: `acabb`.
 
 1. Is there another way to characterise the sub strings we are looking
    for?
