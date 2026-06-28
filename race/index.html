@@ -1,0 +1,969 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Seat Racing</title>
+        <style>
+            /* ── Reset & base ─────────────────────────────────────────────────────── */
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            :root {
+                --navy: #1a2e44;
+                --navy-mid: #2c4a6e;
+                --teal: #4a9b8e;
+                --teal-light: #d0ecea;
+                --page: #f7f8fa;
+                --surface: #ffffff;
+                --cell-sub: #e8edf2;
+                --cell-hdr: #c8d8e8;
+                --border: #c5d0dc;
+                --text: #1a2e44;
+                --muted: #6b7c8d;
+                --gold: #d4edda;
+                --silver: #fff3cd;
+                --mono: ui-monospace, "Cascadia Code", "Fira Mono", monospace;
+                --sans: system-ui, -apple-system, sans-serif;
+            }
+
+            html,
+            body {
+                height: 100%;
+                background: var(--page);
+                color: var(--text);
+                font-family: var(--sans);
+                font-size: 14px;
+                line-height: 1.5;
+            }
+
+            /* ── Layout ───────────────────────────────────────────────────────────── */
+            .shell {
+                display: grid;
+                grid-template-columns: 460px 1fr;
+                grid-template-rows: 48px 1fr;
+                height: 100vh;
+            }
+
+            header {
+                grid-column: 1 / -1;
+                background: var(--navy);
+                color: white;
+                display: flex;
+                align-items: center;
+                padding: 0 20px;
+                gap: 12px;
+                border-bottom: 3px solid var(--teal);
+            }
+
+            header h1 {
+                font-size: 15px;
+                font-weight: 600;
+                letter-spacing: 0.03em;
+            }
+            header .subtitle {
+                font-size: 12px;
+                color: #9bb0c4;
+            }
+
+            .sidebar {
+                min-height: 0;
+                background: var(--surface);
+                border-right: 1px solid var(--border);
+                overflow-y: auto;
+                padding: 16px;
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .main {
+                min-height: 0;
+                overflow-y: auto;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            /* ── Form sections ────────────────────────────────────────────────────── */
+            .form-section {
+                border: 1px solid var(--border);
+                border-radius: 6px;
+                min-width: 0;
+            }
+
+            .form-section-title {
+                background: var(--navy-mid);
+                color: white;
+                font-size: 11px;
+                font-weight: 700;
+                letter-spacing: 0.07em;
+                text-transform: uppercase;
+                padding: 6px 10px;
+                border-radius: 5px 5px 0 0;
+            }
+
+            .form-section-body {
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                gap: 7px;
+            }
+
+            .field {
+                display: flex;
+                flex-direction: column;
+                gap: 3px;
+                min-width: 0;
+            }
+            .field label {
+                font-size: 11px;
+                color: var(--muted);
+                font-weight: 500;
+            }
+
+            input[type="text"],
+            input[type="date"],
+            input[type="number"] {
+                font-family: var(--sans);
+                font-size: 13px;
+                padding: 5px 8px;
+                border: 1px solid var(--border);
+                border-radius: 4px;
+                background: var(--page);
+                color: var(--text);
+                width: 100%;
+                min-width: 0;
+                outline: none;
+                transition: border-color 0.15s;
+            }
+            input:focus {
+                border-color: var(--teal);
+                background: white;
+            }
+
+            .row2 {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 7px;
+            }
+            .row4 {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 6px;
+            }
+
+            /* Boat sub-header inside athletes section */
+            .athlete-group-label {
+                font-size: 11px;
+                font-weight: 700;
+                color: var(--navy-mid);
+                padding: 4px 0 2px;
+                border-bottom: 1px solid var(--cell-hdr);
+                margin-bottom: 2px;
+            }
+
+            /* NK times grid: label col + input col */
+            .nk-grid {
+                display: grid;
+                grid-template-columns: 52px 1fr;
+                gap: 5px 8px;
+                align-items: center;
+            }
+
+            .nk-boat-label {
+                font-size: 11px;
+                font-weight: 700;
+                color: var(--navy-mid);
+                padding: 4px 0 2px;
+                grid-column: 1 / -1;
+                border-bottom: 1px solid var(--cell-hdr);
+                margin-bottom: 2px;
+            }
+
+            .nk-race-label {
+                font-size: 11px;
+                color: var(--muted);
+                white-space: nowrap;
+            }
+
+            input.mono {
+                font-family: var(--mono);
+                font-size: 12px;
+            }
+
+            /* ── Result sheet ─────────────────────────────────────────────────────── */
+            .sheet-title {
+                font-size: 13px;
+                font-weight: 700;
+                color: var(--navy);
+                border-bottom: 2px solid var(--teal);
+                padding-bottom: 4px;
+            }
+
+            .sheet-meta {
+                font-size: 12px;
+                color: var(--muted);
+                margin-top: 2px;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                font-size: 12.5px;
+            }
+
+            th {
+                background: var(--navy-mid);
+                color: white;
+                font-weight: 600;
+                padding: 6px 8px;
+                text-align: left;
+                font-size: 11px;
+                letter-spacing: 0.03em;
+            }
+
+            td {
+                padding: 5px 8px;
+                border-bottom: 1px solid var(--border);
+            }
+
+            tr:last-child td {
+                border-bottom: none;
+            }
+
+            td.label {
+                background: var(--cell-sub);
+                font-weight: 500;
+                white-space: nowrap;
+            }
+            td.time {
+                background: #f0f4fa;
+                font-family: var(--mono);
+            }
+            td.num {
+                font-family: var(--mono);
+            }
+            td.swap::after {
+                content: " ⇕";
+                font-size: 9px;
+                vertical-align: super;
+                color: var(--teal);
+            }
+
+            .rank1 td {
+                background: var(--gold);
+            }
+            .rank2 td {
+                background: var(--silver);
+            }
+
+            .races-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 14px;
+            }
+
+            .results-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 14px;
+            }
+
+            .section-label {
+                font-size: 12px;
+                font-weight: 700;
+                color: var(--navy-mid);
+                margin-bottom: 5px;
+                display: flex;
+                align-items: center;
+                gap: 6px;
+            }
+
+            .section-label::after {
+                content: "";
+                flex: 1;
+                height: 1px;
+                background: var(--border);
+            }
+
+            .legend {
+                font-size: 11px;
+                color: var(--muted);
+                border-top: 1px solid var(--border);
+                padding-top: 8px;
+            }
+
+            /* ── Mobile layout (≤ 767px) ─────────────────────────────────────────── */
+            @media (max-width: 767px) {
+                .shell {
+                    grid-template-columns: 1fr;
+                    grid-template-rows: 48px auto auto;
+                    height: auto;
+                    min-height: 100vh;
+                }
+
+                header {
+                    grid-column: 1;
+                    position: sticky;
+                    top: 0;
+                    z-index: 10;
+                }
+
+                .sidebar {
+                    min-height: 0;
+                    overflow-y: visible;
+                    border-right: none;
+                    border-bottom: 1px solid var(--border);
+                }
+
+                .main {
+                    min-height: 0;
+                    overflow-y: visible;
+                }
+
+                .row2 {
+                    grid-template-columns: 1fr 1fr;
+                }
+                .row4 {
+                    grid-template-columns: 1fr 1fr;
+                }
+
+                .races-grid {
+                    grid-template-columns: 1fr;
+                }
+                .results-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="shell">
+            <!-- ── Header ── -->
+            <header>
+                <div>
+                    <div class="subtitle">ROWING</div>
+                    <h1>Seat Racing · Coxed Fours</h1>
+                </div>
+            </header>
+
+            <!-- ── Sidebar ── -->
+            <aside class="sidebar">
+                <!-- Session -->
+                <div class="form-section">
+                    <div class="form-section-title">Session</div>
+                    <div class="form-section-body">
+                        <div class="row2">
+                            <div class="field">
+                                <label>Date</label>
+                                <input type="date" id="i-date" />
+                            </div>
+                            <div class="field">
+                                <label>Distance (m)</label>
+                                <input
+                                    type="number"
+                                    id="i-dist"
+                                    value="750"
+                                    min="100"
+                                    max="5000"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Boats -->
+                <div class="form-section">
+                    <div class="form-section-title">Boats</div>
+                    <div class="form-section-body">
+                        <!-- Boat A -->
+                        <div class="athlete-group-label">Boat A</div>
+                        <div class="row2">
+                            <div class="field">
+                                <label>Name</label
+                                ><input
+                                    type="text"
+                                    id="b0-name"
+                                    value="Kirkland"
+                                />
+                            </div>
+                            <div class="field">
+                                <label>Cox</label
+                                ><input type="text" id="b0-cox" value="Luke" />
+                            </div>
+                        </div>
+                        <div class="row4">
+                            <div class="field">
+                                <label>NK 1</label
+                                ><input
+                                    type="text"
+                                    id="b0-nk0"
+                                    value="3134559"
+                                    class="mono"
+                                />
+                            </div>
+                            <div class="field">
+                                <label>NK 2</label
+                                ><input
+                                    type="text"
+                                    id="b0-nk1"
+                                    value="3134525"
+                                    class="mono"
+                                />
+                            </div>
+                            <div class="field">
+                                <label>NK 3</label
+                                ><input
+                                    type="text"
+                                    id="b0-nk2"
+                                    value="2925380"
+                                    class="mono"
+                                />
+                            </div>
+                            <div class="field">
+                                <label>NK 4</label
+                                ><input
+                                    type="text"
+                                    id="b0-nk3"
+                                    value="3134576"
+                                    class="mono"
+                                />
+                            </div>
+                        </div>
+                        <!-- Boat B -->
+                        <div
+                            class="athlete-group-label"
+                            style="margin-top: 4px"
+                        >
+                            Boat B
+                        </div>
+                        <div class="row2">
+                            <div class="field">
+                                <label>Name</label
+                                ><input
+                                    type="text"
+                                    id="b1-name"
+                                    value="Thorn"
+                                />
+                            </div>
+                            <div class="field">
+                                <label>Cox</label
+                                ><input type="text" id="b1-cox" value="Beth" />
+                            </div>
+                        </div>
+                        <div class="row4">
+                            <div class="field">
+                                <label>NK 1</label
+                                ><input
+                                    type="text"
+                                    id="b1-nk0"
+                                    value="3046941"
+                                    class="mono"
+                                />
+                            </div>
+                            <div class="field">
+                                <label>NK 2</label
+                                ><input
+                                    type="text"
+                                    id="b1-nk1"
+                                    value="2515498"
+                                    class="mono"
+                                />
+                            </div>
+                            <div class="field">
+                                <label>NK 3</label
+                                ><input
+                                    type="text"
+                                    id="b1-nk2"
+                                    value="2739396"
+                                    class="mono"
+                                />
+                            </div>
+                            <div class="field">
+                                <label>NK 4</label
+                                ><input
+                                    type="text"
+                                    id="b1-nk3"
+                                    value="3134587"
+                                    class="mono"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Athletes -->
+                <div class="form-section">
+                    <div class="form-section-title">Athletes</div>
+                    <div class="form-section-body">
+                        <div class="athlete-group-label">
+                            Stroke Side (seats 4 &amp; 2) — S0…S3
+                        </div>
+                        <div class="row2">
+                            <div class="field">
+                                <label>S0</label
+                                ><input type="text" id="rs0" value="Shabs" />
+                            </div>
+                            <div class="field">
+                                <label>S1</label
+                                ><input type="text" id="rs1" value="Lauren" />
+                            </div>
+                        </div>
+                        <div class="row2">
+                            <div class="field">
+                                <label>S2</label
+                                ><input type="text" id="rs2" value="Janki" />
+                            </div>
+                            <div class="field">
+                                <label>S3</label
+                                ><input type="text" id="rs3" value="Lucia" />
+                            </div>
+                        </div>
+                        <div
+                            class="athlete-group-label"
+                            style="margin-top: 4px"
+                        >
+                            Bow Side (seats 3 &amp; 1) — B0…B3
+                        </div>
+                        <div class="row2">
+                            <div class="field">
+                                <label>B0</label
+                                ><input type="text" id="rb0" value="Chrysa" />
+                            </div>
+                            <div class="field">
+                                <label>B1</label
+                                ><input
+                                    type="text"
+                                    id="rb1"
+                                    value="Catherine"
+                                />
+                            </div>
+                        </div>
+                        <div class="row2">
+                            <div class="field">
+                                <label>B2</label
+                                ><input type="text" id="rb2" value="Natalie" />
+                            </div>
+                            <div class="field">
+                                <label>B3</label
+                                ><input type="text" id="rb3" value="Ella" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NK Times -->
+                <div class="form-section">
+                    <div class="form-section-title">
+                        NK Device Times (seconds)
+                    </div>
+                    <div class="form-section-body" id="nk-inputs">
+                        <!-- generated by JS -->
+                    </div>
+                </div>
+            </aside>
+
+            <!-- ── Main result sheet ── -->
+            <main class="main" id="sheet">
+                <!-- generated by JS -->
+            </main>
+        </div>
+
+        <script>
+            // ── Swap scheme ──────────────────────────────────────────────────────────────
+            // 6 races × 4 slots (seat4, seat3, seat2, seat1).
+            // Each entry: [K-idx, T-idx] into rowers-s (stroke slots 0,2) or rowers-b (bow slots 1,3).
+            const SCHEME = [
+                [
+                    [0, 2],
+                    [0, 3],
+                    [1, 3],
+                    [1, 2],
+                ], // Race 1
+                [
+                    [0, 1],
+                    [0, 1],
+                    [2, 3],
+                    [3, 2],
+                ], // Race 2
+                [
+                    [1, 0],
+                    [0, 1],
+                    [2, 3],
+                    [2, 3],
+                ], // Race 3
+                [
+                    [1, 0],
+                    [1, 0],
+                    [2, 3],
+                    [3, 2],
+                ], // Race 4
+                [
+                    [1, 0],
+                    [0, 1],
+                    [3, 2],
+                    [3, 2],
+                ], // Race 5
+                [
+                    [1, 3],
+                    [2, 1],
+                    [0, 2],
+                    [3, 0],
+                ], // Race 6
+            ];
+
+            const SEATS = [
+                { nr: 4, side: "s" },
+                { nr: 3, side: "b" },
+                { nr: 2, side: "s" },
+                { nr: 1, side: "b" },
+            ];
+
+            // ── Formatting ───────────────────────────────────────────────────────────────
+            function fmt1(s) {
+                return s.toFixed(1);
+            }
+            function fmt2(s) {
+                return s.toFixed(2);
+            }
+
+            function fmtCombined(s) {
+                const mins = Math.floor(s / 60);
+                const secs = s - mins * 60;
+                const ss = Math.floor(secs);
+                const ds = Math.floor((secs - ss) * 10);
+                return `${mins}:${ss < 10 ? "0" : ""}${ss}.${ds} (${s.toFixed(1)})`;
+            }
+
+            // ── Read inputs ───────────────────────────────────────────────────────────────
+            function readInputs() {
+                const get = (id) =>
+                    document.getElementById(id)?.value.trim() ?? "";
+                const getF = (id) => parseFloat(get(id)) || 0;
+
+                const dateRaw = get("i-date");
+                const date = dateRaw
+                    ? new Date(dateRaw + "T00:00:00").toLocaleDateString(
+                          "en-GB",
+                          { day: "numeric", month: "long", year: "numeric" },
+                      )
+                    : "—";
+
+                const boats = [0, 1].map((bi) => ({
+                    name: get(`b${bi}-name`) || `Boat ${bi + 1}`,
+                    cox: get(`b${bi}-cox`) || "—",
+                    nk: [0, 1, 2, 3]
+                        .map((ki) => get(`b${bi}-nk${ki}`))
+                        .filter(Boolean),
+                }));
+
+                const rowersS = [0, 1, 2, 3].map(
+                    (i) => get(`rs${i}`) || `S${i}`,
+                );
+                const rowersB = [0, 1, 2, 3].map(
+                    (i) => get(`rb${i}`) || `B${i}`,
+                );
+
+                // raw times: [boat][race] = [readings...]
+                const raw = [0, 1].map((bi) =>
+                    Array.from({ length: 6 }, (_, ri) => {
+                        const val = get(`raw-${bi}-${ri}`);
+                        return val
+                            .split(/[\s,;]+/)
+                            .map(Number)
+                            .filter((x) => !isNaN(x) && x > 0);
+                    }),
+                );
+
+                return {
+                    date,
+                    dist: getF("i-dist") || 750,
+                    boats,
+                    rowersS,
+                    rowersB,
+                    raw,
+                };
+            }
+
+            // ── Core computations ────────────────────────────────────────────────────────
+            function avg(xs) {
+                return xs.length
+                    ? xs.reduce((a, b) => a + b, 0) / xs.length
+                    : null;
+            }
+            function spread(xs) {
+                return xs.length > 1 ? Math.max(...xs) - Math.min(...xs) : 0;
+            }
+
+            function boatOf(ri, side, idx) {
+                const slots = side === "s" ? [0, 2] : [1, 3];
+                for (const si of slots) {
+                    const [k, t] = SCHEME[ri][si];
+                    if (k === idx) return 0;
+                    if (t === idx) return 1;
+                }
+                return null;
+            }
+
+            function swapsNext(ri, side, idx) {
+                if (ri >= 5) return false;
+                return boatOf(ri, side, idx) !== boatOf(ri + 1, side, idx);
+            }
+
+            function rowerTotal(side, idx, raceTimes) {
+                const slots = side === "s" ? [0, 2] : [1, 3];
+                let total = 0,
+                    races = 0;
+                for (let ri = 0; ri < 6; ri++) {
+                    for (const si of slots) {
+                        const [k, t] = SCHEME[ri][si];
+                        const bi = k === idx ? 0 : t === idx ? 1 : -1;
+                        if (bi < 0) continue;
+                        const t0 = raceTimes[ri][bi];
+                        if (t0 !== null) {
+                            total += t0;
+                            races++;
+                        }
+                    }
+                }
+                return races > 0 ? total : null;
+            }
+
+            // ── Build NK input grid ───────────────────────────────────────────────────────
+            function buildNKInputs(boats) {
+                const container = document.getElementById("nk-inputs");
+                // Preserve existing values before rebuilding
+                const saved = {};
+                container
+                    .querySelectorAll('input[id^="raw-"]')
+                    .forEach((el) => {
+                        saved[el.id] = el.value;
+                    });
+
+                container.innerHTML = "";
+                for (let bi = 0; bi < 2; bi++) {
+                    const boatLabel = document.createElement("div");
+                    boatLabel.className = "nk-boat-label";
+                    boatLabel.textContent = boats[bi].name;
+                    container.appendChild(boatLabel);
+
+                    const grid = document.createElement("div");
+                    grid.className = "nk-grid";
+                    for (let ri = 0; ri < 6; ri++) {
+                        const lbl = document.createElement("div");
+                        lbl.className = "nk-race-label";
+                        lbl.textContent = `Race ${ri + 1}`;
+                        grid.appendChild(lbl);
+
+                        const inp = document.createElement("input");
+                        inp.type = "text";
+                        inp.className = "mono";
+                        inp.id = `raw-${bi}-${ri}`;
+                        inp.placeholder = "e.g. 184.1 184.3";
+                        inp.value = saved[inp.id] || "";
+                        inp.addEventListener("input", render);
+                        grid.appendChild(inp);
+                    }
+                    container.appendChild(grid);
+                }
+            }
+
+            // ── Render result sheet ───────────────────────────────────────────────────────
+            function render() {
+                const inp = readInputs();
+                const { date, dist, boats, rowersS, rowersB, raw } = inp;
+
+                const raceTimes = Array.from({ length: 6 }, (_, ri) =>
+                    [0, 1].map((bi) => avg(raw[bi][ri])),
+                );
+                const raceDeltas = Array.from({ length: 6 }, (_, ri) =>
+                    [0, 1].map((bi) =>
+                        raw[bi][ri].length > 1 ? spread(raw[bi][ri]) : null,
+                    ),
+                );
+
+                const totalsS = rowersS.map((_, i) =>
+                    rowerTotal("s", i, raceTimes),
+                );
+                const totalsB = rowersB.map((_, i) =>
+                    rowerTotal("b", i, raceTimes),
+                );
+
+                const rankS = rowersS
+                    .map((n, i) => ({ n, t: totalsS[i] }))
+                    .sort((a, b) => (a.t ?? Infinity) - (b.t ?? Infinity));
+                const rankB = rowersB
+                    .map((n, i) => ({ n, t: totalsB[i] }))
+                    .sort((a, b) => (a.t ?? Infinity) - (b.t ?? Infinity));
+
+                const sheet = document.getElementById("sheet");
+                let html = "";
+
+                // Header
+                html += `<div>
+    <div class="sheet-title">Seat Racing — Coxed Fours</div>
+    <div class="sheet-meta">${date} &nbsp;·&nbsp; ${dist} m</div>
+  </div>`;
+
+                // Boats & NK
+                html += `<div>
+    <div class="section-label">Boats &amp; SpeedCoach Devices</div>
+    <table><thead><tr>
+      <th>Boat</th><th>Cox</th><th>NK 1</th><th>NK 2</th><th>NK 3</th><th>NK 4</th>
+    </tr></thead><tbody>`;
+                for (let bi = 0; bi < 2; bi++) {
+                    const b = boats[bi];
+                    const nks = [0, 1, 2, 3]
+                        .map((ki) => `<td>${b.nk[ki] || "—"}</td>`)
+                        .join("");
+                    html += `<tr><td class="label">${b.name}</td><td>${b.cox}</td>${nks}</tr>`;
+                }
+                html += `</tbody></table></div>`;
+
+                // Race tables
+                html += `<div>
+    <div class="section-label">Race Lineups &amp; Times</div>
+    <div class="races-grid">`;
+
+                for (let ri = 0; ri < 6; ri++) {
+                    const lu = SCHEME[ri].map(([ki, ti], si) => {
+                        const side = si % 2 === 0 ? "s" : "b";
+                        const rowers = side === "s" ? rowersS : rowersB;
+                        return [
+                            {
+                                name: rowers[ki],
+                                swaps: swapsNext(ri, side, ki),
+                            },
+                            {
+                                name: rowers[ti],
+                                swaps: swapsNext(ri, side, ti),
+                            },
+                        ];
+                    });
+
+                    const t0 = raceTimes[ri][0],
+                        t1 = raceTimes[ri][1];
+                    const d0 = raceDeltas[ri][0],
+                        d1 = raceDeltas[ri][1];
+
+                    html += `<table><thead><tr>
+      <th>Race ${ri + 1}</th><th>${boats[0].name}</th><th>${boats[1].name}</th>
+    </tr></thead><tbody>
+      <tr><td class="label">Cox</td><td>${boats[0].cox}</td><td>${boats[1].cox}</td></tr>`;
+
+                    for (let si = 0; si < 4; si++) {
+                        const seat = SEATS[si];
+                        const [ke, te] = lu[si];
+                        html += `<tr>
+        <td class="label">Seat ${seat.nr} (${seat.side})</td>
+        <td class="${ke.swaps ? "swap" : ""}">${ke.name}</td>
+        <td class="${te.swaps ? "swap" : ""}">${te.name}</td>
+      </tr>`;
+                    }
+
+                    html += `
+      <tr><td class="label">Delta</td>
+        <td class="time">${d0 !== null ? fmt2(d0) : "—"}</td>
+        <td class="time">${d1 !== null ? fmt2(d1) : "—"}</td></tr>
+      <tr><td class="label"><strong>Time</strong></td>
+        <td class="time"><strong>${t0 !== null ? fmtCombined(t0) : "—"}</strong></td>
+        <td class="time"><strong>${t1 !== null ? fmtCombined(t1) : "—"}</strong></td></tr>
+    </tbody></table>`;
+                }
+                html += `</div></div>`;
+
+                // Results
+                html += `<div>
+    <div class="section-label">Results</div>
+    <div class="results-grid">`;
+
+                for (const [ranked, label] of [
+                    [rankS, "Stroke Side"],
+                    [rankB, "Bow Side"],
+                ]) {
+                    html += `<table><thead><tr>
+      <th>Rank</th><th>${label}</th><th>Total time</th><th>Δ</th>
+    </tr></thead><tbody>`;
+                    ranked.forEach((entry, i) => {
+                        const r = i + 1;
+                        const cls = r === 1 ? "rank1" : r === 2 ? "rank2" : "";
+                        const diff =
+                            i === 0 ||
+                            entry.t === null ||
+                            ranked[i - 1].t === null
+                                ? "—"
+                                : fmt1(entry.t - ranked[i - 1].t);
+                        html += `<tr class="${cls}">
+        <td class="num"><strong>${r}</strong></td>
+        <td>${entry.n}</td>
+        <td class="num">${entry.t !== null ? fmt1(entry.t) : "—"}</td>
+        <td class="num">${diff}</td>
+      </tr>`;
+                    });
+                    html += `</tbody></table>`;
+                }
+                html += `</div></div>`;
+
+                // Boat totals
+                html += `<div><table><thead><tr>
+    <th>Boat</th><th>Cox</th><th>Total time</th>
+  </tr></thead><tbody>`;
+                for (let bi = 0; bi < 2; bi++) {
+                    const tot = raceTimes
+                        .map((rt) => rt[bi])
+                        .filter((x) => x !== null);
+                    const sum = tot.length
+                        ? tot.reduce((a, b) => a + b, 0)
+                        : null;
+                    html += `<tr>
+      <td class="label"><strong>${boats[bi].name}</strong></td>
+      <td>${boats[bi].cox}</td>
+      <td class="num">${sum !== null ? fmt1(sum) : "—"}</td>
+    </tr>`;
+                }
+                html += `</tbody></table></div>`;
+
+                // Legend
+                html += `<div class="legend">
+    Boat time per race is the average of all NK SpeedCoach readings entered above.
+    Race times shown as m:ss.d (raw seconds). Delta is the max spread between device readings.
+    Total times are the sum of six race averages per athlete.
+    ⇕ marks a rower swapping boats next race.
+    Rankings are independent for stroke-side and bow-side seats.
+  </div>`;
+
+                sheet.innerHTML = html;
+            }
+
+            // ── Init ─────────────────────────────────────────────────────────────────────
+            document.getElementById("i-date").value = new Date()
+                .toISOString()
+                .slice(0, 10);
+
+            function init() {
+                buildNKInputs(readInputs().boats);
+                render();
+            }
+
+            // Rebuild NK section when boat names change (preserves entered times)
+            document.getElementById("b0-name").addEventListener("input", init);
+            document.getElementById("b1-name").addEventListener("input", init);
+
+            // Wire all other static inputs
+            document
+                .querySelectorAll(
+                    'input:not(#b0-name):not(#b1-name):not([id^="raw-"])',
+                )
+                .forEach((el) => el.addEventListener("input", render));
+
+            init();
+        </script>
+    </body>
+</html>
