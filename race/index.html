@@ -40,6 +40,7 @@
                 font-family: var(--sans);
                 font-size: 14px;
                 line-height: 1.5;
+                overflow-x: hidden;
             }
 
             /* ── Layout ───────────────────────────────────────────────────────────── */
@@ -307,6 +308,8 @@
                     grid-template-rows: 48px auto auto;
                     height: auto;
                     min-height: 100vh;
+                    max-width: 100vw;
+                    overflow-x: hidden;
                 }
 
                 header {
@@ -768,7 +771,10 @@
                         inp.id = `raw-${bi}-${ri}`;
                         inp.placeholder = "e.g. 184.1 184.3";
                         inp.value = saved[inp.id] || "";
-                        inp.addEventListener("input", render);
+                        inp.addEventListener("input", () => {
+                            saveAll();
+                            render();
+                        });
                         grid.appendChild(inp);
                     }
                     container.appendChild(grid);
@@ -942,26 +948,83 @@
                 sheet.innerHTML = html;
             }
 
-            // ── Init ─────────────────────────────────────────────────────────────────────
-            document.getElementById("i-date").value = new Date()
-                .toISOString()
-                .slice(0, 10);
+            // ── Persistence ───────────────────────────────────────────────────────────────
+            const STORAGE_KEY = "seat-racing-v1";
 
-            function init() {
+            function saveAll() {
+                const data = {};
+                document.querySelectorAll("input[id]").forEach((el) => {
+                    data[el.id] = el.value;
+                });
+                try {
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+                } catch (e) {}
+            }
+
+            function getSaved() {
+                try {
+                    return (
+                        JSON.parse(localStorage.getItem(STORAGE_KEY)) || null
+                    );
+                } catch (e) {
+                    return null;
+                }
+            }
+
+            function restoreStatic(data) {
+                if (!data) return;
+                document
+                    .querySelectorAll('input[id]:not([id^="raw-"])')
+                    .forEach((el) => {
+                        if (data[el.id] !== undefined) el.value = data[el.id];
+                    });
+            }
+
+            function restoreNK(data) {
+                if (!data) return;
+                document.querySelectorAll('input[id^="raw-"]').forEach((el) => {
+                    if (data[el.id] !== undefined) el.value = data[el.id];
+                });
+            }
+
+            // ── Init ─────────────────────────────────────────────────────────────────────
+            // Restore static inputs before anything else so boat names are correct
+            const _saved = getSaved();
+            restoreStatic(_saved);
+            // Only set today's date if nothing was saved
+            if (!_saved || !_saved["i-date"]) {
+                document.getElementById("i-date").value = new Date()
+                    .toISOString()
+                    .slice(0, 10);
+            }
+
+            function init(skipNKRestore) {
                 buildNKInputs(readInputs().boats);
+                if (!skipNKRestore) restoreNK(getSaved());
                 render();
             }
 
             // Rebuild NK section when boat names change (preserves entered times)
-            document.getElementById("b0-name").addEventListener("input", init);
-            document.getElementById("b1-name").addEventListener("input", init);
+            document.getElementById("b0-name").addEventListener("input", () => {
+                saveAll();
+                init(true);
+            });
+            document.getElementById("b1-name").addEventListener("input", () => {
+                saveAll();
+                init(true);
+            });
 
-            // Wire all other static inputs
+            // Wire all other static inputs — save on every change
             document
                 .querySelectorAll(
                     'input:not(#b0-name):not(#b1-name):not([id^="raw-"])',
                 )
-                .forEach((el) => el.addEventListener("input", render));
+                .forEach((el) =>
+                    el.addEventListener("input", () => {
+                        saveAll();
+                        render();
+                    }),
+                );
 
             init();
         </script>
