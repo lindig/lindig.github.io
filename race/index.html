@@ -949,19 +949,48 @@
             }
 
             // ── Persistence ───────────────────────────────────────────────────────────────
+            // State is written to both localStorage (for the current user) and the URL
+            // hash (for sharing). On load, the hash takes priority over localStorage.
+
             const STORAGE_KEY = "seat-racing-v1";
 
-            function saveAll() {
+            function collectData() {
                 const data = {};
                 document.querySelectorAll("input[id]").forEach((el) => {
                     data[el.id] = el.value;
                 });
+                return data;
+            }
+
+            function saveAll() {
+                const data = collectData();
+                // localStorage — current user
                 try {
                     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
                 } catch (e) {}
+                // URL hash — shareable; replaceState keeps the back-button clean
+                try {
+                    const encoded = btoa(
+                        unescape(encodeURIComponent(JSON.stringify(data))),
+                    );
+                    history.replaceState(null, "", "#" + encoded);
+                } catch (e) {}
             }
 
-            function getSaved() {
+            function getHashData() {
+                try {
+                    const hash = location.hash.slice(1);
+                    if (!hash) return null;
+                    return (
+                        JSON.parse(decodeURIComponent(escape(atob(hash)))) ||
+                        null
+                    );
+                } catch (e) {
+                    return null;
+                }
+            }
+
+            function getLocalData() {
                 try {
                     return (
                         JSON.parse(localStorage.getItem(STORAGE_KEY)) || null
@@ -969,6 +998,11 @@
                 } catch (e) {
                     return null;
                 }
+            }
+
+            // Hash takes priority (shared link); fall back to localStorage
+            function getSaved() {
+                return getHashData() || getLocalData();
             }
 
             function restoreStatic(data) {
@@ -987,11 +1021,56 @@
                 });
             }
 
+            // ── Share button ──────────────────────────────────────────────────────────────
+            function buildShareButton() {
+                const btn = document.createElement("button");
+                btn.id = "share-btn";
+                btn.textContent = "Copy share link";
+                btn.style.cssText = [
+                    "display:block",
+                    "width:100%",
+                    "margin-top:4px",
+                    "padding:7px 10px",
+                    "border:none",
+                    "border-radius:4px",
+                    "background:var(--teal)",
+                    "color:white",
+                    "font-size:12px",
+                    "font-weight:600",
+                    "cursor:pointer",
+                    "letter-spacing:.03em",
+                ].join(";");
+                btn.addEventListener("click", () => {
+                    saveAll(); // ensure hash is current
+                    navigator.clipboard
+                        .writeText(location.href)
+                        .then(() => {
+                            btn.textContent = "Copied!";
+                            setTimeout(() => {
+                                btn.textContent = "Copy share link";
+                            }, 2000);
+                        })
+                        .catch(() => {
+                            // Fallback: select a temp input
+                            const tmp = document.createElement("input");
+                            tmp.value = location.href;
+                            document.body.appendChild(tmp);
+                            tmp.select();
+                            document.execCommand("copy");
+                            document.body.removeChild(tmp);
+                            btn.textContent = "Copied!";
+                            setTimeout(() => {
+                                btn.textContent = "Copy share link";
+                            }, 2000);
+                        });
+                });
+                // Append after the NK inputs section (last sidebar child)
+                document.querySelector(".sidebar").appendChild(btn);
+            }
+
             // ── Init ─────────────────────────────────────────────────────────────────────
-            // Restore static inputs before anything else so boat names are correct
             const _saved = getSaved();
             restoreStatic(_saved);
-            // Only set today's date if nothing was saved
             if (!_saved || !_saved["i-date"]) {
                 document.getElementById("i-date").value = new Date()
                     .toISOString()
@@ -1004,7 +1083,7 @@
                 render();
             }
 
-            // Rebuild NK section when boat names change (preserves entered times)
+            // Rebuild NK section when boat names change
             document.getElementById("b0-name").addEventListener("input", () => {
                 saveAll();
                 init(true);
@@ -1014,7 +1093,7 @@
                 init(true);
             });
 
-            // Wire all other static inputs — save on every change
+            // Wire all other static inputs
             document
                 .querySelectorAll(
                     'input:not(#b0-name):not(#b1-name):not([id^="raw-"])',
@@ -1026,6 +1105,7 @@
                     }),
                 );
 
+            buildShareButton();
             init();
         </script>
     </body>
