@@ -396,16 +396,17 @@
                         <tr>
                             <th>Athlete</th>
                             <th class="r">Power (W)</th>
-                            <th class="r">Mean time (s) ± σ</th>
+                            <th class="r">Mean total time (s) ± σ</th>
+                            <th class="r">Gap to next (s) ± σ</th>
                             <th class="r">Rank match</th>
                         </tr>
                     </thead>
                     <tbody id="tableBody">
-                        <tr><td colspan="4" style="color:var(--text-3); padding:1.5rem 0; text-align:center;">Run simulation to see results</td></tr>
+                        <tr><td colspan="5" style="color:var(--text-3); padding:1.5rem 0; text-align:center;">Run simulation to see results</td></tr>
                     </tbody>
                 </table>
                 <div class="footnote">
-                    &gt;80% shown in green · 60–80% amber · &lt;60% red
+                    Rank match: &gt;80% green · 60–80% amber · &lt;60% red &nbsp;·&nbsp; Gap to next: green if gap &gt; 1.5× σ · red if gap &lt; 0.75× σ
                 </div>
             </div>
 
@@ -645,19 +646,62 @@
         const prob = matchCount.map(c => c / nSamples);
 
         // Render table
+        // For each group, compute std of pairwise differences between consecutive athletes
+        // using sample covariance: Var(T_i - T_j) = Var(T_i) + Var(T_j) - 2*Cov(T_i,T_j)
+        // Accumulate cross-products per pair in the same MC pass using sumT/sumT2 + cross sums
+        // We need sumTiTj for each pair of athletes in the same group
+        const crossSums = {};  // key "i_j" -> sum of T[i]*T[j]
+        for (let gi = 0; gi < groups.length; gi++) {
+            const idxs = groups[gi].indices;
+            for (let a = 0; a < idxs.length - 1; a++) {
+                for (let b = a + 1; b < idxs.length; b++) {
+                    crossSums[`${idxs[a]}_${idxs[b]}`] = 0;
+                }
+            }
+        }
+        for (const totals of samples) {
+            for (const key of Object.keys(crossSums)) {
+                const [i, j] = key.split('_').map(Number);
+                crossSums[key] += totals[i] * totals[j];
+            }
+        }
+        function stdDiff(i, j) {
+            const mi = means[i], mj = means[j];
+            const vi = sumT2[i] / nSamples - mi * mi;
+            const vj = sumT2[j] / nSamples - mj * mj;
+            const key = i < j ? `${i}_${j}` : `${j}_${i}`;
+            const cov = crossSums[key] / nSamples - mi * mj;
+            return Math.sqrt(Math.max(0, vi + vj - 2 * cov));
+        }
+
         let html = '';
         for (let gi = 0; gi < groups.length; gi++) {
             const g = groups[gi];
             const sorted = g.indices.slice().sort((a, b) => pRanks[a] - pRanks[b]);
-            html += `<tr class="group-row"><td colspan="4">${g.label}</td></tr>`;
-            for (const idx of sorted) {
+            html += `<tr class="group-row"><td colspan="5">${g.label}</td></tr>`;
+            for (let rank = 0; rank < sorted.length; rank++) {
+                const idx = sorted[rank];
                 const p = prob[idx];
                 const cls = p > 0.8 ? 'prob-high' : p > 0.6 ? 'prob-mid' : 'prob-low';
                 const barW = (p * 100).toFixed(1);
+                // Margin to next athlete in rank order (blank for last in group)
+                let marginCell = '<td class="r td-mono" style="color:var(--text-3)">—</td>';
+                if (rank < sorted.length - 1) {
+                    const nextIdx = sorted[rank + 1];
+                    const marginVal = means[nextIdx] - means[idx];  // positive: next is slower
+                    const marginSd  = stdDiff(idx, nextIdx);
+                    const snr = marginVal / marginSd;
+                    const mCls = snr > 1.5 ? 'margin-pos' : snr > 0.75 ? '' : 'margin-neg';
+                    marginCell = `<td class="r td-mono">
+                        <span class="${mCls}">${marginVal.toFixed(2)}</span>
+                        <span style="color:var(--text-3)"> ±${marginSd.toFixed(2)}</span>
+                    </td>`;
+                }
                 html += `<tr>
                     <td class="td-mono">R${idx+1}</td>
                     <td class="r td-mono">${powers[idx].toFixed(1)}</td>
-                    <td class="r td-mono">${means[idx].toFixed(2)} ± ${stds[idx].toFixed(2)}</td>
+                    <td class="r td-mono">${means[idx].toFixed(2)} <span style="color:var(--text-3)">±${stds[idx].toFixed(2)}</span></td>
+                    ${marginCell}
                     <td class="r">
                         <div class="prob-cell">
                             <span class="prob-val ${cls}">${(p*100).toFixed(1)}%</span>
