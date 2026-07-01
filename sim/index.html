@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seat Racing – Ranking Reliability</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg:        #f6f6f4;
+            --surface:   #ffffff;
+            --border:    #d8d8d4;
+            --border-lt: #ebebea;
+            --text:      #1c1c1a;
+            --text-2:    #5a5a56;
+            --text-3:    #8a8a85;
+            --accent:    #2c4a7c;
+            --mono:      'JetBrains Mono', monospace;
+            --high:      #1a6b3a;
+            --mid:       #7a5c10;
+            --low:       #8b2020;
+            --high-bg:   #e8f4ed;
+            --mid-bg:    #f7f0dc;
+            --low-bg:    #f7e8e8;
+        }
+
+        body {
+            background: var(--bg);
+            font-family: 'Inter', -apple-system, sans-serif;
+            font-size: 14px;
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            padding: 2.5rem 1.5rem 4rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* Header */
+        .header {
+            margin-bottom: 2rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .header h1 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+        }
+        .header p {
+            font-size: 0.82rem;
+            color: var(--text-2);
+        }
+        .header-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 0.75rem;
+        }
+        .meta-item {
+            font-size: 0.75rem;
+            color: var(--text-3);
+            font-family: var(--mono);
+        }
+        .meta-item strong {
+            color: var(--text-2);
+            font-weight: 500;
+        }
+
+        /* Layout */
+        .layout {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 1.5rem;
+            align-items: start;
+        }
+        @media (max-width: 800px) { .layout { grid-template-columns: 1fr; } }
+
+        /* Panel */
+        .panel {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 1.25rem;
+        }
+        .panel-title {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-3);
+            margin-bottom: 1rem;
+        }
+
+        /* Athlete sliders */
+        .athlete-row {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.45rem;
+        }
+        .athlete-label {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-2);
+            width: 2rem;
+            flex-shrink: 0;
+        }
+        .athlete-slider {
+            flex: 1;
+            accent-color: var(--accent);
+            height: 2px;
+            cursor: pointer;
+        }
+        .athlete-value {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--text);
+            width: 3.2rem;
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        /* Global params */
+        .params {
+            margin-top: 1.25rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--border-lt);
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .param-row {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        .param-label {
+            font-size: 0.72rem;
+            color: var(--text-2);
+        }
+        .param-input-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .param-row input[type=range] {
+            flex: 1;
+            min-width: 0;
+            accent-color: var(--accent);
+            cursor: pointer;
+        }
+        .param-val {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--text);
+            width: 3.8rem;
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        /* Buttons */
+        .btn-row {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .btn-run {
+            flex: 1;
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.55rem 1rem;
+            font-size: 0.82rem;
+            font-weight: 500;
+            cursor: pointer;
+            letter-spacing: 0.01em;
+        }
+        .btn-run:hover { background: #1e3660; }
+        .btn-reset {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-2);
+            padding: 0.55rem 0.9rem;
+            font-size: 0.82rem;
+            cursor: pointer;
+        }
+        .btn-reset:hover { border-color: var(--text-3); color: var(--text); }
+
+        .samples-note {
+            margin-top: 0.75rem;
+            font-size: 0.72rem;
+            color: var(--text-3);
+        }
+
+        /* Results */
+        .result-panel { display: flex; flex-direction: column; gap: 1rem; }
+
+        /* Table */
+        .table-panel {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 1.25rem;
+        }
+        .table-panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+        }
+        thead th {
+            text-align: left;
+            font-size: 0.68rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: var(--text-3);
+            padding: 0 0 0.6rem;
+            border-bottom: 1px solid var(--border);
+        }
+        thead th.r { text-align: right; }
+        thead th.c { text-align: center; }
+        tbody td {
+            padding: 0.4rem 0 0.4rem;
+            border-bottom: 1px solid var(--border-lt);
+            color: var(--text);
+        }
+        tbody td.r { text-align: right; }
+        tbody td.c { text-align: center; }
+        .td-mono { font-family: var(--mono); font-size: 0.78rem; }
+        tbody tr:last-child td { border-bottom: none; }
+
+        .group-row td {
+            font-size: 0.68rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: var(--text-3);
+            padding-top: 1rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid var(--border-lt);
+        }
+        /* don't add extra top padding to the first group */
+        .group-row:first-child td { padding-top: 0.5rem; }
+
+        /* Probability display */
+        .prob-cell {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 0.5rem;
+        }
+        .prob-val {
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            font-weight: 500;
+            min-width: 3rem;
+            text-align: right;
+        }
+        .prob-high { color: var(--high); }
+        .prob-mid  { color: var(--mid); }
+        .prob-low  { color: var(--low); }
+        .prob-bar {
+            width: 48px;
+            height: 3px;
+            background: var(--border-lt);
+            flex-shrink: 0;
+        }
+        .prob-bar-fill {
+            height: 100%;
+            background: var(--accent);
+            transition: width 0.2s;
+        }
+        .prob-high .prob-bar-fill { background: var(--high); }
+
+        /* Summary row */
+        .summary {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 0.9rem 1.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 2rem;
+            font-size: 0.78rem;
+        }
+        .summary-item .label { color: var(--text-3); }
+        .summary-item .val {
+            font-family: var(--mono);
+            font-weight: 500;
+            color: var(--text);
+            margin-left: 0.3rem;
+        }
+
+        .footnote {
+            font-size: 0.7rem;
+            color: var(--text-3);
+            margin-top: 0.5rem;
+        }
+
+        /* Race table */
+        .race-table-panel {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 1.25rem;
+        }
+        .crew-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px;
+        }
+        .chip {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            padding: 1px 4px;
+            background: var(--border-lt);
+            color: var(--text-2);
+            white-space: nowrap;
+        }
+        .margin-pos { color: var(--high); }
+        .margin-neg { color: var(--low); }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Seat Racing — Ranking Reliability</h1>
+        <p>Monte Carlo simulation: probability that each athlete's time rank matches their true power rank, within group</p>
+        <div class="header-meta">
+            <span class="meta-item"><strong>8</strong> athletes</span>
+            <span class="meta-item"><strong>6</strong> races</span>
+            <span class="meta-item"><strong>4 v 4</strong> per race</span>
+            <span class="meta-item">distance: <strong id="distanceMeta">1000 m</strong></span>
+        </div>
+    </div>
+
+    <div class="layout">
+        <!-- Left: controls -->
+        <div class="panel">
+            <div class="panel-title">Athlete mean power (W)</div>
+            <div id="athleteSliders"></div>
+
+            <div class="params">
+                <div class="param-row">
+                    <span class="param-label">Race distance</span>
+                    <div class="param-input-row">
+                        <input type="range" id="raceDistance" min="500" max="1500" step="10" value="1000">
+                        <span class="param-val" id="distanceVal">1000 m</span>
+                    </div>
+                </div>
+                <div class="param-row">
+                    <span class="param-label">Power noise (CV)</span>
+                    <div class="param-input-row">
+                        <input type="range" id="powerNoise" min="0" max="5" step="0.1" value="3.0">
+                        <span class="param-val" id="powerNoiseVal">3.0%</span>
+                    </div>
+                </div>
+                <div class="param-row">
+                    <span class="param-label">Timing noise</span>
+                    <div class="param-input-row">
+                        <input type="range" id="timeNoise" min="0" max="3" step="0.05" value="1.0">
+                        <span class="param-val" id="timeNoiseVal">1.00 s</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-row">
+                <button class="btn-run" id="runBtn">Run simulation</button>
+                <button class="btn-reset" id="resetDefaults">Reset</button>
+            </div>
+            <div class="samples-note">12,000 Monte Carlo samples per run</div>
+        </div>
+
+        <!-- Right: results -->
+        <div class="result-panel">
+            <div class="table-panel">
+                <div class="table-panel-header">
+                    <div class="panel-title" style="margin-bottom:0;">Results</div>
+                    <span style="font-size:0.7rem; color:var(--text-3);">rank match probability</span>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Athlete</th>
+                            <th class="r">Power (W)</th>
+                            <th class="r">Mean time (s) ± σ</th>
+                            <th class="r">Rank match</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <tr><td colspan="4" style="color:var(--text-3); padding:1.5rem 0; text-align:center;">Run simulation to see results</td></tr>
+                    </tbody>
+                </table>
+                <div class="footnote">
+                    &gt;80% shown in green · 60–80% amber · &lt;60% red
+                </div>
+            </div>
+
+            <div class="summary">
+                <div class="summary-item"><span class="label">Samples</span><span class="val" id="sampleCount">12,000</span></div>
+                <div class="summary-item"><span class="label">Distance</span><span class="val" id="summaryDistance">1000 m</span></div>
+                <div class="summary-item"><span class="label">Power noise</span><span class="val" id="summaryPowerNoise">3.0%</span></div>
+                <div class="summary-item"><span class="label">Timing noise</span><span class="val" id="summaryTimeNoise">1.00 s</span></div>
+                <div class="summary-item"><span class="label">Group 1–4 full agreement</span><span class="val" id="group1Agreement">—</span></div>
+                <div class="summary-item"><span class="label">Group 5–8 full agreement</span><span class="val" id="group2Agreement">—</span></div>
+            </div>
+
+            <div class="race-table-panel">
+                <div class="table-panel-header">
+                    <div class="panel-title" style="margin-bottom:0;">Race times</div>
+                    <span style="font-size:0.7rem; color:var(--text-3);">mean ± σ across simulation samples</span>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Race</th>
+                            <th>Crew R</th>
+                            <th class="r">t_R (s)</th>
+                            <th>Crew Q</th>
+                            <th class="r">t_Q (s)</th>
+                            <th class="r">Margin R−Q (s)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="raceTableBody">
+                        <tr><td colspan="6" style="color:var(--text-3); padding:1.5rem 0; text-align:center;">Run simulation to see results</td></tr>
+                    </tbody>
+                </table>
+                <div class="footnote">Margin &lt; 0: crew Q faster · Margin &gt; 0: crew R faster</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    // Swap matrix R (6 races × 8 athletes), each row sums to 4
+    const R = [
+        [1,1,0,0,1,1,0,0],
+        [0,1,0,1,1,0,1,0],
+        [0,1,1,0,0,1,1,0],
+        [1,1,0,0,0,0,1,1],
+        [0,1,0,1,0,1,0,1],
+        [0,1,1,0,1,0,0,1]
+    ];
+    const nAthletes = 8;
+    const nRaces = 6;
+    const defaultPowers = [308.38, 238.45, 254.62, 266.77, 227.97, 253.62, 253.53, 196.66];
+
+    const powerSliders = [];
+    const powerValues = [...defaultPowers];
+
+    // Build athlete sliders
+    const sliderContainer = document.getElementById('athleteSliders');
+    for (let i = 0; i < nAthletes; i++) {
+        const row = document.createElement('div');
+        row.className = 'athlete-row';
+
+        const label = document.createElement('span');
+        label.className = 'athlete-label';
+        label.textContent = `R${i+1}`;
+
+        const slider = document.createElement('input');
+        slider.type = 'range';
+        slider.min = 150; slider.max = 450; slider.step = 0.5;
+        slider.value = defaultPowers[i];
+        slider.className = 'athlete-slider';
+
+        const val = document.createElement('span');
+        val.className = 'athlete-value';
+        val.textContent = defaultPowers[i].toFixed(1);
+
+        slider.addEventListener('input', function() {
+            const v = parseFloat(this.value);
+            powerValues[i] = v;
+            val.textContent = v.toFixed(1);
+        });
+
+        row.appendChild(label);
+        row.appendChild(slider);
+        row.appendChild(val);
+        sliderContainer.appendChild(row);
+        powerSliders.push(slider);
+    }
+
+    const distanceSlider   = document.getElementById('raceDistance');
+    const powerNoiseSlider = document.getElementById('powerNoise');
+    const timeNoiseSlider  = document.getElementById('timeNoise');
+    const distanceVal      = document.getElementById('distanceVal');
+    const powerNoiseVal    = document.getElementById('powerNoiseVal');
+    const timeNoiseVal     = document.getElementById('timeNoiseVal');
+    const distanceMeta     = document.getElementById('distanceMeta');
+    const tableBody        = document.getElementById('tableBody');
+    const sampleCount      = document.getElementById('sampleCount');
+    const summaryDistance  = document.getElementById('summaryDistance');
+    const summaryPowerNoise= document.getElementById('summaryPowerNoise');
+    const summaryTimeNoise = document.getElementById('summaryTimeNoise');
+    const group1Agreement  = document.getElementById('group1Agreement');
+    const group2Agreement  = document.getElementById('group2Agreement');
+
+    function updateLabels() {
+        distanceVal.textContent    = distanceSlider.value + ' m';
+        distanceMeta.textContent   = distanceSlider.value + ' m';
+        powerNoiseVal.textContent  = parseFloat(powerNoiseSlider.value).toFixed(1) + '%';
+        timeNoiseVal.textContent   = parseFloat(timeNoiseSlider.value).toFixed(2) + ' s';
+    }
+    distanceSlider.addEventListener('input', updateLabels);
+    powerNoiseSlider.addEventListener('input', updateLabels);
+    timeNoiseSlider.addEventListener('input', updateLabels);
+
+    // Box-Muller normal sample
+    function randn() {
+        const u1 = Math.random(), u2 = Math.random();
+        return Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
+    }
+
+    // Crew time from total crew power and race distance
+    function crewTime(P, d) {
+        const k = 1 / (4 * 2.8);   // = 1/11.2
+        return d / Math.pow(k * P, 1/3);
+    }
+
+    // Monte Carlo: returns { sampleTotals, raceSums } where raceSums has per-race mean/var accumulators
+    function runMonteCarlo(powers, powerCV, timeSigma, distance, nSamples) {
+        const sampleTotals = [];
+        // Per-race accumulators: sumTR[r], sumTR2[r], sumTQ[r], sumTQ2[r]
+        const sumTR  = new Array(nRaces).fill(0);
+        const sumTR2 = new Array(nRaces).fill(0);
+        const sumTQ  = new Array(nRaces).fill(0);
+        const sumTQ2 = new Array(nRaces).fill(0);
+
+        for (let s = 0; s < nSamples; s++) {
+            const total = new Array(nAthletes).fill(0);
+            for (let r = 0; r < nRaces; r++) {
+                // Per-race, per-athlete power noise (multiplicative, CV = powerCV)
+                let PR = 0, PQ = 0;
+                for (let i = 0; i < nAthletes; i++) {
+                    const p = powerCV > 0 ? powers[i] * Math.max(0, 1 + powerCV * randn()) : powers[i];
+                    if (R[r][i] === 1) PR += p; else PQ += p;
+                }
+                // Independent measurement noise on each crew's race time
+                let tR = crewTime(PR, distance) + (timeSigma > 0 ? timeSigma * randn() : 0);
+                let tQ = crewTime(PQ, distance) + (timeSigma > 0 ? timeSigma * randn() : 0);
+                tR = Math.max(0.01, tR);
+                tQ = Math.max(0.01, tQ);
+                sumTR[r]  += tR;  sumTR2[r]  += tR * tR;
+                sumTQ[r]  += tQ;  sumTQ2[r]  += tQ * tQ;
+                // Accumulate: T = R^T t_R + Q^T t_Q
+                for (let i = 0; i < nAthletes; i++) {
+                    total[i] += R[r][i] === 1 ? tR : tQ;
+                }
+            }
+            sampleTotals.push(total);
+        }
+        // Compute per-race mean/std
+        const raceStats = [];
+        for (let r = 0; r < nRaces; r++) {
+            const mR = sumTR[r] / nSamples;
+            const mQ = sumTQ[r] / nSamples;
+            raceStats.push({
+                meanR: mR, stdR: Math.sqrt(Math.max(0, sumTR2[r] / nSamples - mR * mR)),
+                meanQ: mQ, stdQ: Math.sqrt(Math.max(0, sumTQ2[r] / nSamples - mQ * mQ)),
+            });
+        }
+        return { sampleTotals, raceStats };
+    }
+
+    // Rank athletes within each group by totals (ascending = lower time = better)
+    function timeRanks(totals, groups) {
+        const rank = new Array(nAthletes);
+        for (const g of groups) {
+            const sorted = g.indices.slice().sort((a, b) => totals[a] - totals[b]);
+            sorted.forEach((athlete, pos) => { rank[athlete] = pos; });
+        }
+        return rank;
+    }
+
+    // Power ranks within each group (descending power = better = lower rank index)
+    function powerRanks(powers, groups) {
+        const rank = new Array(nAthletes);
+        for (const g of groups) {
+            const sorted = g.indices.slice().sort((a, b) => powers[b] - powers[a]);
+            sorted.forEach((athlete, pos) => { rank[athlete] = pos; });
+        }
+        return rank;
+    }
+
+    const groups = [
+        { indices: [0,1,2,3], label: 'Group 1–4' },
+        { indices: [4,5,6,7], label: 'Group 5–8' }
+    ];
+
+    function simulate() {
+        const powers     = powerValues.map((_, i) => parseFloat(powerSliders[i].value));
+        const distance   = parseFloat(distanceSlider.value);
+        const powerCV    = parseFloat(powerNoiseSlider.value) / 100;
+        const timeSigma  = parseFloat(timeNoiseSlider.value);
+        const nSamples   = 12000;
+
+        // Update summary labels
+        summaryDistance.textContent   = distance + ' m';
+        summaryPowerNoise.textContent = (powerCV * 100).toFixed(1) + '%';
+        summaryTimeNoise.textContent  = timeSigma.toFixed(2) + ' s';
+        sampleCount.textContent       = nSamples.toLocaleString();
+
+        const { sampleTotals: samples, raceStats } = runMonteCarlo(powers, powerCV, timeSigma, distance, nSamples);
+        const pRanks     = powerRanks(powers, groups);
+        const matchCount = new Array(nAthletes).fill(0);
+        const groupPerfect = { 0: 0, 1: 0 };
+        const sumT  = new Array(nAthletes).fill(0);
+        const sumT2 = new Array(nAthletes).fill(0);
+
+        for (const totals of samples) {
+            const tRanks = timeRanks(totals, groups);
+            for (let gi = 0; gi < groups.length; gi++) {
+                let perfect = true;
+                for (const i of groups[gi].indices) {
+                    if (pRanks[i] === tRanks[i]) matchCount[i]++; else perfect = false;
+                }
+                if (perfect) groupPerfect[gi]++;
+            }
+            for (let i = 0; i < nAthletes; i++) {
+                sumT[i]  += totals[i];
+                sumT2[i] += totals[i] * totals[i];
+            }
+        }
+
+        const means = sumT.map(s => s / nSamples);
+        const stds  = sumT.map((s, i) => {
+            const mean = s / nSamples;
+            return Math.sqrt(Math.max(0, sumT2[i] / nSamples - mean * mean));
+        });
+        const prob = matchCount.map(c => c / nSamples);
+
+        // Render table
+        let html = '';
+        for (let gi = 0; gi < groups.length; gi++) {
+            const g = groups[gi];
+            const sorted = g.indices.slice().sort((a, b) => pRanks[a] - pRanks[b]);
+            html += `<tr class="group-row"><td colspan="4">${g.label}</td></tr>`;
+            for (const idx of sorted) {
+                const p = prob[idx];
+                const cls = p > 0.8 ? 'prob-high' : p > 0.6 ? 'prob-mid' : 'prob-low';
+                const barW = (p * 100).toFixed(1);
+                html += `<tr>
+                    <td class="td-mono">R${idx+1}</td>
+                    <td class="r td-mono">${powers[idx].toFixed(1)}</td>
+                    <td class="r td-mono">${means[idx].toFixed(2)} ± ${stds[idx].toFixed(2)}</td>
+                    <td class="r">
+                        <div class="prob-cell">
+                            <span class="prob-val ${cls}">${(p*100).toFixed(1)}%</span>
+                            <div class="prob-bar"><div class="prob-bar-fill ${cls}" style="width:${barW}%"></div></div>
+                        </div>
+                    </td>
+                </tr>`;
+            }
+        }
+        tableBody.innerHTML = html;
+
+        // Render race table
+        const raceBody = document.getElementById('raceTableBody');
+        let rhtml = '';
+        for (let r = 0; r < nRaces; r++) {
+            const crewR = [], crewQ = [];
+            for (let i = 0; i < nAthletes; i++) {
+                (R[r][i] === 1 ? crewR : crewQ).push(`R${i+1}`);
+            }
+            const { meanR, stdR, meanQ, stdQ } = raceStats[r];
+            const margin = meanR - meanQ;
+            // std of margin: independent measurements so variances add
+            const stdMargin = Math.sqrt(stdR * stdR + stdQ * stdQ);
+            const mCls = margin > 0 ? 'margin-pos' : 'margin-neg';
+            const chipsR = crewR.map(n => `<span class="chip">${n}</span>`).join('');
+            const chipsQ = crewQ.map(n => `<span class="chip">${n}</span>`).join('');
+            rhtml += `<tr>
+                <td class="td-mono">${r + 1}</td>
+                <td><div class="crew-chips">${chipsR}</div></td>
+                <td class="r td-mono">${meanR.toFixed(2)} <span style="color:var(--text-3)">±${stdR.toFixed(2)}</span></td>
+                <td><div class="crew-chips">${chipsQ}</div></td>
+                <td class="r td-mono">${meanQ.toFixed(2)} <span style="color:var(--text-3)">±${stdQ.toFixed(2)}</span></td>
+                <td class="r td-mono"><span class="${mCls}">${margin >= 0 ? '+' : ''}${margin.toFixed(2)}</span> <span style="color:var(--text-3)">±${stdMargin.toFixed(2)}</span></td>
+            </tr>`;
+        }
+        raceBody.innerHTML = rhtml;
+
+        group1Agreement.textContent = (groupPerfect[0] / nSamples * 100).toFixed(1) + '%';
+        group2Agreement.textContent = (groupPerfect[1] / nSamples * 100).toFixed(1) + '%';
+    }
+
+    function resetToDefault() {
+        for (let i = 0; i < nAthletes; i++) {
+            powerSliders[i].value = defaultPowers[i];
+            powerValues[i] = defaultPowers[i];
+            powerSliders[i].nextSibling.textContent = defaultPowers[i].toFixed(1);
+            powerSliders[i].parentElement.querySelector('.athlete-value').textContent = defaultPowers[i].toFixed(1);
+        }
+        distanceSlider.value = 1000;
+        powerNoiseSlider.value = 3.0;
+        timeNoiseSlider.value = 1.0;
+        updateLabels();
+        simulate();
+    }
+
+    document.getElementById('runBtn').addEventListener('click', simulate);
+    document.getElementById('resetDefaults').addEventListener('click', resetToDefault);
+    window.addEventListener('load', () => { updateLabels(); simulate(); });
+})();
+</script>
+</body>
+</html>
